@@ -1,0 +1,935 @@
+---
+# ============================================================================
+# Found Sequencing Datasets — Hydroxyurea / rNMP / RNase H2 / RNR / RER
+# ============================================================================
+# Searched: NCBI SRA, GEO (GDS), and ENA portal API
+# Date: 2026-08-11
+# Focus: hydroxyurea treatment, ribonucleotide incorporation, RNase H2
+#        deficiency, RNR inhibition, and ribonucleotide excision repair (RER)
+# All datasets listed are open/public access (no dbGaP controlled-access).
+# ============================================================================
+
+metadata:
+  search_date: "2026-08-11"
+  databases_searched:
+    - "NCBI SRA (E-utilities esearch/efetch)"
+    - "NCBI GEO (GDS esearch/esummary)"
+    - "ENA Portal API (ebi.ac.uk/ena/portal/api)"
+  search_terms:
+    - "hydroxyurea"
+    - "RNASEH2A, RNASEH2B, RNASEH2C"
+    - "rnh201, rnh1 rnh2, Rnaseh2b"
+    - "ribonucleotide excision repair"
+    - "ribonucleotide incorporation"
+    - "rNMP incorporation"
+    - "RRM1, RRM2"
+    - "Aicardi-Goutieres"
+    - "ribodysgenesis"
+    - "embedded ribonucleotide"
+    - "dNTP depletion / dNTP pool"
+  total_hits_summary:
+    sra_hydroxyurea: 3297
+    geo_hydroxyurea: 4318
+    sra_RNASEH2B: 158
+    geo_RNASEH2B: 130
+    sra_rnh201: 267
+    geo_rnh201: 343
+    geo_embedded_ribonucleotide: 869
+  notes: >
+    SRA results are dominated by sickle cell disease pharmacogenomics (HU as
+    therapy, not as rNMP-inducing agent). The most relevant datasets for
+    rNMP/hydroxyurea biology are the GEO/SRA yeast studies and the RER/RNase H2
+    mouse/human studies catalogued below.
+
+# ============================================================================
+# CATEGORY 1: HYDROXYUREA-TREATED YEAST (S. cerevisiae / S. pombe)
+# ============================================================================
+
+hydroxyurea_yeast:
+  - accession: "GSE234409"
+    title: "Whole genome sequencing (DNA-seq) in WT S. cerevisiae post treatment with six different replication inhibitors"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "WGS"
+    sample_count: 44
+    hu_treatment: "Yes — HU among six replication inhibitors tested"
+    controls: "Yes — untreated WT"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234409"
+    pubmed: []
+    summary: >
+      Replication-transcription conflicts as source of genome instability;
+      replication inhibitors include HU. WGS to identify mutations after treatment.
+    relevance: "HIGH — direct WGS of yeast after HU treatment, can show rNMP-induced mutations"
+    license: "Open (GEO public)"
+
+  - accession: "GSE234410"
+    title: "RNA-Seq to map gene expression pattern in WT S. cerevisiae post treatment with six different replication inhibitors"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "RNA-seq"
+    sample_count: 44
+    hu_treatment: "Yes — HU among six replication inhibitors"
+    controls: "Yes — untreated WT"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE234410"
+    pubmed: []
+    summary: >
+      Companion RNA-seq to GSE234409. Gene expression changes after replication
+      inhibitor treatment including HU.
+    relevance: "HIGH — transcriptomic response to HU in yeast"
+    license: "Open (GEO public)"
+
+  - accession: "GSE297970"
+    title: "ChIP-Seq to map DNA double-stranded breaks in WT S. cerevisiae post treatment with five different replication inhibitors"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "ChIP-seq"
+    sample_count: 72
+    hu_treatment: "Yes — HU among replication inhibitors"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297970"
+    pubmed: []
+    relevance: "HIGH — DSB mapping after HU treatment"
+    license: "Open (GEO public)"
+
+  - accession: "GSE297969"
+    title: "Break-Seq to map DNA double-stranded breaks in WT S. cerevisiae post treatment with six different replication inhibitors"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "WGS (Break-Seq)"
+    sample_count: 12
+    hu_treatment: "Yes — among six replication inhibitors"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297969"
+    pubmed: []
+    relevance: "HIGH — Break-Seq maps DSBs after HU"
+    license: "Open (GEO public)"
+
+  - accession: "GSE261120"
+    title: "Characterizing the regulatory effects of H2A.Z and SWR1 on gene expression during hydroxyurea exposure in S. cerevisiae [ChIP-seq]"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "ChIP-seq"
+    sample_count: 12
+    hu_treatment: "Yes — HU exposure"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE261120"
+    pubmed: [39836664]
+    relevance: "MEDIUM — chromatin dynamics during HU exposure"
+    license: "Open (GEO public)"
+
+  - accession: "GSE309439"
+    title: "Hydroxyurea induces an oxidative stress response that triggers ER expansion and cytoplasmic protein aggregation"
+    organism: "Schizosaccharomyces pombe"
+    study_type: "RNA-seq"
+    sample_count: 5
+    hu_treatment: "Yes — HU treatment"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE309439"
+    pubmed: [41259369]
+    relevance: "MEDIUM — HU stress response in fission yeast"
+    license: "Open (GEO public)"
+
+  - accession: "GSE136605"
+    title: "Mec1 is activated at the onset of normal S phase by low dNTP pools impeding DNA replication"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "SuperSeries (RNA-seq + Sequencing)"
+    sample_count: 62
+    hu_treatment: "Related — dNTP pool depletion is HU's mechanism of action"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE136605"
+    pubmed: [32169162, 33278361]
+    relevance: "HIGH — dNTP depletion (HU mechanism) activating checkpoint"
+    license: "Open (GEO public)"
+
+  - accession: "GSE136602"
+    title: "Mec1 is activated at the onset of normal S phase by low dNTP pools impeding DNA replication [sequencing]"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "Sequencing (SubSeries of GSE136605)"
+    sample_count: 57
+    hu_treatment: "Related — dNTP pool depletion"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE136602"
+    pubmed: [32169162]
+    relevance: "HIGH"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# CATEGORY 2: HYDROXYUREA-TREATED HUMAN / MOUSE / OTHER
+# ============================================================================
+
+hydroxyurea_human_mouse:
+  - accession: "GSE114754"
+    title: "Effects of hydroxyurea on CNV induction in the mouse germline"
+    organism: "Mus musculus"
+    study_type: "WGS / microarray / mate-pair sequencing"
+    sample_count: 110
+    hu_treatment: "Yes — oral gavage and subcutaneous pump, multiple doses"
+    controls: "Yes — untreated mice"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE114754"
+    pubmed: [30218578]
+    summary: >
+      Examined HU effects on germline copy number variants (CNVs) in vivo in
+      male mice. HU administered by oral gavage and subcutaneous pump.
+    relevance: "VERY HIGH — HU-induced genome instability in mouse germline"
+    license: "Open (GEO public)"
+
+  - accession: "GSE274294"
+    title: "RGG motif-containing Scd6/LSM14A proteins regulate translation of specific mRNAs in response to hydroxyurea-induced genotoxic stress"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq"
+    sample_count: 24
+    hu_treatment: "Yes — HU-induced genotoxic stress"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE274294"
+    pubmed: [40275106]
+    relevance: "MEDIUM — HU stress response in human cells"
+    license: "Open (GEO public)"
+
+  - accession: "GSE295109"
+    title: "Differential microRNA profiles associated with the hydroxyurea-inducible SAR1A gene"
+    organism: "Homo sapiens"
+    study_type: "small-RNA-seq"
+    sample_count: 12
+    hu_treatment: "Yes — HU treatment in K562 cells"
+    controls: "Yes — SAR1A-KO with and without HU"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE295109"
+    pubmed: [40501517]
+    relevance: "MEDIUM — HU-induced HbF/globin switching"
+    license: "Open (GEO public)"
+
+  - accession: "GSE54579"
+    title: "The p53 Signaling Pathway is Activated in Response to Hydroxyurea Embryotoxicity During Organogenesis"
+    organism: "Mus musculus"
+    study_type: "microarray"
+    sample_count: 8
+    hu_treatment: "Yes — HU as model teratogen, GD 9 mouse embryo"
+    controls: "Yes — saline-treated"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE54579"
+    pubmed: [27208086]
+    relevance: "MEDIUM — HU developmental toxicity DDR pathway"
+    license: "Open (GEO public)"
+
+  - accession: "PRJEB46448"
+    title: "RNA-seq of rat heart myoblast cell line H9c-2 treated with hydroxyurea with and without CK2alpha down-regulation"
+    organism: "Rattus norvegicus"
+    study_type: "RNA-seq"
+    sample_count: 12
+    hu_treatment: "Yes — HU treatment ± CK2alpha down-regulation"
+    controls: "Yes — untreated controls"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJEB46448"
+    ena_runs: 12
+    total_bases: 183089165530
+    relevance: "MEDIUM — HU in cardiac cells"
+    license: "Open (ENA public)"
+
+  - accession: "PRJEB111767"
+    title: "RNAseq of the ecDNA-positive colon cancer cell line COLO 320DM with and without hydroxyurea treatment"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq"
+    sample_count: 12
+    hu_treatment: "Yes — HU treatment ± ecDNA"
+    controls: "Yes — untreated"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJEB111767"
+    ena_runs: 12
+    total_bases: 86085582654
+    relevance: "MEDIUM — HU in cancer cells, ecDNA dynamics"
+    license: "Open (ENA public)"
+
+  - accession: "PRJEB111866"
+    title: "H3K27ac ChIPseq of ecDNA-positive colon cancer cell line COLO 320DM with and without hydroxyurea treatment"
+    organism: "Homo sapiens"
+    study_type: "ChIP-seq"
+    sample_count: 3
+    hu_treatment: "Yes — HU treatment"
+    controls: "Yes — untreated"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJEB111866"
+    ena_runs: 3
+    total_bases: 35091832729
+    relevance: "MEDIUM — HU, chromatin in cancer"
+    license: "Open (ENA public)"
+
+  - accession: "PRJEB12944"
+    title: "A Comprehensive Survey of the Mutagenic Impact of Common Cancer Cytotoxics"
+    organism: "Gallus gallus"
+    study_type: "WGS"
+    sample_count: 29
+    hu_treatment: "Yes — HU among cytotoxics tested"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJEB12944"
+    ena_runs: 29
+    total_bases: 908494756800
+    relevance: "HIGH — WGS to assess mutagenic impact of HU in chicken model"
+    license: "Open (ENA public)"
+
+  - accession: "PRJNA1275808"
+    title: "Comparative Analysis of Teratogen-Induced Malformations and Gene Expression Across Zebrafish Strains (HU included)"
+    organism: "Danio rerio"
+    study_type: "RNA-seq"
+    sample_count: 340
+    hu_treatment: "Yes — HU as teratogen"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA1275808"
+    ena_runs: 340
+    total_bases: 142502196103
+    relevance: "MEDIUM — HU teratogenicity transcriptomics"
+    license: "Open (ENA public)"
+
+# ============================================================================
+# CATEGORY 3: RNase H2 DEFICIENCY / KNOCKOUT (MAMMALIAN)
+# ============================================================================
+
+rnase_h2_mammalian:
+  - accession: "PRJNA750813"
+    title: "RNaseH2B single and compound mutant cerebellum"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 54
+    hu_treatment: "N/A — RNaseH2B mutant study"
+    controls: "Yes — wild-type"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA750813"
+    sra_accession: "SRP330507"
+    ena_runs: 54
+    total_bases: 508231588324
+    relevance: "VERY HIGH — direct RNaseH2B mutant study, rNMP accumulation model"
+    license: "Open (ENA/SRA public)"
+
+  - accession: "GSE299677"
+    title: "RNA-seq analysis of intestinal organoids to investigate the roles of Rnaseh2b and Atg16l1 in gene regulation"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 14
+    hu_treatment: "N/A — Rnaseh2b knockout"
+    controls: "Yes — WT, Atg16l1 KO, double KO"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE299677"
+    pubmed: [41057521]
+    summary: >
+      Rnaseh2b deficiency associated with DNA damage and tumorigenesis.
+      Intestinal organoids from WT, Rnaseh2b KO, Atg16l1 KO, double KO.
+    relevance: "VERY HIGH — Rnaseh2b KO model"
+    license: "Open (GEO public)"
+
+  - accession: "GSE146970"
+    title: "RNase H2, mutated in Aicardi-Goutieres syndrome, resolves co-transcriptional R-loops to prevent DNA breaks and inflammation"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq / ChIP-seq"
+    sample_count: 20
+    hu_treatment: "N/A — RNase H2 loss-of-function (AGS mutations)"
+    controls: "Yes — WT RNase H2"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE146970"
+    pubmed: [35618715]
+    summary: >
+      RNase H2 deficiency causes AGS. RNase H2 resolves R-loops to prevent DNA
+      breaks and inflammation. Human cell lines with AGS mutations.
+    relevance: "VERY HIGH — RNase H2 deficiency in human disease model"
+    license: "Open (GEO public)"
+
+  - accession: "GSE276623"
+    title: "Human RNaseH2 subunit upregulation counteracts oncogene- and chemotherapy-induced replication stress"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq"
+    sample_count: 12
+    hu_treatment: "Related — chemotherapy-induced replication stress"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE276623"
+    pubmed: [40640336]
+    relevance: "HIGH — RNaseH2 role in replication stress"
+    license: "Open (GEO public)"
+
+  - accession: "GSE201210"
+    title: "Senataxin and RNase H2 act redundantly to suppress genome instability during class switch recombination"
+    organism: "Mus musculus"
+    study_type: "RNA-seq / ChIP-seq"
+    sample_count: 24
+    hu_treatment: "N/A — RNase H2 deficiency model"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE201210"
+    pubmed: [36542058]
+    relevance: "HIGH — RNase H2 and genome instability"
+    license: "Open (GEO public)"
+
+  - accession: "GSE193714"
+    title: "DNA damage contributes to neurotoxic inflammation in Aicardi-Goutieres Syndrome astrocytes"
+    organism: "Homo sapiens"
+    study_type: "SuperSeries (RNA-seq + DNA-seq + scRNA-seq)"
+    sample_count: 24
+    hu_treatment: "N/A — AGS model (RNase H2 deficiency)"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE193714"
+    pubmed: [35262626]
+    relevance: "VERY HIGH — AGS astrocytes, RNase H2 deficiency, DNA damage"
+    license: "Open (GEO public)"
+    subseries:
+      - GSE193712: "DNA-Seq subseries (3 samples)"
+      - GSE193711: "RNA-Seq subseries (18 samples)"
+      - GSE193710: "scRNA-Seq subseries (3 samples)"
+
+  - accession: "GSE221644"
+    title: "Altered DNA Methylation and Gene expression predict Disease Severity in Patients with Aicardi-Goutieres Syndrome"
+    organism: "Homo sapiens"
+    study_type: "methylation array / RNA-seq"
+    sample_count: 17
+    hu_treatment: "N/A — AGS patient samples"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE221644"
+    relevance: "MEDIUM — AGS clinical samples"
+    license: "Open (GEO public)"
+
+  - accession: "GSE188763"
+    title: "Decrease in Rnase HII and accumulation of lncRNAs/DNA hybrids: implication in psoriasis"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq"
+    sample_count: 28
+    hu_treatment: "N/A — RNase H2 deficiency in disease"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE188763"
+    relevance: "MEDIUM — RNase H2 deficiency in human skin disease"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# CATEGORY 4: YEAST rNMP / RNase H MODELS (rnh1/rnh2 deletions)
+# ============================================================================
+
+yeast_rnmp_models:
+  - accession: "GSE73334"
+    title: "Genome-wide alterations in yeast strains lacking RNase H1, RNase H2, or both RNase H1 and RNase H2"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "microarray"
+    sample_count: 159
+    hu_treatment: "N/A — rnh1Δ rnh2Δ deletions"
+    controls: "Yes — wild-type"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE73334"
+    pubmed: [26400613]
+    summary: >
+      CLASSIC STUDY. R-loops and rNMP incorporation as sources of genome
+      instability. Strains lacking RNase H1, RNase H2, or both. Genome-wide
+      alterations profiled.
+    relevance: "CRITICAL — classic rnh1Δ rnh2Δ model"
+    license: "Open (GEO public)"
+
+  - accession: "GSE61464"
+    title: "Global mapping of ribonucleotides embedded in DNA"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP sequencing (OTHER)"
+    sample_count: 9
+    hu_treatment: "N/A — rNMP mapping in WT and rnh201 mutants"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE61464"
+    sra_projects: ["PRJNA261234"]
+    ena_runs: 9
+    total_bases: 1459669011
+    pubmed: [25622106]
+    summary: >
+      CLASSIC STUDY. Captured and sequenced ribonucleotides embedded in
+      S. cerevisiae genomic DNA. Found rNMPs throughout genome.
+    relevance: "CRITICAL — direct rNMP mapping in yeast genome"
+    license: "Open (GEO/ENA public)"
+
+  - accession: "PRJNA263378"
+    title: "Tracking replication enzymology in vivo by genome-wide mapping of ribonucleotide incorporation"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP sequencing (OTHER / HydEn-seq precursor)"
+    sample_count: 38
+    hu_treatment: "N/A — rNMP mapping with polymerase mutants"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA263378"
+    ena_runs: 38
+    total_bases: 68853570528
+    pubmed: [25624100]
+    summary: >
+      CLASSIC STUDY. Applied ribonucleotide mapping to track DNA replicative
+      polymerase usage. Used pol1-L868M, pol2-M644G, pol3-L612M mutants that
+      incorporate increased rNMPs.
+    relevance: "CRITICAL — polymerase-specific rNMP incorporation mapping"
+    license: "Open (ENA public)"
+
+  - accession: "GSE64521"
+    title: "Genome-wide maps of replicative polymerase contributions to the fully replicated yeast genome"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP sequencing"
+    sample_count: 20
+    hu_treatment: "N/A — rNMP mapping with polymerase mutants"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE64521"
+    pubmed: [25624100]
+    summary: >
+      Measured location and strand of DNA-embedded ribonucleotides in yeast
+      genome. Polymerase mutants (pol1-L868M, pol2-M644G, pol3-L612M) show
+      increased ribonucleotide incorporation.
+    relevance: "CRITICAL — polymerase-specific rNMP incorporation"
+    license: "Open (GEO public)"
+
+  - accession: "GSE125855"
+    title: "Mapping polymerase usage by tracking ribonucleotide incorporation (HydEn-seq) during DNA replication"
+    organism: "Saccharomyces cerevisiae; Schizosaccharomyces pombe"
+    study_type: "HydEn-seq (rNMP sequencing)"
+    sample_count: 58
+    hu_treatment: "N/A — rNMP mapping"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE125855"
+    pubmed: [31488849]
+    summary: >
+      Improved hydrolytic end sequencing (HydEn-seq) mapping ribonucleotide
+      incorporation. Tracked DNA replicative polymerase usage in S. cerevisiae
+      and S. pombe.
+    relevance: "CRITICAL — HydEn-seq method for rNMP mapping"
+    license: "Open (GEO public)"
+
+  - accession: "GSE133558"
+    title: "DNA polymerase Δ synthesizes both strands during break-induced replication"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "HydEn-seq"
+    sample_count: 72
+    hu_treatment: "N/A — rNMP mapping during BIR"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE133558"
+    pubmed: [31495565]
+    relevance: "HIGH — rNMP mapping during break-induced replication"
+    license: "Open (GEO public)"
+
+  - accession: "GSE199262"
+    title: "Ribodysgenesis: sudden genome instability in yeast S. cerevisiae arising from RNase H2 cleavage at genomic-embedded ribonucleotides"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "SNP microarray"
+    sample_count: 10
+    hu_treatment: "N/A — RNase H2 introduction at rNMPs"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE199262"
+    pubmed: []
+    summary: >
+      Heterozygous zygotes generated to determine genomic alterations induced
+      by sudden introduction of active RNase H2. Pattern of genomic alterations
+      mapped with custom SNP microarray.
+    relevance: "VERY HIGH — RNase H2 cleavage at rNMPs causing instability"
+    license: "Open (GEO public)"
+
+  - accession: "GSE240399"
+    title: "Ribonucleotides embedded in genomic DNA of Aicardi-Goutieres syndrome (AGS)-orthologous mutants of S. cerevisiae using ribose-seq"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "ribose-seq"
+    sample_count: 21
+    hu_treatment: "N/A — AGS-orthologous RNase H2 mutants"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE240399"
+    pubmed: [37873120, 38868188]
+    summary: >
+      rNMPs embedded in genomic DNA of AGS-orthologous yeast mutants using
+      ribose-seq protocol. Mutations in RNase H2 subunits cause rNMP
+      accumulation.
+    relevance: "VERY HIGH — AGS-orthologous yeast mutants, ribose-seq"
+    license: "Open (GEO public)"
+
+  - accession: "GSE100352"
+    title: "Ribonucleotides incorporated by the yeast mitochondrial DNA polymerase are not repaired"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP sequencing"
+    sample_count: 49
+    hu_treatment: "N/A — mitochondrial rNMP incorporation"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE100352"
+    pubmed: [29109257]
+    summary: >
+      Ribonucleotides in yeast mitochondrial DNA are not repaired by RNase H2.
+      Frequency determined by dNTP/rNTP ratios and polymerase discrimination.
+    relevance: "HIGH — rNMP in mitochondria, not repaired"
+    license: "Open (GEO public)"
+
+  - accession: "GSE85130"
+    title: "Evaluation of Repair Activity by Quantification of Ribonucleotides in the Genome"
+    organism: "Saccharomyces cerevisiae BY4741; Sinsheimervirus phiX174"
+    study_type: "rNMP quantification sequencing"
+    sample_count: 58
+    hu_treatment: "N/A — rNMP incorporation and repair"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE85130"
+    pubmed: [33993586]
+    summary: >
+      Comprehensive method for assessing balance between ribonucleotide
+      incorporation and repair activity.
+    relevance: "HIGH — rNMP repair activity quantification"
+    license: "Open (GEO public)"
+
+  - accession: "GSE195936"
+    title: "CRAC of yeast RNA polymerase II and RNases H in asynchronous, G1-arrested, and S-phase cells"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "CRAC (crosslinking and analysis of cDNAs)"
+    sample_count: 34
+    hu_treatment: "N/A — RNase H profiling across cell cycle"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE195936"
+    relevance: "MEDIUM — RNase H function across cell cycle"
+    license: "Open (GEO public)"
+
+  - accession: "GSE192701"
+    title: "A role for S. cerevisiae Rtt109 histone acetyltransferase in R-loop homeostasis and anti-silencing"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "RNA-seq"
+    sample_count: 14
+    hu_treatment: "N/A — R-loop/RNase H related"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE192701"
+    relevance: "MEDIUM — R-loop homeostasis involving RNase H"
+    license: "Open (GEO public)"
+
+  - accession: "PRJNA1212884"
+    title: "RNA sequencing of wild type S. cerevisiae overexpressing RNH1 or RNH1 (D193N)"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "RNA-seq"
+    sample_count: 12
+    hu_treatment: "N/A — RNH1 overexpression"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA1212884"
+    ena_runs: 12
+    total_bases: 9058319625
+    relevance: "MEDIUM — RNase H1 overexpression effects"
+    license: "Open (ENA public)"
+
+  - accession: "PRJNA705491"
+    title: "R-loop landscapes in yeast meiosis"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "OTHER (R-loop mapping)"
+    sample_count: 27
+    hu_treatment: "N/A — R-loop profiling, rnh201 relevant"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA705491"
+    ena_runs: 27
+    total_bases: 108695421300
+    relevance: "HIGH — R-loop mapping in rnh201 backgrounds"
+    license: "Open (ENA public)"
+
+# ============================================================================
+# CATEGORY 5: RIBONUCLEOTIDE EXCISION REPAIR (RER) DEFICIENCY
+# ============================================================================
+
+rer_deficiency:
+  - accession: "GSE115005"
+    title: "Ribonucleotide excision repair is essential to prevent skin cancer"
+    organism: "Mus musculus"
+    study_type: "SuperSeries (RNA-seq + microarray)"
+    sample_count: 19
+    hu_treatment: "N/A — RER deficiency (Rnaseh2b conditional KO)"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE115005"
+    pubmed: [30154151]
+    summary: >
+      RER is essential to prevent skin cancer. Rnaseh2b conditional knockout
+      in mouse epidermis leads to rNMP accumulation and tumorigenesis.
+    relevance: "CRITICAL — RER deficiency causing cancer, rNMP accumulation"
+    license: "Open (GEO public)"
+    subseries:
+      - GSE115004: "CD45+ CD49f- epidermal cells (13 samples)"
+      - GSE115003: "CD49f+ epidermal cells (6 samples)"
+
+  - accession: "GSE111318"
+    title: "Ribonucleotide excision repair prevents intestinal tumorigenesis"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 29
+    hu_treatment: "N/A — RER deficiency (Rnaseh2b conditional KO)"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE111318"
+    pubmed: [30273559]
+    summary: >
+      Ribonucleotide incorporation is most frequent naturally occurring DNA
+      lesion. RER deficiency (Rnaseh2b loss) leads to intestinal tumorigenesis.
+    relevance: "CRITICAL — RER deficiency in intestinal cancer model"
+    license: "Open (GEO public)"
+
+  - accession: "GSE207761"
+    title: "RNAseq of granulocyte-macrophage progenitors (GMP) from bone marrow of mice with hematopoietic knockout of Rnaseh2b"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 8
+    hu_treatment: "N/A — Rnaseh2b hematopoietic KO"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE207761"
+    relevance: "VERY HIGH — Rnaseh2b KO in hematopoietic system"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# CATEGORY 6: rNMP DETECTION METHODS & HUMAN rNMP DATASETS
+# ============================================================================
+
+rnmp_detection_human:
+  - accession: "PRJNA928310"
+    title: "Detection of ribonucleotides embedded in DNA by Nanopore sequencing"
+    organism: "Phage M13mp18"
+    study_type: "WGS (Nanopore)"
+    sample_count: 28
+    hu_treatment: "N/A — rNMP detection method development"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA928310"
+    ena_runs: 28
+    total_bases: 138494945258
+    relevance: "VERY HIGH — Nanopore-based rNMP detection method"
+    license: "Open (ENA public)"
+
+  - accession: "PRJNA941970"
+    title: "rNMP incorporation characteristics in human mitochondrial DNA (GRCh38 chrM)"
+    organism: "Homo sapiens"
+    study_type: "WGS / OTHER (rNMP mapping)"
+    sample_count: 49
+    hu_treatment: "N/A — rNMP in human mtDNA"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA941970"
+    ena_runs: 49
+    total_bases: 4052450716
+    relevance: "VERY HIGH — rNMP in human mitochondrial DNA"
+    license: "Open (ENA public)"
+
+  - accession: "GSE90054"
+    title: "Nucleotide pools dictate the identity and frequency of ribonucleotide incorporation in mitochondrial DNA"
+    organism: "Homo sapiens"
+    study_type: "rNMP sequencing"
+    sample_count: 44
+    hu_treatment: "N/A — rNMP mapping in human mtDNA"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE90054"
+    pubmed: [28207748]
+    summary: >
+      Genome-wide approach to precisely map ribonucleotides in human mtDNA.
+      Nucleotide pool ratios (dNTP/rNTP) dictate rNMP incorporation frequency.
+    relevance: "VERY HIGH — human mtDNA rNMP mapping, dNTP pool relevance"
+    license: "Open (GEO public)"
+
+  - accession: "GSE297046"
+    title: "Human ribomes reveal DNA-embedded ribonucleotides as epigenetic modulators of DNA supercoiling"
+    organism: "Homo sapiens"
+    study_type: "Multi-platform (Ribose-seq / methylation / RNA-seq)"
+    sample_count: 40
+    hu_treatment: "N/A — rNMP mapping in human genome"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE297046"
+    pubmed: []
+    summary: >
+      Analyzes distribution and enrichment of ribonucleotide embedment in human
+      genome across functional regions. Association with gene expression and
+      methylation. Suggests rNMPs as epigenetic modulators.
+    relevance: "VERY HIGH — human genome-wide rNMP distribution"
+    license: "Open (GEO public)"
+
+  - accession: "GSE333819"
+    title: "Human ribomes reveal DNA-embedded ribonucleotides as epigenetic modulators of DNA supercoiling"
+    organism: "Homo sapiens"
+    study_type: "rNMP mapping"
+    sample_count: 9
+    hu_treatment: "N/A — rNMP mapping"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE333819"
+    relevance: "HIGH — companion dataset to GSE297046"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# CATEGORY 7: RNR INHIBITION / dNTP POOLS
+# ============================================================================
+
+rnr_inhibition:
+  - accession: "PRJNA481831"
+    title: "Detection of genomic rearrangements in DNA from mutant yeast strains"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "WGS"
+    sample_count: 56
+    hu_treatment: "Yes — HU treatment in mutant yeast strains"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA481831"
+    ena_runs: 56
+    total_bases: 114109056516
+    relevance: "HIGH — WGS of yeast after HU, rearrangement detection"
+    license: "Open (ENA public)"
+
+  - accession: "GSE101698"
+    title: "Evidence that DNA polymerase δ contributes to initiation of leading strand DNA replication in S. cerevisiae"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP mapping (sequencing)"
+    sample_count: 28
+    hu_treatment: "N/A — dNTP pool / polymerase usage"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE101698"
+    pubmed: [29487291, 34019669]
+    relevance: "HIGH — polymerase usage via rNMP mapping"
+    license: "Open (GEO public)"
+
+  - accession: "GSE110241"
+    title: "DNA polymerase η contributes to lagging strand synthesis"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "rNMP mapping"
+    sample_count: 33
+    hu_treatment: "N/A — polymerase usage mapping"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE110241"
+    pubmed: [30597049]
+    relevance: "HIGH — polymerase usage via rNMP mapping"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# CATEGORY 8: SICKLE CELL / PHARMACOGENOMICS (HU as THERAPY, NOT rNMP FOCUS)
+# ============================================================================
+
+sickle_cell_hu:
+  - accession: "PRJNA413115"
+    title: "NHLBI TOPMed: Pharmacogenomics of Hydroxyurea in Sickle Cell Disease (PharmHU)"
+    organism: "Homo sapiens"
+    study_type: "WGS (30x)"
+    sample_count: "hundreds (TOPMed cohort)"
+    hu_treatment: "HU as therapy for sickle cell disease"
+    controls: "N/A — pharmacogenomics study"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA413115"
+    sra_accession: "SRP157836"
+    relevance: "LOW for rNMP — HU as patient therapy, not rNMP biology"
+    license: "Open (but large TOPMed cohort, controlled access for individual-level data)"
+    notes: >
+      TOPMed WGS of sickle cell patients on HU therapy. May show long-term HU
+      exposure mutations but not designed for rNMP analysis. dbGaP for
+      individual-level data.
+
+  - accession: "PRJNA231702"
+    title: "Differential Response to Hydroxyurea and Incidence of Stroke in Sickle Cell Disease"
+    organism: "Homo sapiens"
+    study_type: "WGS / WXS"
+    sample_count: "hundreds"
+    hu_treatment: "HU as therapy"
+    controls: "N/A"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA231702"
+    relevance: "LOW for rNMP — pharmacogenomics"
+    license: "Open (SRA submission-level; individual data may be dbGaP)"
+
+  - accession: "PRJNA232740"
+    title: "Differential Response to Hydroxyurea in Sickle Cell Disease (WES)"
+    organism: "Homo sapiens"
+    study_type: "WXS"
+    sample_count: "hundreds"
+    hu_treatment: "HU as therapy"
+    controls: "N/A"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA232740"
+    relevance: "LOW for rNMP"
+    license: "Open (SRA)"
+
+# ============================================================================
+# CATEGORY 9: ADDITIONAL ENA/SRA STUDIES (HU-RELATED, VARIOUS ORGANISMS)
+# ============================================================================
+
+additional_studies:
+  - accession: "PRJNA433312"
+    title: "Transcriptomic RNAseq drug screen in cerebrocortical cultures towards novel neurogenetic disease therapies"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 227
+    hu_treatment: "Yes — HU in drug screen"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA433312"
+    ena_runs: 227
+    total_bases: 575299078900
+    relevance: "MEDIUM — HU as one drug in large screen"
+    license: "Open (ENA public)"
+
+  - accession: "PRJNA680296"
+    title: "RNA Sequencing of wild type mESC, differentiated cells, and WT brains (HU-related)"
+    organism: "Mus musculus"
+    study_type: "RNA-seq"
+    sample_count: 21
+    hu_treatment: "Related"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/PRJNA680296"
+    ena_runs: 21
+    total_bases: 140575806900
+    relevance: "LOW-MEDIUM"
+    license: "Open (ENA public)"
+
+  - accession: "ERP192219"
+    title: "Replication fork dynamics after hydroxyurea treatment in the ecDNA containing cell line CHP212"
+    organism: "Homo sapiens"
+    study_type: "Sequencing (fork dynamics)"
+    sample_count: "unknown"
+    hu_treatment: "Yes — HU treatment"
+    controls: "Yes"
+    url: "https://www.ebi.ac.uk/ena/browser/view/ERP192219"
+    relevance: "HIGH — HU replication fork dynamics in cancer"
+    license: "Open (ENA public)"
+
+  - accession: "SRP555029"
+    title: "Sir2 and Fun30 regulate ribosomal DNA replication timing via MCM helicase positioning and nucleosome occupancy"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "ChIP-seq / RNA-seq"
+    sample_count: "168 (GEO) / variable"
+    hu_treatment: "Yes — HU treatment used"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE285768"
+    relevance: "MEDIUM — HU used in rDNA replication study"
+    license: "Open (SRA/GEO public)"
+
+  - accession: "SRP561406"
+    title: "Replication Stress-Induced Chromatin Loops Protect Forks and Maintain Genome Stability"
+    organism: "Homo sapiens"
+    study_type: "ChIP-seq"
+    sample_count: "unknown"
+    hu_treatment: "Yes — HU-induced replication stress"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/sra?term=SRP561406"
+    relevance: "MEDIUM — HU replication stress, chromatin loops"
+    license: "Open (SRA public)"
+
+  - accession: "GSE309660"
+    title: "The 7SK small nuclear ribonucleoprotein links cell responses to transcription and replication stress"
+    organism: "Homo sapiens"
+    study_type: "RNA-seq"
+    sample_count: 9
+    hu_treatment: "Yes — replication stress including HU"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE309660"
+    relevance: "MEDIUM"
+    license: "Open (GEO public)"
+
+  - accession: "GSE315970"
+    title: "Rpd3L regulates Transcription-Replication Conflict via H3K4 Methylation-Dependent and Independent Chromatin Mechanisms"
+    organism: "Saccharomyces cerevisiae"
+    study_type: "ChIP-seq / RNA-seq"
+    sample_count: 64
+    hu_treatment: "Yes — HU among replication stress agents"
+    controls: "Yes"
+    url: "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE315970"
+    relevance: "MEDIUM — HU-induced transcription-replication conflict"
+    license: "Open (GEO public)"
+
+# ============================================================================
+# SUMMARY: TOP DATASETS BY RELEVANCE TO HU→rNMP PATHWAY
+# ============================================================================
+
+top_datasets_for_hu_rnmp_pipeline:
+  priority_1_direct_rnmp_mapping:
+    - "GSE73334 — Yeast rnh1Δ rnh2Δ genome-wide (159 samples)"
+    - "GSE61464 / PRJNA261234 — Global mapping of rNMPs in yeast DNA (classic)"
+    - "GSE64521 — Replicative polymerase contributions via rNMP mapping"
+    - "GSE125855 — HydEn-seq ribonucleotide incorporation mapping (S. cerevisiae + S. pombe)"
+    - "GSE240399 — Ribose-seq of AGS-orthologous yeast mutants"
+    - "PRJNA928310 — Nanopore rNMP detection (method development)"
+    - "PRJNA941970 — rNMP in human mitochondrial DNA"
+    - "GSE297046 — Human genome-wide rNMP distribution (ribomes)"
+
+  priority_2_rnase_h2_rer_deficiency:
+    - "GSE115005 — RER essential to prevent skin cancer (mouse Rnaseh2b KO)"
+    - "GSE111318 — RER prevents intestinal tumorigenesis (mouse)"
+    - "GSE146970 — RNase H2 AGS R-loops DNA breaks (human)"
+    - "GSE193714 — AGS astrocytes DNA damage (human, multi-omics)"
+    - "PRJNA750813 — RNaseH2B mutant cerebellum (mouse, 54 RNA-seq)"
+    - "GSE299677 — Rnaseh2b KO intestinal organoids (mouse)"
+    - "GSE207761 — Rnaseh2b hematopoietic KO (mouse)"
+    - "GSE199262 — Ribodysgenesis (RNase H2 at rNMPs, yeast)"
+
+  priority_3_hu_treatment_wgs_mutation:
+    - "GSE234409 — WGS of yeast after 6 replication inhibitors incl HU (44 samples)"
+    - "GSE114754 — HU CNV induction in mouse germline (110 samples)"
+    - "PRJEB12944 — Mutagenic impact of HU in chicken (WGS, 29 samples)"
+    - "PRJNA481831 — Genomic rearrangements in yeast after HU (WGS, 56 samples)"
+
+  priority_4_hu_transcriptomics:
+    - "GSE234410 — RNA-seq yeast after replication inhibitors incl HU"
+    - "GSE297970 — ChIP-seq DSBs after replication inhibitors in yeast"
+    - "GSE297969 — Break-Seq DSBs after replication inhibitors in yeast"
+    - "GSE136605 — Mec1 activated by low dNTP pools (HU mechanism)"
+    - "GSE274294 — Translation response to HU (human)"
+    - "PRJEB46448 — HU in rat cardiac cells (RNA-seq)"
+
+  priority_5_dnttp_pools_rnr:
+    - "GSE90054 — Nucleotide pools dictate rNMP in human mtDNA"
+    - "GSE136602 — Low dNTP pools and checkpoint activation (sequencing)"
+
+notes_on_access:
+  all_listed_datasets: "Open/public access — no dbGaP or controlled-access required"
+  exception: "TOPMed sickle cell data (PRJNA413115) — individual-level data may require dbGaP authorization"
+  ena_access: "All ENA records publicly downloadable via FASTQ/FASTA from ebi.ac.uk"
+  sra_access: "All SRA records downloadable via SRA Toolkit (prefetch/fastq-dump)"
+  geo_access: "GEO supplementary files include processed data; raw data in linked SRA submissions"

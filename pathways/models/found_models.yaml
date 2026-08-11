@@ -1,0 +1,841 @@
+_header: Found computational models for HU/rNMP DNA repair pathways
+_generated: '2026-08-11'
+_sources:
+- BioModels (EBI)
+- Reactome
+- PathwayCommons
+- KEGG
+_notes:
+- Reactome SBML exports downloaded via Content Service API (/ContentService/exporter/sbml/{stId}.xml)
+- Reactome JSON metadata via /ContentService/data/query/{stId}
+- Reactome BioPAX/SBGN export endpoints returned 404 (may be deprecated)
+- PathwayCommons /pc2/get and /pc2/graph endpoints had server errors (NPE, empty BioPAX). Search API worked for metadata.
+- BioModels SBML extracted from COMBINE archives (.omex) via /biomodels/model/download/{modelId}.omex
+- 'KEGG KGML files via REST API: rest.kegg.jp/get/{id}/kgml'
+- Several curated Reactome IDs in pathways.yaml were incorrect (wrong pathway or 404). Corrected IDs noted in model entries.
+pathways:
+- pathway_id: rnr-regulation
+  name: Ribonucleotide reductase (RNR) regulation
+  models:
+  - source: Reactome
+    accession: R-HSA-9013957
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-9013957.xml
+    description: Reactome pathway SBML (curated ID maps to TLR3-mediated TICAM1-dependent programmed cell death, NOT Deoxyribonucleotides
+      de novo biosynthesis as annotated in pathways.yaml)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9013957.sbml.xml
+  - source: Reactome
+    accession: R-HSA-9013957
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-9013957
+    description: Reactome JSON metadata for pathway R-HSA-9013957
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9013957.json
+  - source: KEGG
+    accession: hsa00230
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa00230/kgml
+    description: Purine metabolism pathway map (includes dNTP biosynthesis components)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa00230.kgml.xml
+  - source: KEGG
+    accession: hsa00240
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa00240/kgml
+    description: Pyrimidine metabolism pathway map (includes dNTP biosynthesis components)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa00240.kgml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-499943
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=Interconversion+of+nucleotide+di+and+triphosphates
+    description: Interconversion of nucleotide di- and triphosphates (Reactome pathway indexed in PathwayCommons)
+    license: PathwayCommons data license (varies by source)
+    note: PathwayCommons /get and /graph endpoints returned errors; pathway existence confirmed via search
+- pathway_id: dntp-biosynthesis
+  name: dNTP biosynthesis / deoxyribonucleotide metabolism
+  models:
+  - source: Reactome
+    accession: R-HSA-9013957
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-9013957.xml
+    description: Reactome pathway SBML (curated ID mismatch - see rnr-regulation)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9013957.sbml.xml
+  - source: Reactome
+    accession: R-HSA-9013957
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-9013957
+    description: Reactome JSON metadata
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9013957.json
+  - source: KEGG
+    accession: hsa00230
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa00230/kgml
+    description: KEGG Purine metabolism (dNTP precursors)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa00230.kgml.xml
+  - source: KEGG
+    accession: hsa00240
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa00240/kgml
+    description: KEGG Pyrimidine metabolism (dNTP precursors)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa00240.kgml.xml
+- pathway_id: rna-dna-damage-response
+  name: RNA-DNA damage response and ribonucleotide excision repair (RER)
+  models:
+  - source: Reactome
+    accession: R-HSA-73930
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-73930.xml
+    description: Abasic sugar-phosphate removal via single-nucleotide replacement pathway (BER/RER-related sub-pathway)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73930.sbml.xml
+  - source: Reactome
+    accession: R-HSA-73930
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-73930
+    description: Reactome JSON metadata
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73930.json
+  - source: Reactome
+    accession: R-HSA-73893
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-73893.xml
+    description: DNA Damage Bypass (translesion synthesis, tolerance of unrepaired lesions)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73893.sbml.xml
+    corrected_note: Found via Reactome search. Curated ID R-HSA-5696399 actually maps to Global Genome NER, not DNA Damage
+      Bypass. Correct ID is R-HSA-73893.
+  - source: Reactome
+    accession: R-HSA-73893
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-73893
+    description: Reactome JSON metadata for DNA Damage Bypass
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73893.json
+  - source: BioModels
+    accession: BIOMD0000000475
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000475.omex
+    description: Amara2013 - PCNA ubiquitylation in the activation of PRR pathway (DNA damage tolerance)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000475.sbml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-73893
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=DNA+damage+bypass
+    description: DNA Damage Bypass pathway (Reactome reference in PathwayCommons)
+    license: PathwayCommons data license (varies by source)
+  - source: PathwayCommons
+    accession: reactome:R-HSA-73894
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=DNA+repair
+    description: DNA Repair top-level pathway (Reactome, encompasses BER/NER/MMR/HR/NHEJ)
+    license: PathwayCommons data license (varies by source)
+- pathway_id: base-excision-repair
+  name: Base excision repair (BER)
+  models:
+  - source: Reactome
+    accession: R-HSA-73884
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-73884.xml
+    description: Base Excision Repair pathway (full Reactome export)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73884.sbml.xml
+  - source: Reactome
+    accession: R-HSA-73884
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-73884
+    description: Reactome JSON metadata for Base Excision Repair
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73884.json
+  - source: Reactome
+    accession: R-HSA-73894
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-73894.xml
+    description: DNA Repair (top-level Reactome pathway, includes BER sub-pathways)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73894.sbml.xml
+  - source: Reactome
+    accession: R-HSA-73894
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-73894
+    description: Reactome JSON metadata for DNA Repair top-level pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_73894.json
+  - source: KEGG
+    accession: hsa03410
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03410/kgml
+    description: KEGG Base excision repair pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03410.kgml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-73884
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=Base+excision+repair
+    description: Base Excision Repair and sub-pathways (Reactome in PathwayCommons)
+    license: PathwayCommons data license (varies by source)
+    note: 'Confirmed sub-pathways: R-HSA-73884 (BER), R-HSA-110373 (PCNA-Dependent Long Patch BER), R-HSA-110381 (Resolution
+      of AP sites single-nucleotide), R-HSA-73929 (AP Site Formation), R-HSA-73933 (Resolution of Abasic Sites). Export endpoints
+      returned empty or server errors.'
+- pathway_id: mismatch-repair
+  name: DNA mismatch repair (MMR)
+  models:
+  - source: Reactome
+    accession: R-HSA-5358508
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-5358508.xml
+    description: Mismatch Repair pathway (full Reactome export)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5358508.sbml.xml
+  - source: Reactome
+    accession: R-HSA-5358508
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-5358508
+    description: Reactome JSON metadata for Mismatch Repair
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5358508.json
+  - source: KEGG
+    accession: hsa03430
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03430/kgml
+    description: KEGG Mismatch repair pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03430.kgml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-5358508
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=Mismatch+repair
+    description: MMR pathway and disease variants (Reactome in PathwayCommons)
+    license: PathwayCommons data license (varies by source)
+    note: 'Confirmed sub-pathways: R-HSA-5358508 (MMR), R-HSA-5358565 (MMR by MSH2:MSH6), R-HSA-5358606 (MMR by MSH2:MSH3),
+      disease variants R-HSA-5632927/5632968/5632928/5545483/5632987'
+- pathway_id: nucleotide-excision-repair
+  name: Nucleotide excision repair (NER)
+  models:
+  - source: Reactome
+    accession: R-HSA-5696398
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-5696398.xml
+    description: Nucleotide Excision Repair pathway (full Reactome export, includes GG-NER and TC-NER)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5696398.sbml.xml
+    corrected_note: Found via Reactome search. The curated ID R-HSA-73885 returned 404 (does not exist). Correct top-level
+      NER pathway is R-HSA-5696398.
+  - source: Reactome
+    accession: R-HSA-5696398
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-5696398
+    description: Reactome JSON metadata for NER
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5696398.json
+  - source: Reactome
+    accession: R-HSA-5696399
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-5696399.xml
+    description: Global Genome Nucleotide Excision Repair (GG-NER) sub-pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5696399.sbml.xml
+  - source: Reactome
+    accession: R-HSA-5696399
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-5696399
+    description: Reactome JSON metadata for GG-NER
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5696399.json
+  - source: KEGG
+    accession: hsa03420
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03420/kgml
+    description: KEGG Nucleotide excision repair pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03420.kgml.xml
+  - source: BioModels
+    accession: BIOMD0000000475
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000475.omex
+    description: Amara2013 - PCNA ubiquitylation in PRR pathway (NER-related translesion synthesis)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000475.sbml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-5696398
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=Nucleotide+excision+repair
+    description: NER pathway and sub-pathways in PathwayCommons
+    license: PathwayCommons data license (varies by source)
+    note: 'Confirmed: R-HSA-5696398 (NER), R-HSA-5696399 (GG-NER), R-HSA-6782210 (Gap-filling in TC-NER), R-HSA-5696397 (Gap-filling
+      in GG-NER), R-HSA-6781827 (TC-NER), R-HSA-6782135 (Dual incision in TC-NER), PathBank:SMP0000478 (NER)'
+- pathway_id: dna-replication-stress
+  name: DNA replication stress and fork stalling
+  models:
+  - source: Reactome
+    accession: R-HSA-176187
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-176187.xml
+    description: Activation of ATR in response to replication stress (Reactome pathway)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_176187.sbml.xml
+  - source: Reactome
+    accession: R-HSA-176187
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-176187
+    description: Reactome JSON metadata for ATR activation pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_176187.json
+  - source: KEGG
+    accession: hsa03030
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03030/kgml
+    description: KEGG DNA replication pathway map (replication fork components)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03030.kgml.xml
+  - source: BioModels
+    accession: BIOMD0000000700
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000700.omex
+    description: Heldt2018 - Proliferation-quiescence decision in response to DNA damage
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000700.sbml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-176187
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=ATR+replication+stress
+    description: ATR activation in response to replication stress (Confirmed in PathwayCommons)
+    license: PathwayCommons data license (varies by source)
+- pathway_id: p53-dna-damage-response
+  name: p53-mediated DNA damage response
+  models:
+  - source: Reactome
+    accession: R-HSA-3700989
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-3700989.xml
+    description: Transcriptional Regulation by TP53 (full Reactome export, large pathway)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_3700989.sbml.xml
+  - source: Reactome
+    accession: R-HSA-3700989
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-3700989
+    description: Reactome JSON metadata for Transcriptional Regulation by TP53
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_3700989.json
+  - source: Reactome
+    accession: R-HSA-6804116
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-6804116.xml
+    description: TP53 Regulates Transcription of Genes Involved in G1 Cell Cycle Arrest
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_6804116.sbml.xml
+  - source: Reactome
+    accession: R-HSA-6804116
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-6804116
+    description: Reactome JSON metadata for TP53 G1 arrest pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_6804116.json
+  - source: KEGG
+    accession: hsa04115
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa04115/kgml
+    description: KEGG p53 signaling pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa04115.kgml.xml
+  - source: BioModels
+    accession: BIOMD0000000188
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000188.omex
+    description: Proctor2008 - p53/Mdm2 circuit - p53 stabilisation by ATM
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000188.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000189
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000189.omex
+    description: Proctor2008 - p53/Mdm2 circuit - p53 stabilisation by p14ARF
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000189.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001057
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001057.omex
+    description: Nikolov2020 - p53-miR34 model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001057.sbml.xml
+  - source: BioModels
+    accession: MODEL2005130001
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL2005130001.omex
+    description: Ma2005 - Digital response of p53 to DNA damage - ATM Activation Module
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL2005130001.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001006
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001006.omex
+    description: Ciliberto2005 - Steady states and oscillations in the p53/Mdm2 network
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001006.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000943
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000943.omex
+    description: Hat2016 - Response of p53 system to irradiation in cell fate decision making
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000943.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000252
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000252.omex
+    description: Hunziker2010 - p53 Stress Specific Response
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000252.sbml.xml
+  - source: BioModels
+    accession: MODEL2004300002
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL2004300002.omex
+    description: Konrath2020 - p53 signaling model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL2004300002.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001007
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001007.omex
+    description: Zhang2007 - Mechanism of DNA damage response (Model 1, low damage dose)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001007.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001009
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001009.omex
+    description: Zhang2007 - Mechanism of DNA damage response (Model 2, high dose)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001009.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001010
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001010.omex
+    description: Zhang2007 - Mechanism of DNA damage response (Model 3, high damage dose)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001010.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000286
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000286.omex
+    description: Proctor2010 - Link between GSK3 and p53 in Alzheimers Disease
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000286.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000157
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000157.omex
+    description: Zatorsky2006 - p53 Model 4
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000157.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000660
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000660.omex
+    description: Barr2017 - Dynamics of p21 in hTert-RPE1 cells (p53 downstream target)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000660.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000287
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000287.omex
+    description: Passos2010 - DNA damage-induced Cellular Senescence (p53-mediated)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000287.sbml.xml
+  - source: BioModels
+    accession: MODEL2110270001
+    model_format: MATLAB (Octave) - no SBML
+    url: https://www.ebi.ac.uk/biomodels/MODEL2110270001
+    description: Pereira2020 - NRF2-p53 integrated-systems model of oxidative stress
+    license: CC0 1.0 (BioModels)
+    note: Model is in MATLAB format, not SBML. Listed for reference.
+  - source: PathwayCommons
+    accession: reactome:R-HSA-69615
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=p53+DNA+damage
+    description: PathwayCommons p53-related pathways confirmed
+    license: PathwayCommons data license (varies by source)
+    note: R-HSA-69615 (G1/S DNA Damage Checkpoints), R-HSA-69580 (p53-Dependent G1/S checkpoint), R-HSA-69613 (p53-Independent
+      G1/S checkpoint), R-HSA-69563 (p53-Dependent G1 DNA Damage Response), R-HSA-69541 (Stabilization of p53), R-HSA-69560
+      (Transcriptional activation of p53 responsive genes), R-HSA-69620 (Cell Cycle Checkpoints)
+- pathway_id: hr-nhej-double-strand-break
+  name: Homologous recombination and NHEJ (DSB repair)
+  models:
+  - source: Reactome
+    accession: R-HSA-5693538
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-5693538.xml
+    description: Homology Directed Repair (HDR) pathway (full Reactome export)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5693538.sbml.xml
+  - source: Reactome
+    accession: R-HSA-5693538
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-5693538
+    description: Reactome JSON metadata for HDR
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5693538.json
+  - source: Reactome
+    accession: R-HSA-5685939
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-5685939.xml
+    description: HDR through MMEJ (alt-NHEJ) sub-pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5685939.sbml.xml
+  - source: Reactome
+    accession: R-HSA-5685939
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-5685939
+    description: Reactome JSON metadata for MMEJ (alt-NHEJ)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_5685939.json
+  - source: KEGG
+    accession: hsa03440
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03440/kgml
+    description: KEGG Homologous recombination pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03440.kgml.xml
+  - source: KEGG
+    accession: hsa03450
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03450/kgml
+    description: KEGG Non-homologous end-joining pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03450.kgml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-5693538
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=homology+directed+repair
+    description: PathwayCommons HR/NHEJ pathways confirmed
+    license: PathwayCommons data license (varies by source)
+    note: 'R-HSA-5693538 (HDR), R-HSA-5693532 (DNA DSB Repair parent), R-HSA-5693567 (HDR through HRR or SSA), R-HSA-5685939
+      (MMEJ/alt-NHEJ), R-HSA-5693604 (XRCC4:LIG4 ligation during NHEJ). NCI PID: pid_86430 (p53 pathway)'
+- pathway_id: fanconi-anemia-pathway
+  name: Fanconi anemia pathway (interstrand crosslink repair)
+  models:
+  - source: Reactome
+    accession: R-HSA-6783310
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-6783310.xml
+    description: Fanconi Anemia Pathway (full Reactome export - ICL recognition, FANCD2 ubiquitination, HR coordination)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_6783310.sbml.xml
+    corrected_note: Correct FA pathway ID found via Reactome search. The curated ID R-HSA-6781823 actually maps to Formation
+      of TC-NER Pre-Incision Complex (not Fanconi Anemia Pathway).
+  - source: Reactome
+    accession: R-HSA-6783310
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-6783310
+    description: Reactome JSON metadata for Fanconi Anemia Pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_6783310.json
+  - source: KEGG
+    accession: hsa03460
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa03460/kgml
+    description: KEGG Fanconi anemia pathway map (Homo sapiens)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa03460.kgml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-6783310
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=Fanconi+anemia
+    description: PathwayCommons FA pathway confirmed
+    license: PathwayCommons data license (varies by source)
+    note: R-HSA-6783310 (FA Pathway, Reactome), pid_31655 (FA pathway, NCI PID), R-HSA-9636003 (NEIL3-mediated resolution
+      of ICLs), R-HSA-9701193 (Defective HRR due to PALB2 loss)
+- pathway_id: cell-cycle-checkpoints
+  name: Cell cycle checkpoints (G1/S, S, G2/M)
+  models:
+  - source: Reactome
+    accession: R-HSA-69620
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-69620.xml
+    description: Cell Cycle Checkpoints (G1/S, S, G2/M, M/G1 - full Reactome export)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_69620.sbml.xml
+    corrected_note: Found via Reactome search. This is the top-level Cell Cycle Checkpoints pathway (not in original curated
+      list).
+  - source: Reactome
+    accession: R-HSA-69620
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-69620
+    description: Reactome JSON metadata for Cell Cycle Checkpoints
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_69620.json
+  - source: Reactome
+    accession: R-HSA-69231
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-69231.xml
+    description: Cyclin D associated events in G1 (G1/S checkpoint component)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_69231.sbml.xml
+  - source: Reactome
+    accession: R-HSA-69231
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-69231
+    description: Reactome JSON metadata for Cyclin D G1 events
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_69231.json
+  - source: KEGG
+    accession: hsa04110
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa04110/kgml
+    description: KEGG Cell cycle pathway map (Homo sapiens - includes checkpoints)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa04110.kgml.xml
+  - source: BioModels
+    accession: BIOMD0000000265
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000265.omex
+    description: Conradie2010 - RPControl CellCycle
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000265.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000008
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000008.omex
+    description: Gardner1998 - Cell Cycle (Goldbeter model)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000008.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000056
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000056.omex
+    description: Chen2004 - Cell Cycle Regulation
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000056.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001044
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001044.omex
+    description: Csikasz-Nagy2006 - Mammalian Cell Cycle model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001044.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000939
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000939.omex
+    description: Iwamoto2010 - Cell cycle response to DNA damage
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000939.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000730
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000730.omex
+    description: Gerard2009 - An Integrated Mammalian Cell Cycle Model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000730.sbml.xml
+  - source: BioModels
+    accession: MODEL1812130001
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL1812130001.omex
+    description: Abroudi2017 - Mammalian Cell Cycle Control Model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL1812130001.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000641
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000641.omex
+    description: Jaiswal2017 - Cell cycle arrest
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000641.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000704
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000704.omex
+    description: Aguda1999 - G2 DNA damage checkpoint
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000704.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000632
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000632.omex
+    description: Kollarovic2016 - Cell fate decision at G1-S transition
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000632.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000001079
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000001079.omex
+    description: DeBoeck2021 - Modular approach to modeling the cell cycle
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000001079.sbml.xml
+  - source: BioModels
+    accession: MODEL1611230001
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL1611230001.omex
+    description: Traynard2016 - Mammalian cell cycle regulation (Logical Model, SBML export)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL1611230001.sbml.xml
+  - source: PathwayCommons
+    accession: reactome:R-HSA-69620
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=cell+cycle+checkpoint
+    description: PathwayCommons cell cycle checkpoint pathways confirmed
+    license: PathwayCommons data license (varies by source)
+    note: R-HSA-69620 (Cell Cycle Checkpoints), R-HSA-69580 (p53-Dependent G1/S DNA damage checkpoint), R-HSA-69615 (G1/S
+      DNA Damage Checkpoints), R-HSA-69613 (p53-Independent G1/S DNA damage checkpoint), R-HSA-69478 (G2/M DNA replication
+      checkpoint)
+- pathway_id: rna-processing-damage
+  name: RNA processing under DNA damage stress
+  models:
+  - source: Reactome
+    accession: R-HSA-72203
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-72203.xml
+    description: Processing of Capped Intron-Containing Pre-mRNA (large Reactome pathway)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_72203.sbml.xml
+  - source: Reactome
+    accession: R-HSA-72203
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-72203
+    description: Reactome JSON metadata for pre-mRNA processing
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_72203.json
+  - source: Reactome
+    accession: R-HSA-72172
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-72172.xml
+    description: mRNA Splicing (major spliceosome pathway, U1/U2/U4/U5/U6 snRNPs)
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_72172.sbml.xml
+    corrected_note: Correct mRNA Splicing ID found via Reactome search. The curated ID R-HSA-168273 actually maps to Influenza
+      Viral RNA Transcription and Replication (not mRNA Splicing).
+  - source: Reactome
+    accession: R-HSA-72172
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-72172
+    description: Reactome JSON metadata for mRNA Splicing
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_72172.json
+  pathway_note: No KEGG pathway map or BioModels SBML model for RNA splicing or R-loops. Reactome does not have a dedicated
+    R-loop resolution or RNase H1/H2 pathway. RNase H2 activity is within BER (R-HSA-73884). RER is not a standalone Reactome
+    pathway.
+- pathway_id: oxidative-stress-response
+  name: Oxidative stress response (NRF2/ROS)
+  models:
+  - source: Reactome
+    accession: R-HSA-9759194
+    model_format: SBML
+    url: https://reactome.org/ContentService/exporter/sbml/R-HSA-9759194.xml
+    description: Nuclear events mediated by NFE2L2 (NRF2) - oxidative stress response
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9759194.sbml.xml
+    corrected_note: Correct NRF2/NFE2L2 pathway ID found via Reactome search. The curated ID R-HSA-8941234 maps to SH3PXD2A
+      binds ADAM12 (unrelated protein interaction, not NRF2 pathway).
+  - source: Reactome
+    accession: R-HSA-9759194
+    model_format: JSON
+    url: https://reactome.org/ContentService/data/query/R-HSA-9759194
+    description: Reactome JSON metadata for NFE2L2 pathway
+    license: CC BY 4.0 (Reactome)
+    downloaded_file: reactome_9759194.json
+  - source: KEGG
+    accession: hsa04010
+    model_format: KGML (XML)
+    url: https://rest.kegg.jp/get/hsa04010/kgml
+    description: KEGG MAPK signaling pathway (includes oxidative stress-responsive kinases)
+    license: KEGG FTP license (academic use)
+    downloaded_file: kegg_hsa04010.kgml.xml
+    note: KEGG does not have a dedicated NRF2 pathway map; MAPK signaling is the closest available
+  - source: BioModels
+    accession: MODEL2204220001
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL2204220001.omex
+    description: Hurbain2022 - Oxidative Stress Response model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL2204220001.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000474
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000474.omex
+    description: Smith2013 - Regulation of Insulin Signalling by Oxidative Stress
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000474.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000247
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000247.omex
+    description: Ralser2007 - Carbohydrate Rerouting in response to ROS
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000247.sbml.xml
+  - source: BioModels
+    accession: MODEL1710260000
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL1710260000.omex
+    description: Martinez-Guimera2017 - Generic redox signalling model (Model 1, no regulation)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL1710260000.sbml.xml
+  - source: BioModels
+    accession: MODEL1710260001
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/MODEL1710260001.omex
+    description: Martinez-Guimera2017 - Generic redox signalling model (Model 2, negative feedback)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_MODEL1710260001.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000108
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000108.omex
+    description: Kowald2006 - Superoxide dismutase (SOD) model
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000108.sbml.xml
+  - source: BioModels
+    accession: BIOMD0000000582
+    model_format: SBML
+    url: https://www.ebi.ac.uk/biomodels/model/download/BIOMD0000000582.omex
+    description: DallePezze2014 - Cellular senescence-induced mitochondrial dysfunction (ROS)
+    license: CC0 1.0 (BioModels)
+    downloaded_file: biomodels_BIOMD0000000582.sbml.xml
+  - source: BioModels
+    accession: MODEL2110270001
+    model_format: MATLAB (Octave) - no SBML
+    url: https://www.ebi.ac.uk/biomodels/MODEL2110270001
+    description: Pereira2020 - NRF2-p53 integrated-systems model of oxidative stress
+    license: CC0 1.0 (BioModels)
+    note: Model is in MATLAB format, not SBML. Listed for reference.
+  - source: PathwayCommons
+    accession: reactome:R-HSA-9755511
+    model_format: BioPAX (metadata only, download failed)
+    url: https://www.pathwaycommons.org/pc2/search?q=NFE2L2+NRF2
+    description: PathwayCommons NRF2-related pathways confirmed
+    license: PathwayCommons data license (varies by source)
+    note: R-HSA-9755511 (KEAP1-NFE2L2 pathway), R-HSA-9759194 (Nuclear events by NFE2L2), R-HSA-9818749 (Regulation of NFE2L2
+      gene expression), R-HSA-9762114 (GSK3B-mediated degradation of NFE2L2), R-HSA-9818030 (NFE2L2 regulating tumorigenic
+      genes), panther:P00046 (Oxidative stress response, PANTHER)
+_summary:
+  total_downloaded_files: 86
+  breakdown:
+    reactome_sbml: 19
+    reactome_json: 19
+    biomodels_sbml: 36
+    kegg_kgml: 12
+  corrected_reactome_ids:
+    rnr-regulation: R-HSA-9013957 -> TLR3-mediated TICAM1-dependent programmed cell death (no correct dNTP biosynthesis Reactome
+      ID found)
+    nucleotide-excision-repair: 'R-HSA-73885 -> 404 NOT FOUND (correct: R-HSA-5696398); R-HSA-5696399 -> Global Genome NER
+      (not DNA Damage Bypass; correct: R-HSA-73893)'
+    fanconi-anemia-pathway: 'R-HSA-6781823 -> Formation of TC-NER Pre-Incision Complex (correct FA: R-HSA-6783310)'
+    rna-processing-damage: 'R-HSA-168273 -> Influenza Viral RNA Transcription (correct mRNA Splicing: R-HSA-72172)'
+    oxidative-stress-response: 'R-HSA-8941234 -> SH3PXD2A binds ADAM12 (correct NRF2: R-HSA-9759194)'
+  pathwaycommons_status: Download endpoints (/pc2/get, /pc2/graph) had server-side errors (NPE on GraphType, empty BioPAX).
+    Search API confirmed all pathways exist. Metadata recorded, no files downloaded.
+  biomodels_no_results_for:
+  - rnr-regulation
+  - dntp-biosynthesis
+  - base-excision-repair
+  - mismatch-repair
+  - hr-nhej-double-strand-break
+  - fanconi-anemia-pathway
+  - rna-processing-damage

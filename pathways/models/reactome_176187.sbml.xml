@@ -1,0 +1,1830 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <notes>
+    <annotation>
+      <p xmlns="http://www.w3.org/1999/xhtml">SBML generated from Reactome version 97 on 7/9/26, 12:56 PM using JSBML version 1.5.</p>
+    </annotation>
+  </notes>
+  <model id="pathway_176187" metaid="metaid_0" name="Activation of ATR in response to replication stress">
+    <notes>
+      <p xmlns="http://www.w3.org/1999/xhtml">Genotoxic stress caused by DNA damage or stalled replication forks can lead to genomic instability. To guard against such instability, genotoxically-stressed cells activate checkpoint factors that halt or slow cell cycle progression. Among the pathways affected are DNA replication by reduction of replication origin firing, and mitosis by inhibiting activation of cyclin-dependent kinases (Cdks). A key factor involved in the response to stalled replication forks is the ATM- and rad3-related (ATR) kinase, a member of the phosphoinositide-3-kinase-related kinase (PIKK) family. Rather than responding to particular lesions in DNA, ATR and its binding partner ATRIP (ATR-interacting protein) sense replication fork stalling indirectly by associating with persistent ssDNA bound by RPA. These structures would be formed, for example, by dissociation of the replicative helicase from the leading or lagging strand DNA polymerase when the polymerase encounters a DNA lesion that blocks DNA synthesis. Along with phosphorylating the downstream transducer kinase Chk1 and the tumor suppressor p53, activated ATR modifies numerous factors that regulate cell cycle progression or the repair of DNA damage. The persistent ssDNA also stimulates recruitment of the RFC-like Rad17-Rfc2-5 alternative clamp-loading complex, which subsequently loads the Rad9-Hus1-Rad1 complex onto the DNA. The latter '9-1-1' complex serves to facilitate Chk1 binding to the stalled replication fork, where Chk1 is phosphorylated by ATR and thereby activated. Upon activation, Chk1 can phosphorylate additional substrates including the Cdc25 family of phosphatases (Cdc25A, Cdc25B, and Cdc25C). These enzymes catalyze the removal of inhibitory phosphate residues from cyclin-dependent kinases (Cdks), allowing their activation. In particular, Cdc25A primarily functions at the G1/S transition to dephosphorylate Cdk2 at Thr 14 and Tyr 15, thus positively regulating the Cdk2-cyclin E complex for S-phase entry. Cdc25A also has mitotic functions. Phosphorylation of Cdc25A at Ser125 by Chk1 leads to Cdc25A ubiquitination and degradation, thus inhibiting DNA replication origin firing. In contrast, Cdc25B and Cdc25C regulate the onset of mitosis through dephosphorylation and activation of Cdk1-cyclin B complexes. In response to replication stress, Chk1 phosphorylates Cdc25B and Cdc25C leading to Cdc25B/C complex formation with 14-3-3 proteins. As these complexes are sequestered in the cytoplasm, they are unable to activate the nuclear Cdk1-cyclin B complex for mitotic entry.These events are outlined in the figure. Persistent single-stranded DNA associated with RPA binds claspin (A) and ATR:ATRIP (B), leading to claspin phosphorylation (C). In parallel, the same single-stranded DNA:RPA complex binds RAD17:RFC (D), enabling the loading of RAD9:HUS1:RAD1 (9-1-1) complex onto the DNA (E). The resulting complex of proteins can then repeatedly bind (F) and phosphorylate (G) CHK1, activating multiple copies of CHK1.</p>
+    </notes>
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+        <rdf:Description rdf:about="#metaid_0">
+          <dc:creator>
+            <rdf:Bag>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>D'Eustachio</vCard:Family>
+                  <vCard:Given>Peter</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Borowiec</vCard:Family>
+                  <vCard:Given>James A</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Weiser</vCard:Family>
+                  <vCard:Given>Joel</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>OICR</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+            </rdf:Bag>
+          </dc:creator>
+          <dcterms:created rdf:parseType="Resource">
+            <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+          </dcterms:created>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2026-06-12T07:17:12Z</dcterms:W3CDTF>
+          </dcterms:modified>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+          </dcterms:modified>
+          <bqbiol:is>
+            <rdf:Bag>
+              <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176187" />
+              <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+            </rdf:Bag>
+          </bqbiol:is>
+          <bqbiol:isDescribedBy>
+            <rdf:Bag>
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:12791985" />
+            </rdf:Bag>
+          </bqbiol:isDescribedBy>
+        </rdf:Description>
+      </rdf:RDF>
+    </annotation>
+    <listOfCompartments>
+      <compartment constant="true" id="compartment_7660" metaid="metaid_2" name="nucleoplasm" sboTerm="SBO:0000290">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_2">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0005654" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_68462" metaid="metaid_1" name="RPA heterotrimer [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (P35244, P15927, P27694). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-68462" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35244" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P15927" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P27694" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-68462" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-68462" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_68564" metaid="metaid_3" name="CDK:DDK:MCM10:active pre-replicative complex:CDC45 [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (O00311, Q9Y5N6, Q13415, O43913, P33992, P25205, O43929, O75419, P24941, P33993, Q9UJA3, P33991, Q9UBD5, Q99741, P49736, Q14566, Q13416, Q7L590, Q9UBU7). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-68564" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O00311" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9Y5N6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13415" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43913" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33992" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P25205" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43929" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75419" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P24941" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33993" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UJA3" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33991" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBD5" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q99741" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P49736" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14566" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13416" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q7L590" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBU7" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-68564" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-68564" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176312" metaid="metaid_4" name="RAD9:HUS1:RAD1 [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (Q99638, O60671, Q6WBX8, O60921). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">The Rad9-Hus1-Rad1 (9-1-1) complex is a ring-shaped heterotrimeric complex. Under genotoxic stress conditions, it can be loaded onto DNA at sites of damage or stalled forks by the Rad17 complex.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11907025" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176312" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q99638" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O60671" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q6WBX8" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O60921" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176312" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176312" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_113826" metaid="metaid_5" name="CHEK1 [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O14757" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-113826" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113826-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113826-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-6" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-7" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113826-8" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-113826" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176256" metaid="metaid_6" name="Rad9-Hus1-Rad1 bound to DNA [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (Q99638, P35244, P15927, P40938, O60671, Q6WBX8, O75943, P35250, P35249, P40937, O60921, P27694). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">A major known function of the 9-1-1 complex is to recruit Chk1 to stalled replication forks for activation by ATR. However, the presence of the 9-1-1 complex also alters the ability of Rad17 to become phoshorylated, perhaps suggesting that 9-1-1 may also serve to recruit a subset of ATR substrates. The 9-1-1 complex has also been found to interact with base excision repair factors human DNA polymerase beta, flap endonuclease FEN1, and the S. pombe MutY homolog (SpMYH), indicating that 9-1-1 also plays a direct role in DNA repair.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176256" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q99638" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35244" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P15927" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40938" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O60671" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q6WBX8" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75943" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35250" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35249" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40937" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O60921" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P27694" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176256" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176256" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176293" metaid="metaid_7" name="RPA complexed to ssDNA [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (P35244, P15927, P27694). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">RPA associates with ssDNA in distinct complexes that can be distinguished by the length of ssDNA occluded by each RPA molecule. These complexes reflect the progressive association of distinct DNA-binding domains present in the RPA heterotrimeric structure. Binding is coupled to significant conformational changes within RPA that are observable at the microscopic level. Presumably, the different conformations of free and ssDNA-bound RPA allow the protein to selectively interact with factors such as ATR-ATRIP when bound to DNA.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10473346" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:8196638" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11927569" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11157767" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176293" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35244" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P15927" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P27694" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176293" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176293" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_113582" metaid="metaid_8" name="ADP [nucleoplasm]" sboTerm="SBO:0000247">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome SimpleEntity. This is a small compound</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:456216" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-113582" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176353" metaid="metaid_9" name="RAD17:RFC [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (P40938, O75943, P35250, P35249, P40937). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">The Rad17-RFC complex is a heteropentamer structurally similar to RFC. The Rad17-RFC complex contains the four smaller RFC subunits (Rfc2 [p37], Rfc3 [p36], Rfc4 [p40], and Rfc5 [p38]) and the 75 kDa Rad17 subunit in place of the Rfc1 [p140] subunit. The Rad17 complex contains a weak ATPase that is poorly stimulated by primed DNA. Along with binding the 9-1-1 complex and RPA, the Rad17-RFC complex interacts with human MCM7 protein. Each of these interactions is critical for Chk1 activation.The Rad17 subunit is conserved evolutionarily with the protein showing 49% identity at the amino acid level with the S. pombe rad17 protein. Targeted deletion of the N-terminal region of mouse Rad17 leads to embryonic lethality, strongly suggesting that human Rad17 is also essential for long-term viability.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176353" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40938" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75943" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35250" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35249" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40937" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176353" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-176353" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176269" metaid="metaid_10" name="ATR:ATRIP [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (Q13535, Q8WXE1). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">The ATR (ATM- and rad3-related) kinase is an essential checkpoint factor in human cells. In response to replication stress (i.e., stresses that cause replication fork stalling) or ultraviolet radiation, ATR becomes active and phosphorylates numerous factors involved in the checkpoint response including the checkpoint kinase Chk1. ATR is invariably associated with ATRIP (ATR-interacting protein) in human cells. Depletion of ATRIP by siRNA causes a loss of ATR without affecting ATR mRNA levels indicating that complex formation stabilizes ATR. ATRIP is also a substrate for the ATR kinase, but this modification does not play a significant role in the recruitment of ATR-ATRIP to sites of damage, the activation of Chk1, or the modification of p53.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16027118" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14729973" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176269" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13535" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8WXE1" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176269" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176269" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_69741" metaid="metaid_11" name="CDC25C [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P30307" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-69741" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-69741-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-69741-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-69741-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-69741-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-69741-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-69741-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-69741" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-69741" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_113838" metaid="metaid_12" name="p-S317,S345-CHEK1 [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O14757" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-113838" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.ebi.ac.uk/ols4/ontologies/mod/terms?obo_id=MOD:00046" />
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113838-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-113838-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-6" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-7" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-113838-8" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-113838" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176229" metaid="metaid_13" name="Cdc45:CDK:DDK:Mcm10:claspin:pre-replicative complex [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (O00311, Q9Y5N6, Q13415, O43913, P33992, P25205, Q9HAW4, O43929, O75419, P24941, P33993, Q9UJA3, P33991, Q9UBD5, Q99741, P49736, Q14566, Q13416, Q7L590, Q9UBU7). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176229" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O00311" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9Y5N6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13415" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43913" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33992" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P25205" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9HAW4" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43929" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75419" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P24941" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33993" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UJA3" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33991" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBD5" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q99741" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P49736" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14566" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13416" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q7L590" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBU7" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176229" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176229" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_143488" metaid="metaid_14" name="p-S76,S124,S178,S279,S293-CDC25A [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P30304" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-143488" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.ebi.ac.uk/ols4/ontologies/mod/terms?obo_id=MOD:00046" />
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143488-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143488-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143488-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143488-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143488-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143488-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143488-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143488-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-143488" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-143488" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176182" metaid="metaid_15" name="Cdc45:CDK:DDK:Mcm10:Activated claspin:pre-replicative complex [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (O00311, Q9Y5N6, Q13415, O43913, P33992, P25205, Q9HAW4, O43929, O75419, P24941, P33993, Q9UJA3, P33991, Q9UBD5, Q99741, P49736, Q14566, Q13416, Q7L590, Q9UBU7). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_15">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176182" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O00311" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9Y5N6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13415" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43913" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33992" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P25205" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9HAW4" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O43929" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75419" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P24941" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33993" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UJA3" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P33991" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBD5" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q99741" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P49736" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14566" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13416" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q7L590" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9UBU7" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176182" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176182" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_156496" metaid="metaid_16" name="p-S216-CDC25C [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_16">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P30307" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-156496" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasVersion>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.ebi.ac.uk/ols4/ontologies/mod/terms?obo_id=MOD:00046" />
+                </rdf:Bag>
+              </bqbiol:hasVersion>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-156496-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-156496-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-156496-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-156496-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-156496-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-156496-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-156496" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-156496" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176282" metaid="metaid_17" name="CLSPN [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_17">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9HAW4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176282" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176282" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176282" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_29358" metaid="metaid_18" name="ATP [nucleoplasm]" sboTerm="SBO:0000247">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome SimpleEntity. This is a small compound</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_18">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:30616" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-29358" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_143487" metaid="metaid_19" name="CDC25A [nucleoplasm]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_19">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P30304" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-143487" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143487-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-143487-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143487-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-143487-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143487-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143487-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143487-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-143487-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-143487" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-143487" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176204" metaid="metaid_20" name="Rad17-RFC complex bound to DNA [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (P35244, P15927, P40938, O75943, P35250, P35249, P40937, P27694). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">Rad17-RFC complex associates with DNA substrates containing ssDNA regions including gapped or primed DNA in an ATP-independent reaction. Loading of the Rad9-Hus1-Rad1 (9-1-1) complex occurs preferentially on DNA substrates containing a 5' recessed end. This contrasts with the loading of PCNA by RFC which preferentially occurs on DNA with 3' recessed ends.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_20">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176204" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35244" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P15927" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40938" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O75943" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35250" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35249" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P40937" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P27694" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-XTR-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SPO-176204" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SCE-176204" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176104" metaid="metaid_21" name="Persistent single-stranded DNA [nucleoplasm]" sboTerm="SBO:0000240">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome OtherEntity. Entities that we are unable or unwilling to describe in chemical detail and cannot be put in any other class. Can be used to represent complex structures in the cell that take part in a reaction but which we cannot or do not want to define molecularly, e.g. cell membrane, Holliday structure</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_21">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-ALL-176104" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_7660" constant="false" hasOnlySubstanceUnits="false" id="species_176281" metaid="metaid_22" name="ATR:ATRIP:RPA:ssDNA signaling complex [nucleoplasm]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (Q13535, Q8WXE1, P35244, P15927, P27694). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+          <p xmlns="http://www.w3.org/1999/xhtml">While the ATR-ATRIP complex binds only poorly to RPA complexed with ssDNA lengths of 30 or 50 nt, binding is significantly enhanced in the presence of a 75 nt ssDNA molecule. Complex formation is primarily mediated by physical interaction between ATRIP and RPA. Multiple elements within the ATRIP molecule can bind to the RPA-ssDNA complex, including residues 1-107 (highest affinity), 218-390, and 390-791 (lowest afiinity). Although the full-length ATRIP is unable to bind ssDNA, an internal region (108-390) can weakly bind ssDNA when present in rabbit reticulocyte lysates. ATR can bind to the ssDNA directly independent of RPA, but this binding is inhibited by ATRIP. Upon binding, the ATR kinase becomes activated and can directly phosphorylate substrates such as Rad17.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_22">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12791985" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16407120" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16314342" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176281" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13535" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8WXE1" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P35244" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P15927" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:P27694" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-176281" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-176281" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-176281" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-176281" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-176281" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-176281" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176116" metaid="metaid_23" name="Recruitment and activation of Chk1" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Chk1 is a checkpoint kinase activated during genotoxic stress. Like ATR, Chk1 is essential for viability in mammals. Targeted gene disruption in mice shows that loss of Chk1 causes peri-implantation embryonic lethality. Even though ATR-ATRIP not bound to ssDNA can phosphorylate Chk1, Chk1 activation is greatly enhanced when recruited to stalled replication forks by physical interaction with a modified form of claspin and the Rad9-Hus1-Rad1 sliding clamp. Activation of Chk1 occurs following phosphorylation of two sites (serine 317 and serine 345). Mutational analysis indicates that modification of both sites is essential for maximal kinase activity, while phosphorylation of only a single site causes only weak activation of Chk1. Following phosphorylation, Chk1 can diffuse away from the complex to further amplify the checkpoint signal. ATR appears to be the primary kinase activating Chk1 as conditions that activate ATR (ultraviolet irradiation or treatment with hydroxyurea) also activate Chk1. Stresses that activate ATM, e.g., ionizing irradiation, do not cause significant Chk1 activation. While the ATR and ATM pathways are distinct, there is interplay between the two. For example, double-strand DNA breaks can be processed in an ATM-dependent manner to generate structures that can cause ATR and hence Chk1 activation. The ATR and ATM pathways also have mechanistic similarities. Analogous to the Chk1 kinase existing downstream of ATR, the Chk2 checkpoint kinase is modified and activated by ATM. Although having distinct structures, Chk1 and Chk2 also have overlapping targets with some substrate sites phosphorylatable by both kinases (e.g., serine 20 of p53).</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_23">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T02:27:09Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176116" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11390642" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15190204" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10859164" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176116" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0004674" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.1" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.28" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.29" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.3" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.9" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12766152" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16431910" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12781359" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16360315" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10859163" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15272308" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15279789" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11090622" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176116_input_113826" sboTerm="SBO:0000010" species="species_113826" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176116_input_29358" sboTerm="SBO:0000010" species="species_29358" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176116_output_113582" sboTerm="SBO:0000011" species="species_113582" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176116_output_113838" sboTerm="SBO:0000011" species="species_113838" stoichiometry="1" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_176116_catalyst_176269" sboTerm="SBO:0000013" species="species_176269" />
+        </listOfModifiers>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176298" metaid="metaid_24" name="Activation of claspin" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Claspin is a replication fork-associated protein important for Chk1 activation. Claspin loads onto the fork during replication origin firing and travels with the fork during DNA synthesis. Upon fork uncoupling and ATR-ATRIP binding to persistent ssDNA, the activated ATR kinase phosphorylates claspin at two primary sites. Modification increases the affinity of claspin for Chk1. Studies of human or Xenopus claspin indicate that phosphorylation of both sites is essential for significant claspin-Chk1 association. Following claspin modification by ATR, Chk1 can be transiently recruited to the stalled replication fork for subsequent phosphorylation and activation by ATR. Activation of Chk1 allows modification of additional downstream targets, thus amplifying the checkpoint signal. While much of the mechanistic information concerning claspin action has been obtained using Xenopus laevis egg extracts and Xenopus claspin, factors with similar activity have been found in various eukaryotic species including S. cerevisiae (MRC1), S. pombe (mrc1), and humans.Activated ATR phosphorylates human claspin on two sites, threonine 916 and serine 945.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_24">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T02:27:09Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176298" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15707391" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176298" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0004674" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.1" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.28" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.29" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.3" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.9" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12620222" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15279790" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12545175" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11090622" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176298_input_176229" sboTerm="SBO:0000010" species="species_176229" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176298_input_29358" sboTerm="SBO:0000010" species="species_29358" stoichiometry="2" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176298_output_176182" sboTerm="SBO:0000011" species="species_176182" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176298_output_113582" sboTerm="SBO:0000011" species="species_113582" stoichiometry="2" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_176298_catalyst_176269" sboTerm="SBO:0000013" species="species_176269" />
+        </listOfModifiers>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_69604" metaid="metaid_25" name="Phosphorylation of CDC25A by CHEK1" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">DNA damage caused by ultraviolet light (UV), ionizing radiation (IR), or DNA damaging agents results in the phosphorylation of CDC25A (Zhao et al. 2002, Busino et al. 2003) on multiple serine residues, which inhibits CDC25A (Zhao et al. 2002) by promoting its binding to the E3 ubiquitin ligase complex SCF-BTrCP (Busino et al. 2003) and subsequent ubiquitination and proteasome-mediated degradation (Mailand et al. 2000, Busino et al. 2003, Xiao et al. 2003) in a TP53-independent manner (Mailand et al. 2000, Xiao et al. 2003).A recombinant human CHEK1 (Chk1) forms a complex with and phosphorylates a recombinant human CDC25A (Sanchez et al. 1997). In vitro, CHEK1 phosphorylates CDC25A on serine and threonine residues but endogenous CDC25A is only phosphorylated on serine residues (Hassepass et al. 2003). Seven evolutionarily conserved serine residues in CDC25A (S76, S124, S156, S178, S185, S293, S505) correspond to the consensus CHEK1/CHEK2 phosphorylation motif Arg-X-X-Ser (Hassepass et al. 2003). CHEK1-mediated phosphorylation of CDC25A leads to a 3-fold decrease in in vitro kinase activity of CDC25A (Hassepass et al. 2003). Destruction of CDC25A in response to UV exposure is dependent on CHEK1 activity as it can be inhibited by CHEK1 inhibitors caffeine and UCN-01 (Mailand et al. 2000). CHEK1 phosphorylated residues of CDC25A include S76 (Goloudina et al. 2003, Hassepass et al. 2003, Jin et al. 2008), S124 (Zhao et al. 2002, Sorensen et al. 2003, Goloudina et al. 2003, Hassepass et al. 2003), S178 (Sorensen et al. 2003, Hassepass et al. 2003), S279 (Sorensen et al. 2003), and S293 (Sorensen et al. 2003). CHEK1-phosphorylated sites in CDC25A partially overlap with CHEK2-phosphorylated sites (Sorensen et al. 2003, Jin et al. 2008). Phosphorylation of S124, S178, S279 and S293 promotes both basal and IR-induced proteolysis of CDC25A, with quadruple serine to alanine substitution mutants exhibiting a significantly increased stability. S124 has been reported as the only site that affects CDC25A half-life when mutated to alanine alone (Sorensen et al. 2003), but also as the site whose substitution to alanine attenuates CDC25A degradation in response to IR but not UV (Goloudina et al. 2003), as well as the site whose alanine substitution has no effect on CDC25A stability upon UV treatment (Hassepass et al. 2003). The S76A substitution was reported to impair CDC25A degradation in response to both UV- (Goloudina et al. 2003, Hassepass et al. 2003) and IR-induced DNA damage (Goloudina et al. 2003). CDC25A S178A mutation did not prevent UV-induced CDC25A degradation (Hassepass et al. 2003). However, neither CDC25A S76A nor CDC25A S124A, nor the double mutant CDC25A S76A; S124A were able to prevent G1/S arrest after IR or UV, implying additional regulatory mechanisms (Goloudina et al. 2003). Ectopic expression of CDC25A S76A was initially reported to not prevent inhibition of CDK2 activity (Goloudina et al. 2003) and subsequently to prevent inhibition of CCNE:CDK2 activity (Hassepass et al. 2003).CHEK1-mediated phosphorylation of CDC25A is required to induce the G1/S arrest and prevent radioresistant DNA synthesis upon IR treatment in HeLa cells and normal human diploid fibroblasts (Zhao et al. 2002, Sorensen et al. 2003). CHEK1 is necessary for UV- and IR-induced degradation of CDC25A, while CHEK2 depletion does not significantly contribute to stabilization of CDC25A in CHEK1-depleted human cells (Jin et al. 2008).A recent study shows that, even in the absence of DNA damage, low cellular proliferation seen upon CHEK1 depletion is partially improved by co-depletion of CDC25A, suggesting that CHEK1 may also control normal cell cycle progression through induction of CDC25A degradation (Goto et al. 2019).</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_25">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Hoffmann</vCard:Family>
+                      <vCard:Given>Ingrid</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>German Cancer Research Center (DKFZ)</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Orlic-Milacic</vCard:Family>
+                      <vCard:Given>Marija</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Khanna</vCard:Family>
+                      <vCard:Given>Kum Kum</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>Queensland Institute of Medical Research, Signal Transduction Laboratory</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Hoffmann</vCard:Family>
+                      <vCard:Given>Ingrid</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>German Cancer Research Center (DKFZ)</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2003-06-05T00:03:42Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T07:17:12Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2003-06-05T00:03:42Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2025-03-31T23:36:31Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-69604" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12399544" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:9278511" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10827953" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14603323" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12676583" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12676925" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12963847" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12759351" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:18480045" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-69604" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0004674" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.1" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.28" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.29" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.3" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.9" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:30635443" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_69604_input_29358" sboTerm="SBO:0000010" species="species_29358" stoichiometry="5" />
+          <speciesReference constant="true" id="speciesreference_69604_input_143487" sboTerm="SBO:0000010" species="species_143487" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_69604_output_143488" sboTerm="SBO:0000011" species="species_143488" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_69604_output_113582" sboTerm="SBO:0000011" species="species_113582" stoichiometry="5" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_69604_catalyst_113838" sboTerm="SBO:0000013" species="species_113838" />
+        </listOfModifiers>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176250" metaid="metaid_26" name="Binding of ATR-ATRIP to the RPA-ssDNA complex" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">ATR kinase activity is stimulated upon binding of the ATR-ATRIP complex to an RPA-ssDNA complex. ATR can subsequently phosphorylate and activate the checkpoint kinase Chk1, allowing further amplification of the checkpoint signal. The ATR and Chk1 kinases then modify a variety of factors that can lead to stabilization of stalled DNA replication forks, inhibition of origin firing, inhibition of cell cycle progression, mobilization of DNA repair factors, and induction of apoptosis. This checkpoint signaling mechanism is highly conserved in eukaryotes, and homologues of ATR and ATRIP are found in such organisms as S. cerevisiae (Mec1 and Ddc2, respectively), S. pombe (rad3 and rad26, respectively), and X. laevis (Xatr and Xatrip, respectively).The ATR (ATM- and rad3-related) kinase is an essential checkpoint factor in human cells. In response to replication stress (i.e., stresses that cause replication fork stalling) or ultraviolet radiation, ATR becomes active and phosphorylates numerous factors involved in the checkpoint response including the checkpoint kinase Chk1. ATR is invariably associated with ATRIP (ATR-interacting protein) in human cells. Depletion of ATRIP by siRNA causes a loss of ATR protein without affecting ATR mRNA levels indicating that complex formation stabilizes the ATR protein. ATRIP is also a substrate for the ATR kinase, but modification of ATRIP does not significantly regulate the recruitment of ATR-ATRIP to sites of damage, the activation of Chk1, or the modification of p53.While the ATR-ATRIP complex binds only poorly to RPA complexed with ssDNA lengths of 30 or 50 nt, binding is significantly enhanced in the presence of a 75 nt ssDNA molecule. Complex formation is primarily mediated by physical interaction between ATRIP and RPA. Multiple elements within the ATRIP molecule can bind to the RPA-ssDNA complex, including residues 1-107 (highest affinity), 218-390, and 390-791 (lowest affinity). Although the full-length ATRIP is unable to bind ssDNA, an internal region (108-390) can weakly bind ssDNA when present in rabbit reticulocyte lysates. ATR can bind to the ssDNA directly independent of RPA, but this binding is inhibited by ATRIP. Upon binding, the ATR kinase becomes activated and can directly phosphorylate substrates such as Rad17.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_26">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T01:28:25Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176250" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12791985" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16407120" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16327781" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15743907" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176250" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15371427" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10950868" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:8019001" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10559981" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12015327" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15451423" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176250_input_176293" sboTerm="SBO:0000010" species="species_176293" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176250_input_176269" sboTerm="SBO:0000010" species="species_176269" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176250_output_176281" sboTerm="SBO:0000011" species="species_176281" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_75010" metaid="metaid_27" name="Phosphorylation of Cdc25C at Ser 216 by Chk1" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">A recombinant human CHEK1 forms a complex with and phosphorylates a recmbinant human CDC25C on serine residue S216 (Sanchez et al. 1997). Phosphorylation of CDC25C at S216 results in both the inhibition of CDC25C phosphatase activity and the creation of a 14-3-3 docking site (Peng et al. 1997). Ectopic overexpression of the human CDC25C S216A mutant reduces the ability of cells to arrest in G2 in response to DNA damage (Sanchez et al. 1997).</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_27">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Matthews</vCard:Family>
+                      <vCard:Given>Lisa</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Matthews</vCard:Family>
+                      <vCard:Given>Lisa</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2003-08-05T05:10:00Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T07:17:12Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2003-08-05T05:10:00Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-75010" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:9278512" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:9278511" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-75010" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0004674" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.1" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.28" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.29" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.3" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:2.7.11.9" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_75010_input_29358" sboTerm="SBO:0000010" species="species_29358" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_75010_input_69741" sboTerm="SBO:0000010" species="species_69741" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_75010_output_156496" sboTerm="SBO:0000011" species="species_156496" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_75010_output_113582" sboTerm="SBO:0000011" species="species_113582" stoichiometry="1" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_75010_catalyst_113838" sboTerm="SBO:0000013" species="species_113838" />
+        </listOfModifiers>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176318" metaid="metaid_28" name="Loading of claspin onto DNA during replication origin firing" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Claspin is loaded onto DNA replication origins during replication initiation. Studies in Xenopus egg extracts indicate claspin loading requires the presence of Cdc45, a factor that promotes the initial unwinding of the origin DNA in the presence of Cdk2. This step is followed by RPA binding which is a prerequisite for recruitment of PCNA and DNA polymerases alpha and delta. As RPA is not required for claspin binding, it is postulated that claspin binds at the time of initial origin unwinding but prior to the initiation of DNA synthesis. Claspin would then continue to associate with replication fork machinery where it can serve as a checkpoint sensor protein. Even though associated with the replication fork, claspin is not an essential DNA replication factor.Studies of Xenopus claspin indicate that it can physically associate with cognate Cdc45, DNA polymerase epsilon, RPA, RFC, and Rad17-RFC on chromatin. Studies of purified human claspin indicate that it binds with high affinity to branched (or forked) DNA structures that resemble stalled replication forks. Electron microscopy of these complexes indicates that claspin binds as a ring-like structure near the branch. The protein is hypothesized to encircle the DNA at these sites.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_28">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T07:17:12Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176318" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15226314" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176318" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12620222" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15279790" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12545175" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16148040" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:11090622" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176318_input_68564" sboTerm="SBO:0000010" species="species_68564" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176318_input_176282" sboTerm="SBO:0000010" species="species_176282" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176318_output_176229" sboTerm="SBO:0000011" species="species_176229" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176101" metaid="metaid_29" name="Recruitment of Rad17-RFC complex to DNA" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">The Rad17-RFC complex is involved in an early stage of the genotoxic stress response. The major function of the protein complex is to load the Rad9-Hus1-Rad1 (9-1-1) complex onto DNA at sites of damage and/or stalled replication forks. This reaction is conceptually similar to the loading of the PCNA sliding clamp onto DNA by RFC. The association of the Rad17-RFC complex with ssDNA or gapped or primed DNA is significantly stimulated by RPA, but not by the heterologous E. coli SSB. Loading of the human 9-1-1 complex onto such DNA templates is also strongly stimulated by cognate RPA, but not yeast RPA. Although Rad17 and Rad9 are substrates of the ATR kinase activity, loading of the Rad17 and 9-1-1 complexes onto DNA occurs independent of ATR.The Rad17-RFC complex is a heteropentamer structurally similar to RFC. The complex contains the four smaller RFC subunits (Rfc2 [p37], Rfc3 [p36], Rfc4 [p40], and Rfc5 [p38]) and the 75 kDa Rad17 subunit in place of the Rfc1 [p140] subunit. The Rad17 complex contains a weak ATPase that is slightly stimulated by primed DNA. Along with binding the 9-1-1 complex and RPA, the Rad17-RFC complex interacts with human MCM7 protein. Each of these interactions is critical for Chk1 activation.The Rad17 subunit is conserved evolutionarily with the protein showing 49% identity at the amino acid level with the S. pombe rad17 protein. Targeted deletion of the N-terminal region of mouse Rad17 leads to embryonic lethality, strongly suggesting that human Rad17 is also essential for long-term viability.Rad17-RFC complex associates with DNA substrates containing ssDNA regions including gapped or primed DNA in an ATP-independent reaction. Loading of the Rad9-Hus1-Rad1 (9-1-1) complex occurs preferentially on DNA substrates containing a 5' recessed end. This contrasts with the loading of PCNA by RFC which preferentially occurs on DNA with 3' recessed ends.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_29">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T01:28:25Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176101" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14605214" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14624239" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12578958" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176101" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15279787" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176101_input_176293" sboTerm="SBO:0000010" species="species_176293" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176101_input_176353" sboTerm="SBO:0000010" species="species_176353" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176101_output_176204" sboTerm="SBO:0000011" species="species_176204" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176264" metaid="metaid_30" name="Recruitment of the Rad9-Hus1-Rad1 complex to DNA" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">The 9-1-1 complex is a heterotrimeric ring-shaped structure that is loaded onto DNA by the Rad17-RFC complex. In vitro studies indicate that loading is preferred onto DNA substrates containing ssDNA gaps that presumably resemble structures found upon replication fork stalling and DNA polymerase/helicase uncoupling. The Rad17-RFC and 9-1-1 complexes are structurally similar to the RFC (replication factor C) clamp loader and PCNA sliding clamp, respectively, and similar mechanisms are thought to be used during loading of the 9-1-1 complex and PCNA. Upon loading, the 9-1-1 complex can recruit Chk1 onto sites of replication fork uncoupling or DNA damage.The purified Rad17 and Rad9-Hus1-Rad1 (9-1-1) complexes can form a stable co-complex in the presence of ATP, using Rad17-Rad9 interactions. From computer modeling studies, the Rad17 subunit of the complex is also proposed to interact with the C-terminus of Rad1, p36 with the C-terminus of Hus1, and p38 with the C-terminus of Rad9. A major known function of the 9-1-1 complex is to recruit Chk1 to stalled replication forks for activation by ATR. However, the presence of the 9-1-1 complex also alters the ability of Rad17 to become phosphorylated, perhaps suggesting that 9-1-1 may regulate the recruiment of additional ATR substrates. The 9-1-1 complex has also been found to interact with base excision repair factors human DNA polymerase beta, flap endonuclease FEN1, and the S. pombe MutY homolog (SpMYH), indicating that 9-1-1 also plays a direct role in DNA repair.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_30">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T07:17:12Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176264" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14605214" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14624239" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12578958" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:8943031" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14500360" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10777662" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176264" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0003689" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12237462" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15210332" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176264_input_176312" sboTerm="SBO:0000010" species="species_176312" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176264_input_176204" sboTerm="SBO:0000010" species="species_176204" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176264_output_176256" sboTerm="SBO:0000011" species="species_176256" stoichiometry="1" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_176264_catalyst_176204" sboTerm="SBO:0000013" species="species_176204" />
+        </listOfModifiers>
+      </reaction>
+      <reaction compartment="compartment_7660" fast="false" id="reaction_176175" metaid="metaid_31" name="Stalling of DNA replication fork and RPA binding" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">When a DNA replication fork encounters DNA lesions (e.g., cyclobutane pyrimidine dimers or alkylated bases) stalling of the replicative DNA polymerase may occur. This can lead to dissociation or 'uncoupling' of the DNA polymerase from the DNA helicase and generation of long regions of persistent ssDNA. Uncoupling can also occur in response to other genotoxic stresses such as reduced dNTP pools caused by hydroxyurea treatment which inhibits cellular ribonucleotide diphosphate reductase. The exposed ssDNA is bound by the single-stranded DNA binding protein RPA. The persistent nature of this RPA-ssDNA complex (as opposed to a more-transient complex found at an active replication fork) allows it to serve as a signal for replication stress that can be recognized by the ATR-ATRIP and Rad17-Rfc2-5 complexes.RPA associates with ssDNA in distinct complexes that can be distinguished by the length of ssDNA occluded by each RPA molecule. These complexes reflect the progressive association of distinct DNA-binding domains present in the RPA heterotrimeric structure. Binding is coupled to significant conformational changes within RPA that are observable at the microscopic level. Presumably, the different conformations of free and ssDNA-bound RPA allow the protein to selectively interact with factors such as ATR-ATRIP when bound to DNA.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_31">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>D'Eustachio</vCard:Family>
+                      <vCard:Given>Peter</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Borowiec</vCard:Family>
+                      <vCard:Given>James A</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Weiser</vCard:Family>
+                      <vCard:Given>Joel</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>OICR</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-03-03T21:44:08Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2026-06-12T01:28:25Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2006-02-25T22:40:15Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176175" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10373362" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15833913" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10051570" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:8196638" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-176175" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0006260" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12791985" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10473346" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:9242902" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12142537" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16387650" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_176175_input_68462" sboTerm="SBO:0000010" species="species_68462" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_176175_input_176104" sboTerm="SBO:0000010" species="species_176104" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_176175_output_176293" sboTerm="SBO:0000011" species="species_176293" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

@@ -1,0 +1,684 @@
+<?xml version='1.0' encoding='utf-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <notes>
+    <annotation>
+      <p xmlns="http://www.w3.org/1999/xhtml">SBML generated from Reactome version 97 on 7/1/26, 4:43 PM using JSBML version 1.5.</p>
+    </annotation>
+  </notes>
+  <model id="pathway_9013957" metaid="metaid_0" name="TLR3-mediated TICAM1-dependent programmed cell death">
+    <notes>
+      <p xmlns="http://www.w3.org/1999/xhtml">TLR3 and TLR4 trigger TRIF(TICAM1)-dependent programmed cell death in various human and mouse cells (Kalai M et al. 2002; Han KJ et al. 2004; Kaiser WJ and Offermann MK 2005; Estornes Y et al. 2012; He S et al. 2011). Apoptosis is a prevalent form of programmed cell death and is mediated by the activation of a set of caspases. In addition to apoptosis, TLR3/TLR4 activation induces RIP3-dependent necroptosis. These two programmed cell-death pathways may suppress each other. When the caspase activity is impaired or inhibited, certain cell types switch the apoptotic death program to necroptosis in response to various stimuli (TNF, Fas, viral infection and other stress stimuli) (Kalai M et al. 2002; Weber A et al. 2010; Feoktistova M et al. 2011, Tenev et al 2011).</p>
+    </notes>
+    <annotation>
+      <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+        <rdf:Description rdf:about="#metaid_0">
+          <dc:creator>
+            <rdf:Bag>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Shamovsky</vCard:Family>
+                  <vCard:Given>Veronica</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Shamovsky</vCard:Family>
+                  <vCard:Given>Veronica</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+              <rdf:li rdf:parseType="Resource">
+                <vCard:N rdf:parseType="Resource">
+                  <vCard:Family>Matthews</vCard:Family>
+                  <vCard:Given>Lisa</vCard:Given>
+                </vCard:N>
+                <vCard:ORG rdf:parseType="Resource">
+                  <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                </vCard:ORG>
+              </rdf:li>
+            </rdf:Bag>
+          </dc:creator>
+          <dcterms:created rdf:parseType="Resource">
+            <dcterms:W3CDTF>2017-07-26T10:41:12Z</dcterms:W3CDTF>
+          </dcterms:created>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2023-03-08T14:40:28Z</dcterms:W3CDTF>
+          </dcterms:modified>
+          <dcterms:modified rdf:parseType="Resource">
+            <dcterms:W3CDTF>2012-05-15T10:42:04Z</dcterms:W3CDTF>
+          </dcterms:modified>
+          <bqbiol:is>
+            <rdf:Bag>
+              <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013957" />
+            </rdf:Bag>
+          </bqbiol:is>
+          <bqbiol:isDescribedBy>
+            <rdf:Bag>
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:14739303" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:22421964" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:21737329" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:12181749" />
+              <rdf:li rdf:resource="https://identifiers.org/pubmed:20019748" />
+            </rdf:Bag>
+          </bqbiol:isDescribedBy>
+        </rdf:Description>
+      </rdf:RDF>
+    </annotation>
+    <listOfCompartments>
+      <compartment constant="true" id="compartment_70101" metaid="metaid_2" name="cytosol" sboTerm="SBO:0000290">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_2">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0005829" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+      <compartment constant="true" id="compartment_74700" metaid="metaid_4" name="endosome membrane" sboTerm="SBO:0000290">
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_4">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0010008" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </compartment>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species boundaryCondition="false" compartment="compartment_70101" constant="false" hasOnlySubstanceUnits="false" id="species_2562550" metaid="metaid_1" name="active caspase-8  [cytosol]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (4xQ14790). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_1">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10508785" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:10508784" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-2562550" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14790" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-2562550" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-2562550" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_74700" constant="false" hasOnlySubstanceUnits="false" id="species_177649" metaid="metaid_3" name="viral dsRNA:TLR3:TICAM1:RIPK1 [endosome membrane]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (2xQ8IUC6, 2xO15455, 2xQ13546). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_3">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15064760" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16115877" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-177649" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8IUC6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O15455" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13546" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_70101" constant="false" hasOnlySubstanceUnits="false" id="species_57031" metaid="metaid_5" name="CASP8(1-479) [cytosol]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_5">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14790" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-57031" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-57031-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-57031-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-57031-6" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_70101" constant="false" hasOnlySubstanceUnits="false" id="species_54639" metaid="metaid_6" name="FADD [cytosol]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_6">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:7538907" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13158" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-54639" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-GGA-54639" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-54639" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_70101" constant="false" hasOnlySubstanceUnits="false" id="species_450328" metaid="metaid_7" name="RIPK3 [cytosol]" sboTerm="SBO:0000297">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome EntityWithAccessionedSequence. This is a protein</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_7">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9Y572" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-450328" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isHomologTo>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-MMU-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-RNO-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CFA-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-BTA-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-SSC-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DRE-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DME-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-CEL-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-3" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-4" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-5" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-6" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-7" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-8" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-9" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-10" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-11" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-12" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-13" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-14" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-15" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-16" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-17" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-18" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-19" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-20" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-21" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-22" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-23" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-24" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-25" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-26" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-27" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-28" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-29" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-30" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-DDI-450328-31" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-450328" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-450328-2" />
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-PFA-450328-3" />
+                </rdf:Bag>
+              </bqbiol:isHomologTo>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_74700" constant="false" hasOnlySubstanceUnits="false" id="species_9013962" metaid="metaid_8" name="TICAM1:activated TLR3 complexes [endosome membrane]">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome CandidateSet. A list of entities, one or more of which might perform the given function</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_8">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013962" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8IUC6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O15455" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13546" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_74700" constant="false" hasOnlySubstanceUnits="false" id="species_9013956" metaid="metaid_9" name="RIP3:TICAM1:activated TLR3 [endosome membrane]">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome CandidateSet. A list of entities, one or more of which might perform the given function</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_9">
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013956" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8IUC6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O15455" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q9Y572" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13546" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_74700" constant="false" hasOnlySubstanceUnits="false" id="species_9013893" metaid="metaid_10" name="activated TLR3:TRIF:RIP1:FADD [endosome membrane]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (2xQ8IUC6, 2xO15455, 2xQ13158, 2xQ13546). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_10">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013893" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8IUC6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O15455" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13158" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13546" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+      <species boundaryCondition="false" compartment="compartment_74700" constant="false" hasOnlySubstanceUnits="false" id="species_9013891" metaid="metaid_11" name="activated TLR3:TRIF:RIP1:FADD:pro-caspase-8 [endosome membrane]" sboTerm="SBO:0000253">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">Derived from a Reactome Complex. Here is Reactomes nested structure for this complex: (2xQ8IUC6, 2xO15455, 2xQ14790, 2xQ13158, 2xQ13546). Reactome uses a nested structure for complexes, which cannot be fully represented in SBML Level 3 Version 1 core</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_11">
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:22421964" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:16115877" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013891" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:hasPart>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q8IUC6" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:O15455" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q14790" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13158" />
+                  <rdf:li rdf:resource="https://identifiers.org/uniprot:Q13546" />
+                </rdf:Bag>
+              </bqbiol:hasPart>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+      </species>
+    </listOfSpecies>
+    <listOfReactions>
+      <reaction compartment="compartment_74700" fast="false" id="reaction_9013889" metaid="metaid_12" name="TLR3-induced ripoptosome assembly" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">TRIF (also known as TICAM1) was repored to efficiently induce apoptosis when overexpressed in human HEK293T cells. TRIF-induced apoptosis occurred through activation of the FADD-caspase-8 axis (Kaiser WJ and Offermann MK 2005; Kalai M et al. 2002; Estornes Y et al. 2012). C-terminus of TRIF was shown to form complexes with both RIP1 and RIP3, and disruption of these interactions by mutating the RHIM eliminated the ability of TRIF to induce apoptosis (Kaiser WJ and Offermann MK 2005). Prevention of RIP1 ubiquitination leads to a strong association of RIP1 and caspase-8 (Feoktistova M et al. 2011, Tenev et al. 2011).</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_12">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Matthews</vCard:Family>
+                      <vCard:Given>Lisa</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2017-07-26T10:02:05Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2023-03-08T14:40:28Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2012-05-15T10:42:04Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013889" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12752666" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:22421964" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:14739303" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12181749" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737329" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013889" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_9013889_input_54639" sboTerm="SBO:0000010" species="species_54639" stoichiometry="2" />
+          <speciesReference constant="true" id="speciesreference_9013889_input_57031" sboTerm="SBO:0000010" species="species_57031" stoichiometry="2" />
+          <speciesReference constant="true" id="speciesreference_9013889_input_177649" sboTerm="SBO:0000010" species="species_177649" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_9013889_output_9013891" sboTerm="SBO:0000011" species="species_9013891" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+      <reaction compartment="compartment_70101" fast="false" id="reaction_9013963" metaid="metaid_13" name="RIP3 binds TICAM1 within TLR3 complex to mediate necroptosis " reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">TLR3 and TLR4 -directed programmed necrosis (necroptosis) is mediated by the TRIF-RIP3 pathway in mouse macrophages [He S e al 2011]. RIP3 was shown to be essential mediator in TLR3-induced necroptotic cell death in human epithelial cell lines. Knockdown of RIP3 in human keratinocyte HaCaT cells blocked TLR3-mediated necroptosis without affecting the apoptotic response. Moreover, overexpression of RIP3 in human epithelial carcinoma cell line HeLa led to increased caspase-independent TLR3-induced cell death in the absence of IAPs [Feoktistova M et al 2011]. In addition, in caspase-8- or FADD-deficient human Jurkat cells dsRNA induced programmed necrosis, instead of apoptosis [Kalai M et al 2002]. Thus, when caspase-dependent apoptosis is inhibited or absent, the alternative RIP3-mediated programmed cell death is induced.</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_13">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Matthews</vCard:Family>
+                      <vCard:Given>Lisa</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2017-07-26T10:41:12Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2023-03-08T14:40:28Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2012-05-15T10:42:04Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013963" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0070266" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12181749" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:22123964" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013963" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0070266" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_9013963_input_9013962" sboTerm="SBO:0000010" species="species_9013962" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_9013963_input_450328" sboTerm="SBO:0000010" species="species_450328" stoichiometry="4" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_9013963_output_9013956" sboTerm="SBO:0000011" species="species_9013956" stoichiometry="1" />
+        </listOfProducts>
+      </reaction>
+      <reaction compartment="compartment_74700" fast="false" id="reaction_9013895" metaid="metaid_14" name="Caspase-8 processing within TLR3 complex" reversible="false">
+        <notes>
+          <p xmlns="http://www.w3.org/1999/xhtml">TLR3 and TLR4 were shown to mediate apoptosis in various human cell lines in the FADD:caspasse-8-dependent manner (Kalai M et al. 2002; Kaiser WJ and Offermann MK 2005; Estornes Y et al. 2012). Caspase-8 zymogens (procaspase-8) are present in the cells as inactive monomers, containing a large N-terminal prodomain with two death effector domains (DED), and a C-terminal catalytic subunit composed of small and a large domains separated by a smaller linker region (Donepudi M et al. 2003; Keller N et al. 2009). Dimerization is required for caspase-8 activation (Donepudi M et al. 2003). The dimerization event occurs at the receptor signaling complex. Once dimerized, caspase-8 zymogen undergoes a series of autoproteolytic cleavage events at aspartic acid residues in their interdomain linker regions. A second cleavage event between the the N-terminal prodomain and the catalytic domain releases the active caspase from the activation complex into the cytosol. The resulting fully active enzyme is a homodimer of catalytic domains, where each domain is compsed of a large p18 and a small p10 subunit (Keller N et al. 2009; Oberst A et al. 2010).</p>
+        </notes>
+        <annotation>
+          <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:vCard="http://www.w3.org/2001/vcard-rdf/3.0#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+            <rdf:Description rdf:about="#metaid_14">
+              <dc:creator>
+                <rdf:Bag>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Shamovsky</vCard:Family>
+                      <vCard:Given>Veronica</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                  <rdf:li rdf:parseType="Resource">
+                    <vCard:N rdf:parseType="Resource">
+                      <vCard:Family>Matthews</vCard:Family>
+                      <vCard:Given>Lisa</vCard:Given>
+                    </vCard:N>
+                    <vCard:ORG rdf:parseType="Resource">
+                      <vCard:Orgname>NYU School of Medicine, Department of Biochemistry</vCard:Orgname>
+                    </vCard:ORG>
+                  </rdf:li>
+                </rdf:Bag>
+              </dc:creator>
+              <dcterms:created rdf:parseType="Resource">
+                <dcterms:W3CDTF>2017-07-26T10:02:05Z</dcterms:W3CDTF>
+              </dcterms:created>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2023-03-08T14:40:28Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <dcterms:modified rdf:parseType="Resource">
+                <dcterms:W3CDTF>2012-05-15T10:42:04Z</dcterms:W3CDTF>
+              </dcterms:modified>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013895" />
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0097190" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:isDescribedBy>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:22421964" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:20308068" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:21737330" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:15814722" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12181749" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:19278658" />
+                  <rdf:li rdf:resource="https://identifiers.org/pubmed:12620240" />
+                </rdf:Bag>
+              </bqbiol:isDescribedBy>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/reactome:R-HSA-9013895" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/GO:0004197" />
+                </rdf:Bag>
+              </bqbiol:is>
+              <bqbiol:is>
+                <rdf:Bag>
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.1" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.14" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.15" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.16" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.27" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.28" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.34" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.38" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.40" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.41" />
+                  <rdf:li rdf:resource="https://identifiers.org/ec-code:3.4.22.8" />
+                </rdf:Bag>
+              </bqbiol:is>
+            </rdf:Description>
+          </rdf:RDF>
+        </annotation>
+        <listOfReactants>
+          <speciesReference constant="true" id="speciesreference_9013895_input_9013891" sboTerm="SBO:0000010" species="species_9013891" stoichiometry="1" />
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference constant="true" id="speciesreference_9013895_output_2562550" sboTerm="SBO:0000011" species="species_2562550" stoichiometry="1" />
+          <speciesReference constant="true" id="speciesreference_9013895_output_9013893" sboTerm="SBO:0000011" species="species_9013893" stoichiometry="1" />
+        </listOfProducts>
+        <listOfModifiers>
+          <modifierSpeciesReference id="modifierspeciesreference_9013895_catalyst_9013891" sboTerm="SBO:0000013" species="species_9013891" />
+        </listOfModifiers>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>
