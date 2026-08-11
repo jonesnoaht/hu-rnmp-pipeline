@@ -8,9 +8,10 @@ nextflow.enable.dsl = 2
 
 // ─── Parameters ────────────────────────────────────────────────
 params.accession      = null   // SRA accession: SRP/GSE/SRR
-params.input_csv      = null   // CSV: accession,organism,treatment,control
+params.input_csv      = null   // CSV: accession,organism,treatment,control,assay
 params.workdir_result = "${params.outdir ?: './results'}"
 params.genome         = 'GRCh38'   // also: 'sacCer3' for yeast
+params.assay          = 'hyden_seq'  // hyden_seq | ribose_seq | wgs
 params.markers_rnmp   = "${params.projectDir}/pathways/rnmp_markers.yaml"
 params.pathways       = "${params.projectDir}/pathways/pathways.yaml"
 params.harmonia_rules = "${params.projectDir}/harmonia/rnmp.rules.txt"
@@ -57,11 +58,11 @@ workflow {
     // 3. Align: BWA-MEM (human) or BWA-MEM (yeast)
     ALIGN_BWA(QC_FASTQ.out, params.genome)
 
-    // 4. rNMP signal: coverage, strand bias, and mutation signatures
-    CALL_RNMP_SIGNAL(ALIGN_BWA.out)
+    // 4. rNMP signal: 5' end counting (HydEn-seq) or variant signatures (WGS)
+    CALL_RNMP_SIGNAL(ALIGN_BWA.out, params.assay)
 
-    // 5. Mutation scan: rNMP-induced slippage/mutation patterns
-    RNMP_MUTATION_SCAN(ALIGN_BWA.out, CALL_RNMP_SIGNAL.out)
+    // 5. Mutation scan: analyze rNMP patterns + polymerase strand bias
+    RNMP_MUTATION_SCAN(ALIGN_BWA.out, CALL_RNMP_SIGNAL.out, params.assay)
 
     // 6. Pathway enrichment: map gene hits to Reactome pathway models
     PATHWAY_ENRICHMENT(

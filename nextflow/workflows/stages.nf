@@ -76,25 +76,22 @@ process CALL_RNMP_SIGNAL {
 
     input:
     tuple val(meta), path(bam), path(bai)
+    val assay
 
     output:
-    tuple val(meta), path("rnmp_signal.tsv"), path("coverage_strand_bias.tsv"), emit: signal
+    tuple val(meta), path("rnmp_signal.tsv"), path("rnmp_signal_windows.tsv"), path("rnmp_signal_asymmetry.tsv"), emit: signal
 
     script:
+    def vcf_flag = assay == "wgs" ? "--vcf raw.vcf" : ""
+    def vcf_cmd = assay == "wgs" ? "samtools mpileup -f /refs/genome.fa -vu ${bam} | bcftools call -mv -Ov -o raw.vcf" : ""
     """
-    # rNMP signal: coverage depth + strand-specific mutation rate
-    # rNMPs cause T→C transitions (rNMP-mediated misincorporation signature)
-    # and 2-5 bp deletions at rNMP hotspots
-    samtools mpileup -f /refs/genome.fa -vu ${bam} | \
-    bcftools call -mv -Ov -o raw.vcf
-    # Extract rNMP signature: T→C (transcription strand) and short deletions
+    ${vcf_cmd}
     python3 /app/scripts/rnmp_signal.py \
-        --vcf raw.vcf \
         --bam ${bam} \
-        --output rnmp_signal.tsv
-    python3 /app/scripts/strand_bias.py \
-        --bam ${bam} \
-        --output coverage_strand_bias.tsv
+        --output rnmp_signal.tsv \
+        --assay ${assay} \
+        ${vcf_flag} \
+        --hotspots rnmp_hotspots.tsv
     """
 }
 
@@ -104,23 +101,21 @@ process RNMP_MUTATION_SCAN {
 
     input:
     tuple val(meta), path(bam), path(bai)
-    tuple val(meta2), path(signal_tsv), path(strand_tsv)
+    tuple val(meta2), path(signal_tsv), path(windows_tsv), path(asymmetry_tsv)
+    val assay
 
     output:
     tuple val(meta), path("rnmp_mutations.tsv"), path("mutation_signature.json"), emit: mutations
 
     script:
     """
-    # Scan for rNMP-induced mutation patterns:
-    # - T→C transitions (embedded rNMP signature)
-    # - 2-5 bp deletions (slippage at rNMP sites)
-    # - Strand bias (replication vs transcription strand)
     python3 /app/scripts/rnmp_mutation_scan.py \
         --signal ${signal_tsv} \
-        --strand ${strand_tsv} \
+        --strand ${asymmetry_tsv} \
         --bam ${bam} \
         --output rnmp_mutations.tsv \
-        --signature mutation_signature.json
+        --signature mutation_signature.json \
+        --assay ${assay}
     """
 }
 
