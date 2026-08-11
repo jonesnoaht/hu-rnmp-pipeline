@@ -44,7 +44,8 @@ spec:
       containers:
         - name: browser
           # Image built by CI → pushed to zot.hwcopeland.net
-          image: zot.hwcopeland.net/jonesnoaht/hu-rnmp-browser:main  # {"$imagepolicy": "tooling:hu-rnmp-browser"}
+          image: zot.hwcopeland.net/jonesnoaht/hu-rnmp-browser:main
+          imagePullPolicy: Always
           ports:
             - containerPort: 8050
           env:

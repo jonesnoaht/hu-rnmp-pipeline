@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Healthz (k8s probes)
 app.get('/healthz', (req, res) => {
-  res.json({ status: 'ok', timestamp: new Date().iso() });
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
 // List all results runs

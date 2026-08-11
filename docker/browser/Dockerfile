@@ -5,11 +5,11 @@ LABEL description="HU-rNMP results browser (Authentik-gated)"
 
 WORKDIR /app
 
-COPY browser/package.json package.json
+COPY package.json package.json
 RUN npm install --production
 
-COPY browser/server.js server.js
-COPY browser/public/ public/
+COPY server.js server.js
+COPY public/ public/
 
 EXPOSE 8050
 
