@@ -6,4 +6,5 @@ numpy>=1.24
 matplotlib>=3.7
 seaborn>=0.12
 scipy>=1.10
-bcftools
+synapseclient>=2.7
+python-dotenv>=1.0

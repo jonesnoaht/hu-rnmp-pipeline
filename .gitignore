@@ -4,6 +4,9 @@ __pycache__/
 .venv/
 *.egg-info/
 
+# Secrets — NEVER commit
+.env
+
 # Nextflow
 work/
 .nextflow*

@@ -52,6 +52,19 @@ spec:
               value: /results
             - name: PORT
               value: "8050"
+            # Credentials — loaded from Kubernetes secret (never in image)
+            - name: NCBI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: hu-rnmp-secrets
+                  key: ncbi-api-key
+                  optional: true
+            - name: SYNAPSE_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: hu-rnmp-secrets
+                  key: synapse-token
+                  optional: true
           volumeMounts:
             - name: data
               mountPath: /results

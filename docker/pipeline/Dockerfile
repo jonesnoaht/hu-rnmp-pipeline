@@ -18,9 +18,8 @@ COPY scripts/ /app/scripts/
 COPY pathways/ /app/pathways/
 COPY harmonia/ /app/harmonia/
 
-# Harmonia binary (if built; else use Python fallback)
-# Built in CI from ~/harmonia cabal build → copied here
-# COPY bin/harmonia /usr/local/bin/harmonia
+# .env is NEVER copied into the image — mount at runtime
+# Credentials loaded from: /app/.env (mounted) or env vars
 
 WORKDIR /app
 ENV PYTHONPATH=/app
