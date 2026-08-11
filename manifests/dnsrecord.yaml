@@ -1,0 +1,16 @@
+# DNS A record for hu-rnmp.flmanbiosci.net
+# DO NOT kubectl apply — goes via PR to iac → Flux
+# Mirrors: iac/rke2/kube-system/flmanbiosci-dnsrecord.yaml
+
+---
+apiVersion: externaldns.k8s.io/v1alpha1
+kind: DNSRecord
+metadata:
+  name: hu-rnmp-flmanbiosci-net
+  namespace: kube-system
+spec:
+  zone: flmanbiosci.net
+  recordTTL: 300
+  recordType: A
+  targets:
+    - 10.0.0.53  # Updated to cluster external IP during apply

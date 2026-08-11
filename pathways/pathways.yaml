@@ -1,0 +1,156 @@
+# Curated pathway list for HU / rNMP incorporation / failed DNA repair
+# Each pathway links to Reactome + model sources.
+# Status: brainstorm draft — agents fill in model_packs + dataset_accessions.
+
+pathways:
+  - id: rnr-regulation
+    name: Ribonucleotide reductase (RNR) regulation
+    reactome:
+      - "R-HSA-9013957"  # Deoxyribonucleotides de novo biosynthesis
+    keywords: [RNR, RRM1, RRM2, RRM2B, dNTP pool, hydroxyurea target]
+    rationale: >
+      HU inhibits RNR → depleted dNTP pools → increased rNMP incorporation
+      into genomic DNA. RNR regulation is the upstream driver of rNMP
+      misincorporation rate.
+    model_sources: [BioModels, Reactome]
+    model_packs: []  # agent fills
+
+  - id: dntp-biosynthesis
+    name: dNTP biosynthesis / deoxyribonucleotide metabolism
+    reactome:
+      - "R-HSA-9013957"
+    keywords: [dNTP, deoxyribonucleotide, ribonucleotide reductase, dUTP, TDP]
+    rationale: >
+      dNTP pool imbalance (from HU/RNR inhibition) directly increases rNMP
+      incorporation by DNA polymerases. Pool size and ratio drive misincorp rate.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: rna-dna-damage-response
+    name: RNA-DNA damage response and ribonucleotide excision repair (RER)
+    reactome:
+      - "R-HSA-73930"   # DNA incision repair
+      - "R-HSA-5696399" # DNA Damage Bypass
+    keywords: [RNase H2, RER, rNMP excision, RNA-DNA damage, RNASEH2A/B/C]
+    rationale: >
+      RNase H2 initiates RER to remove embedded rNMPs. Loss/failure of RER
+      → rNMP accumulation → genome instability. Core to "failed DNA repair"
+      phenotype. Aicardi-Goutières syndrome (RNASEH2 mutations) is a model.
+    model_sources: [Reactome, BioModels, KEA]
+    model_packs: []
+
+  - id: base-excision-repair
+    name: Base excision repair (BER)
+    reactome:
+      - "R-HSA-73884"   # Base Excision Repair
+    keywords: [BER, PARP1, XRCC1, APEX1, DNA glycosylase, abasic site]
+    rationale: >
+      BER processes oxidized/abasic sites near rNMP lesions. Crosstalk between
+      RER and BER; failed BER can amplify rNMP-induced instability.
+    model_sources: [Reactome, BioModels, PathwayCommons]
+    model_packs: []
+
+  - id: mismatch-repair
+    name: DNA mismatch repair (MMR)
+    reactome:
+      - "R-HSA-5358508" # Mismatch Repair
+    keywords: [MMR, MSH2, MSH6, MLH1, PMS2, slip-strand]
+    rationale: >
+      MMR recognizes mismatches including rNMP-induced distortions. MMR
+      deficiency increases rNMP tolerance → accumulation.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: nucleotide-excision-repair
+    name: Nucleotide excision repair (NER)
+    reactome:
+      - "R-HSA-5696399" # DNA Damage Bypass
+      - "R-HSA-73885"   # NER
+    keywords: [NER, XPA, ERCC1, XPF, XPG, helix-distorting lesions]
+    rationale: >
+      Bulky rNMP-induced distortions may trigger NER. Crosstalk with RER.
+    model_sources: [Reactome]
+    model_packs: []
+
+  - id: dna-replication-stress
+    name: DNA replication stress & fork stalling
+    reactome:
+      - "R-HSA-176187" # Cell Cycle Checkpoints
+      - "R-HSA-6804116" # TP53 Regulates Transcription of DNA Repair Genes
+    keywords: [replication stress, fork stalling, ATR, CHK1, RPA, ssDNA gaps]
+    rationale: >
+      rNMP incorporation causes replication fork stalling. ATR/CHK1 pathway
+      response is central; HU is the classic replication stress inducer.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: p53-dna-damage-response
+    name: p53-mediated DNA damage response
+    reactome:
+      - "R-HSA-3700989" # Transcriptional Regulation by TP53
+      - "R-HSA-6804116"
+    keywords: [TP53, p53, DNA damage response, cell cycle arrest, apoptosis]
+    rationale: >
+      HU → replication stress → p53 activation. Downregulates RNR and alters
+      repair gene transcription. Central regulator of repair outcome.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: hr-nhej-double-strand-break
+    name: Homologous recombination & NHEJ (DSB repair)
+    reactome:
+      - "R-HSA-5685939" # HDR
+      - "R-HSA-5693538" # NHEJ
+    keywords: [HR, NHEJ, BRCA1, BRCA2, RAD51, DSB, double-strand break]
+    rationale: >
+      Unrepaired rNMP lesions → DSBs. Choice between HR and NHEJ determines
+      repair fidelity. Failed HR → chromosomal instability.
+    model_sources: [Reactome, BioModels, PathwayCommons]
+    model_packs: []
+
+  - id: fanconi-anemia-pathway
+    name: Fanconi anemia pathway (interstrand crosslink repair)
+    reactome:
+      - "R-HSA-6781823" # Fanconi Anemia Pathway
+    keywords: [FA, FANCD2, BRCA2, interstrand crosslink, ICL]
+    rationale: >
+      FA pathway recognizes DNA crosslinks and coordinates with HR. rNMPs may
+      sensitize cells to crosslink damage; FA-deficient cells show rNMP
+      sensitivity.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: cell-cycle-checkpoints
+    name: Cell cycle checkpoints (G1/S, S, G2/M)
+    reactome:
+      - "R-HSA-176187"
+      - "R-HSA-69231"   # Cyclin A/B1 associated events
+    keywords: [ATR, ATM, CHK1, CHK2, CDC25, G1/S checkpoint, S checkpoint]
+    rationale: >
+      HU activates S-phase checkpoint via ATR-CHK1. Checkpoint failure →
+      mitosis with unrepaired rNMPs → genome instability.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: rna-processing-damage
+    name: RNA processing under DNA damage stress
+    reactome:
+      - "R-HSA-72203"   # Processing of Capped Intron-Containing Pre-mRNA
+      - "R-HSA-168273"  # mRNA Splicing
+    keywords: [RNA splicing, R-loop, RNase H1, R-loop resolution]
+    rationale: >
+      RNA-DNA hybrids (R-loops) form under HU stress; RNase H1/H2 resolve them.
+      Failed R-loop resolution → genomic instability. Connects to rNMP biology.
+    model_sources: [Reactome, BioModels]
+    model_packs: []
+
+  - id: oxidative-stress-response
+    name: Oxidative stress response (NRF2/ROS)
+    reactome:
+      - "R-HSA-8941234" # NFE2L2 (NRF2) pathway
+    keywords: [NRF2, ROS, oxidative stress, 8-oxoG, OGG1]
+    rationale: >
+      HU generates ROS. Oxidative damage + rNMP incorporation compound
+      DNA damage burden. NRF2 drives repair gene expression.
+    model_sources: [Reactome, BioModels]
+    model_packs: []

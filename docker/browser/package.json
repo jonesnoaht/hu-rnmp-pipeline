@@ -1,0 +1,13 @@
+{
+  "name": "hu-rnmp-browser",
+  "version": "0.1.0",
+  "description": "Results browser for hu-rnmp-pipeline (Authentik-gated)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.0",
+    "morgan": "^1.10.0"
+  }
+}

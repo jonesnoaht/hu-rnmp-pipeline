@@ -1,0 +1,23 @@
+# Harmonia Layer-0 rules for rNMP/multi-omic matrix harmonization
+# Applied by: harmonia harmonize <input.tsv> --rules this_file
+# Format: one rule per line; <pattern> <action> <args>
+# Research tooling only — harmonia IP held_out (NSF/university)
+
+# Unit normalization: counts → log2(CPM + 1)
+column:counts       transform:log2cpm
+
+# Z-score normalization within sample (gene-level)
+column:gene         transform:zscore
+
+# Strand bias: center to 0.5 (no bias)
+column:strand_bias  transform:affine center=0.5
+
+# Mutation rate: normalize per Mb
+column:mutation_rate transform:scale factor=0.000001
+
+# Pathway enrichment score: min-max scale to [0,1]
+column:enrichment_score transform:minmax
+
+# No-op for categorical (organism, treatment type)
+column:organism      passthrough
+column:treatment     passthrough

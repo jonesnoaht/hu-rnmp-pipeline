@@ -1,0 +1,26 @@
+# HTTPRoute for HU-rNMP browser — Authentik full-proxy pattern
+# DO NOT kubectl apply directly — FMB RBAC does not allow HTTPRoute/DNSRecord
+# This goes via PR to hwcopeland/iac → Flux reconcile
+#
+# Mirrors: iac/rke2/tooling/flux/theswamp/httproute-tracker.yaml
+
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: hu-rnmp-browser
+  namespace: theswamp
+  annotations:
+    authentik.home.arpa/enabled: "true"
+spec:
+  parentRefs:
+    - name: hwcopeland-gateway
+      namespace: kube-system
+      sectionName: flmanbiosci-https
+  hostnames:
+    - "hu-rnmp.flmanbiosci.net"
+  rules:
+    - backendRefs:
+        - name: authentik-server
+          namespace: authentik
+          port: 80

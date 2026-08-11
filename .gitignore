@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# Nextflow
+work/
+.nextflow*
+results/
+
+# Data (never commit raw sequencing data)
+data/raw/
+sra_cache/
+
+# Docker
+*.tar
+
+# OS
+.DS_Store
+*.swp
+*~
+
+# IDE
+.idea/
+.vscode/

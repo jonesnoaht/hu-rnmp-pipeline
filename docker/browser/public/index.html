@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HU-rNMP Pipeline — Results Browser</title>
+<style>
+:root {
+  --bg: #0f1419; --fg: #e6e6e6; --accent: #4fc3f7; --card: #1a1f2e;
+  --border: #2a3040; --muted: #6b7280;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+       background: var(--bg); color: var(--fg); padding: 2rem; max-width: 960px; }
+h1 { color: var(--accent); margin-bottom: 1rem; }
+.card { background: var(--card); border: 1px solid var(--border);
+        border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; }
+input, button { padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid var(--border);
+                background: var(--bg); color: var(--fg); font-size: 1rem; }
+button { cursor: pointer; background: var(--accent); color: #000; }
+button:hover { opacity: 0.9; }
+input { flex: 1; margin-right: 0.5rem; }
+.row { display: flex; align-items: center; margin-bottom: 1rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 0.5rem; }
+th, td { padding: 0.5rem; text-align: left; border-bottom: 1px solid var(--border); }
+th { color: var(--accent); }
+a { color: var(--accent); }
+.muted { color: var(--muted); font-size: 0.875rem; }
+code { background: var(--bg); padding: 0.2rem 0.4rem; border-radius: 3px; }
+.iframe { width: 100%; height: 800px; border: none; border-radius: 4px; }
+</style>
+</head>
+<body>
+<h1>🧬 HU-rNMP Pipeline</h1>
+<p class="muted">Ribonucleotide Incorporation & DNA Repair Analysis — Research Prototype</p>
+
+<div class="card">
+  <h3>Submit a new run</h3>
+  <div class="row">
+    <input id="accession" placeholder="SRA accession (e.g. SRP123456)">
+    <button onclick="submitRun()">Run Pipeline</button>
+  </div>
+  <div id="run-status" class="muted"></div>
+</div>
+
+<div class="card">
+  <h3>Past runs</h3>
+  <table id="runs-table">
+    <tr><th>Run</th><th>Date</th><th></th></tr>
+  </table>
+</div>
+
+<div class="card" id="run-detail" style="display:none;">
+  <h3 id="run-title"></h3>
+  <div id="run-files"></div>
+  <iframe id="report-frame" class="iframe"></iframe>
+</div>
+
+<script>
+async function submitRun() {
+  const acc = document.getElementById('accession').value.trim();
+  if (!acc) return;
+  document.getElementById('run-status').textContent = 'Submitting...';
+  try {
+    const res = await fetch('/api/run', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({accession: acc})
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    document.getElementById('run-status').textContent = 'Queued: ' + JSON.stringify(data);
+    setTimeout(loadRuns, 5000);
+  } catch (e) {
+    document.getElementById('run-status').textContent = 'Error: ' + e.message;
+  }
+}
+
+async function loadRuns() {
+  try {
+    const res = await fetch('/api/runs');
+    const data = await res.json();
+    const tbody = document.querySelector('#runs-table');
+    tbody.innerHTML = '<tr><th>Run</th><th>Date</th><th></th></tr>';
+    for (const run of (data.runs || [])) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `<td>${run.name}</td><td>${new Date(run.mtime).toLocaleString()}</td>
+        <td><a href="#" onclick="viewRun('${run.name}')">View</a></td>`;
+      tbody.appendChild(tr);
+    }
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+async function viewRun(name) {
+  try {
+    const res = await fetch(`/api/runs/${name}/ls`);
+    const data = await res.json();
+    document.getElementById('run-detail').style.display = 'block';
+    document.getElementById('run-title').textContent = name;
+    let html = '<table><tr><th>File</th><th>Size</th></tr>';
+    for (const f of (data.files || [])) {
+      html += `<tr><td><a href="/api/runs/${name}/file/${f.path}" target="_blank">${f.path}</a></td>
+        <td>${(f.size/1024).toFixed(1)} KB</td></tr>`;
+    }
+    html += '</table>';
+    document.getElementById('run-files').innerHTML = html;
+    // Try to load report.html in iframe
+    document.getElementById('report-frame').src = `/api/runs/${name}/file/report.html`;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+loadRuns();
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+# API Keys & Registration Inventory for hu-rnmp-pipeline Data Sources
+# Verified 2026-08-11 against official documentation for each source.
+# Operator: Noah T. Jones (GitHub: jonesnoaht)
+
+sources:
+  - source: "NCBI SRA (E-utilities API: esearch/efetch)"
+    registration_required: true
+    api_key_required: false
+    how_to_register: >
+      Create a free NCBI account at https://www.ncbi.nlm.nih.gov/account/,
+      then go to Settings > API Key Management > Create an API Key.
+      Only one key per account.
+    rate_limits_without_key: "3 requests/second per IP address"
+    rate_limits_with_key: "10 requests/second per API key (higher by request to eutilities@ncbi.nlm.nih.gov)"
+    data_open: true
+    notes: >
+      API key is NOT required to use E-utilities — it only raises the rate
+      cap from 3 req/s to 10 req/s. Without a key, exceeding 3 req/s triggers
+      'API rate limit exceeded' errors. Also recommended: register tool and
+      email parameters with NCBI to avoid IP blocking. Large batch jobs should
+      run on weekends or 9PM-5AM ET. Use Entrez History (epost) for batch
+      retrieval. SRA data accessed via E-utilities returns metadata only;
+      raw FASTQ files are downloaded from SRA/ENA directly.
+    docs_url: https://www.ncbi.nlm.nih.gov/books/NBK25497/
+
+  - source: "ENA (European Nucleotide Archive) Portal/Browser API"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required — all public records accessible via REST API without authentication."
+    rate_limits_without_key: "50 requests/second (HTTP 429 on breach; shared limit, no key distinction)"
+    rate_limits_with_key: "N/A — no API key system for public data access"
+    data_open: true
+    notes: >
+      ENA is fully open-access and requires no registration or API key for
+      data retrieval. Programmatic access via Portal API
+      (https://www.ebi.ac.uk/ena/portal/api/) and Browser API
+      (https://www.ebi.ac.uk/ena/browser/api/). File downloads via FTP or
+      Aspera. The enaBrowserTools CLI can be installed locally for bulk
+      downloads by accession. Registration only needed for data submission.
+    docs_url: https://ena-docs.readthedocs.io/en/latest/retrieval/programmatic-access.html
+
+  - source: "GEO (Gene Expression Omnibus) — FTP/HTTPS bulk download"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required for download. NCBI account only needed for data submission."
+    rate_limits_without_key: "No explicit rate limit on FTP/HTTPS downloads; E-utils metadata queries inherit NCBI 3 req/s limit"
+    rate_limits_with_key: "N/A for FTP; E-utils metadata queries can use NCBI API key for 10 req/s"
+    data_open: true
+    notes: >
+      All GEO records and raw data files are freely available for bulk
+      download from the FTP site (ftp.ncbi.nlm.nih.gov/geo/). No key or
+      registration needed. Programmatic metadata search uses E-utilities
+      (same NCBI rate limits as SRA). Full records/raw data require
+      constructing FTP URLs from accession numbers (see geo_paccess.html
+      directory structure). Formats: SOFT, MINiML, Series Matrix,
+      supplementary files (CEL, RAW.tar).
+    docs_url: https://www.ncbi.nlm.nih.gov/geo/info/geo_paccess.html
+
+  - source: "Reactome — pathway data download + Content/Analysis Service API"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required — all data and APIs are open-access."
+    rate_limits_without_key: "No documented rate limits for Content Service or file downloads"
+    rate_limits_with_key: "N/A — no API key system"
+    data_open: true
+    notes: >
+      Reactome provides open-source and open-data under Creative Commons
+      licenses. BioPAX, SBML, SBGN, PSI-MITAB, GMT formats all freely
+      downloadable from https://reactome.org/download-data. Content Service
+      API (https://reactome.org/dev/content-service) and Analysis Service
+      API (https://reactome.org/dev/analysis) require no authentication.
+      Data also mirrored on Zenodo (quarterly releases from v89, June 2024).
+      Graph database dumps and MySQL dumps also available.
+    docs_url: https://reactome.org/download-data
+
+  - source: "BioModels (EBI) — SBML model downloads + REST API"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required for downloading published models. Registration only needed for model submission."
+    rate_limits_without_key: "No documented rate limits for public model access"
+    rate_limits_with_key: "N/A — no API key system"
+    data_open: true
+    notes: >
+      BioModels allows unauthenticated access to all published models.
+      Models downloadable in SBML, COPASI, SED-ML, COMBINE archive, BioPAX,
+      VCML, and other formats. REST API available at
+      https://www.ebi.ac.uk/biomodels/docs/ — no key needed. Python client:
+      'pip install biomodels-restful-api-client'. Registration/login only
+      required for submitting new models or accessing unpublished models.
+      Data under CC0/CC-BY licensing.
+    docs_url: https://www.ebi.ac.uk/biomodels/docs/
+
+  - source: "PathwayCommons — data downloads (SIF/BioPAX) + web API"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required — all data and APIs are fully open-access."
+    rate_limits_without_key: "Query timeout at 10 seconds for interactive API console; no documented rate limit for direct API calls"
+    rate_limits_with_key: "N/A — no API key system"
+    data_open: true
+    notes: >
+      Pathway Commons integrates multiple pathway databases into one BioPAX
+      model. All data (BioPAX Level 3, SIF/BINARY_SIF, TXT extended, GSEA/GMT,
+      SBGN) freely downloadable with no registration or key. Web API at
+      http://www.pathwaycommons.org/pc2/ provides search, get, graph,
+      traverse commands. Java client (PC2Client), Paxtools, and R
+      (paxtoolsr Bioconductor package) libraries available. Bulk downloads
+      of all BioPAX data by source provider available from the PC2 downloads
+      page.
+    docs_url: http://pathwaycommons.github.io/pcapi/
+
+  - source: "KEGG — REST API (rest.kegg.jp)"
+    registration_required: false
+    api_key_required: false
+    how_to_register: >
+      No registration or API key for academic use. The REST API at
+      rest.kegg.jp is open without authentication. FTP bulk download
+      requires a paid academic subscription
+      (https://www.pathway.jp/en/academic.html).
+    rate_limits_without_key: "3 requests/second (enforced; access blocked if exceeded)"
+    rate_limits_with_key: "N/A — no API key system. Rate limit is universal."
+    data_open: false
+    notes: >
+      IMPORTANT LICENSING RESTRICTION: KEGG is NOT a public database. The
+      REST API (rest.kegg.jp) is free ONLY for academic use by academic
+      users. Non-academic/commercial use requires a commercial license from
+      Pathway Solutions (https://www.pathway.jp/). No API key or
+      registration needed for academic REST API access, but rate-limited to
+      3 req/s. FTP bulk download (kgml, pathway images, etc.) requires a
+      PAID academic subscription. Copyright held by Kanehisa Laboratories.
+      For this pipeline (personal academic research): REST API is usable
+      freely, but be aware of the academic-only license restriction. If
+      using KEGG for services, an academic service provider license is
+      required.
+    docs_url: https://www.kegg.jp/kegg/api.html
+
+  - source: "ArrayExpress / Expression Atlas (EBI)"
+    registration_required: false
+    api_key_required: false
+    how_to_register: "Not required for data download. Registration only needed for data submission via Annotare."
+    rate_limits_without_key: "No documented rate limits for public data download"
+    rate_limits_with_key: "N/A — no API key system"
+    data_open: true
+    notes: >
+      ArrayExpress is now part of BioStudies at EBI. All functional genomics
+      data is freely downloadable via FTP/Aspera and browseable at
+      https://www.ebi.ac.uk/biostudies/arrayexpress/studies. No
+      registration/key needed for download. Expression Atlas
+      (https://www.ebi.ac.uk/gxa/) provides gene expression visualizations
+      and data derived from ArrayExpress — also freely accessible. R
+      packages available: ArrayExpress (Bioconductor) and ExpressionAtlas
+      (Bioconductor) for programmatic access. Raw sequence reads brokered
+      to ENA (links provided). Annotare tool requires EBI account for
+      submission only.
+    docs_url: https://www.ebi.ac.uk/biostudies/arrayexpress
+
+  - source: "Synapse (Sage Bionetworks) — AD Knowledge Portal"
+    registration_required: true
+    api_key_required: true
+    how_to_register: >
+      1. Register a free account at
+      https://accounts.synapse.org/register1?appId=synapse.org
+      2. For full functionality (upload, create folders): pass a short
+      certification quiz (~15 questions, 15-20 min) at
+      https://accounts.synapse.org/authenticated/certificationquiz
+      3. For controlled-access human data (e.g., some AMP-AD datasets):
+      become a validated user — complete profile, link ORCID, submit
+      Synapse Pledge, and provide identity attestation document.
+      4. For programmatic access: create a personal access token in
+      Account Settings > Personal Access Tokens.
+    rate_limits_without_key: "Anonymous users can browse public catalogs but cannot download data"
+    rate_limits_with_key: "Authenticated via Synapse personal access token; standard limits (not explicitly documented)"
+    data_open: mixed
+    notes: >
+      CRITICAL FOR AD KNOWLEDGE PORTAL: A free Synapse account is REQUIRED
+      to download ANY data (even open-access data). Anonymous users can
+      browse but not download. Data in the AD Knowledge Portal is split
+      into access tiers:
+      - Open Access: available to registered users without further
+        restrictions (non-human or de-identified data).
+      - Controlled Access: requires certification, possible validation,
+        and project-specific Conditions for Use approval (may need IRB
+        approval). This applies to individual-level human -omics data
+        (e.g., RNA-seq from ROSMAP, MSSM, Mayo cohorts). Controlled
+        access data may NEVER be redistributed.
+      Programmatic access uses the Synapse Python client
+      ('pip install synapseclient') with a personal access token.
+      The AD Knowledge Portal is at
+      https://adknowledgeportal.synapse.org/. Plan ahead: controlled
+      access approval can take weeks.
+    docs_url: https://docs.synapse.org/synapse-docs/data-access-types
+
+  - source: "Zenodo — dataset download (REST API + direct download)"
+    registration_required: false
+    api_key_required: false
+    how_to_register: >
+      Not required for downloading public datasets. For uploads/deposits via
+      REST API: create a free account at https://zenodo.org/signup/ and
+      generate a personal access token at
+      https://zenodo.org/account/settings/applications/tokens/new/.
+    rate_limits_without_key: "Guests: 60 requests/minute, 2000 requests/hour (global); Search API: 30 req/min; OAI-PMH: 30 req/min"
+    rate_limits_with_key: "Authenticated: 100 requests/minute, 5000 requests/hour (global); Search/OAI-PMH still 30 req/min"
+    data_open: true
+    notes: >
+      Zenodo is CERN's open-access repository. Downloading public datasets
+      requires NO registration or API key — just GET the file URL or use
+      the Records API (https://zenodo.org/api/records). An access token
+      (Bearer auth) is ONLY required for deposit/upload operations and for
+      higher rate limits. Metadata dumps (all records) downloadable as
+      tar.gz from https://zenodo.org/api/exporter/records-xml.tar.gz. Also
+      supports OAI-PMH harvesting. Rate limit headers (X-RateLimit-Limit,
+      X-RateLimit-Remaining, X-RateLimit-Reset) in responses. For this
+      pipeline: if just downloading datasets cited in the pipeline (e.g.,
+      Reactome Zenodo mirrors), no key needed.
+    docs_url: https://developers.zenodo.org/
+
+# Summary: Sources Requiring Registration/API Keys
+# ==================================================
+# REQUIRES registration + key/token:
+#   - Synapse (Sage Bionetworks / AD Knowledge Portal) — free account required
+#     for ALL downloads; controlled-access data needs certification + validation
+#
+# RECOMMENDED but NOT required (rate limit improvement only):
+#   - NCBI SRA E-utilities — free NCBI account + API key raises rate from 3 to 10 req/s
+#   - Zenodo — free account + token for uploads and higher download rate limits
+#
+# LICENSE RESTRICTION (no key, but usage restricted):
+#   - KEGG — REST API free for ACADEMIC USE ONLY; commercial use requires
+#     paid license from Pathway Solutions; FTP bulk download requires paid
+#     academic subscription
+#
+# NO registration/key needed at all:
+#   - ENA, GEO (FTP), Reactome, BioModels, PathwayCommons, ArrayExpress/Expression Atlas
+#
+# Credentials to set up before running pipeline:
+#   1. NCBI account + API key (for SRA/GEO E-utilities at 10 req/s)
+#   2. Synapse account + certification + validation (for AD Knowledge Portal controlled data)
+#   3. Synapse personal access token (for programmatic access via synapseclient)
+#   4. (Optional) Zenodo account + token (only if depositing data or needing high download rates)

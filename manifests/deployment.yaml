@@ -1,0 +1,93 @@
+# K8s manifests for HU-rNMP pipeline + results browser
+# Deployed into theswamp namespace on hwcopeland RKE2 cluster
+# Authentik full-proxy: HTTPRoute → authentik-server → hu-rnmp-browser service
+#
+# Host: hu-rnmp.flmanbiosci.net (Authentik → browser, like sites-tracker pattern)
+#
+# NOTE: HTTPRoute + DNSRecord + Authentik outpost config require Flux/cluster-admin
+# PR to hwcopeland/iac (FMB = namespace-admin in theswamp only).
+# Deployment/Service/ConfigMap in theswamp = FMB can apply directly.
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hu-rnmp-data
+  namespace: theswamp
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hu-rnmp-browser
+  namespace: theswamp
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate  # RWO volume
+  selector:
+    matchLabels:
+      app: hu-rnmp-browser
+  template:
+    metadata:
+      labels:
+        app: hu-rnmp-browser
+    spec:
+      imagePullSecrets:
+        - name: zot-pull-secret
+      containers:
+        - name: browser
+          # Image built by CI → pushed to zot.hwcopeland.net
+          image: zot.hwcopeland.net/jonesnoaht/hu-rnmp-browser:main  # {"$imagepolicy": "tooling:hu-rnmp-browser"}
+          ports:
+            - containerPort: 8050
+          env:
+            - name: RESULTS_DIR
+              value: /results
+            - name: PORT
+              value: "8050"
+          volumeMounts:
+            - name: data
+              mountPath: /results
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 8050
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /healthz
+              port: 8050
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: hu-rnmp-data
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hu-rnmp-browser
+  namespace: theswamp
+spec:
+  selector:
+    app: hu-rnmp-browser
+  ports:
+    - port: 8050
+      targetPort: 8050

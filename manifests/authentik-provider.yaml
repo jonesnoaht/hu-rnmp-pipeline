@@ -1,0 +1,28 @@
+# Authentik provider for HU-rNMP browser
+# DO NOT apply from here — mirror into iac/rke2/authentik/blueprints/ + CM
+# Mirrors: iac/rke2/authentik/blueprints/providers-sitetracker.yaml
+
+version: 1
+metadata:
+  name: hu-rnmp-provider
+entries:
+  - model: authentik_providers_proxy.proxyprovider
+    id: hu-rnmp-provider
+    identifiers:
+      name: hu-rnmp
+    attrs:
+      name: hu-rnmp
+      external_host: https://hu-rnmp.flmanbiosci.net
+      mode: forward_single
+      skip_path_regex: ^/healthz$
+      authentication_flow: !Find [authentik_flows.flow, [slug, default-authentication-flow]]
+      authorization_flow: !Find [authentik_flows.flow, [slug, default-provider-authorization-implicit-consent]]
+  - model: authentik_core.application
+    identifiers:
+      slug: hu-rnmp
+    attrs:
+      name: HU-rNMP Pipeline
+      slug: hu-rnmp
+      provider: !Ref hu-rnmp-provider
+      group: "FMB"
+      policy_engine_mode: any
