@@ -8,8 +8,9 @@ pathways are enriched for rNMP-induced perturbation.
 import argparse
 import json
 import sys
+from collections import Counter, defaultdict
+
 import yaml
-from collections import defaultdict, Counter
 
 
 def load_pathways(pathways_yaml):
@@ -66,7 +67,6 @@ def enrich(sites, mutations, pathways, model_packs_dir=None):
     }
     
     enrichment_results = []
-    total_mutations = sum(m["count"] for m in mutations)
     
     for pid, pathway_def in pathways.items():
         genes = pathway_gene_panels.get(pid, [])
@@ -108,11 +108,10 @@ def main():
     # Write TSV
     with open(args.output, "w") as f:
         f.write("pathway_id\tpathway_name\treactome_ids\tpanel_genes\tenrichment_score\trationale\n")
-        for r in results:
-            f.write(f"{r['pathway_id']}\t{r['pathway_name']}\t"
+        f.writelines(f"{r['pathway_id']}\t{r['pathway_name']}\t"
                     f"{'|'.join(r['reactome_ids'])}\t"
                     f"{'|'.join(r['panel_genes'])}\t"
-                    f"{r['enrichment_score']}\t{r['rationale']}\n")
+                    f"{r['enrichment_score']}\t{r['rationale']}\n" for r in results)
     
     # Write JSON
     with open(args.json, "w") as f:

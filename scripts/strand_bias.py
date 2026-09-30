@@ -44,9 +44,8 @@ def compute_strand_bias(bam_path, output_tsv, window=10_000):
     
     with open(output_tsv, "w") as f:
         f.write("chrom\tstart\tend\tfwd_reads\trev_reads\tstrand_bias\n")
-        for r in results:
-            f.write(f"{r['chrom']}\t{r['start']}\t{r['end']}\t"
-                    f"{r['fwd_reads']}\t{r['rev_reads']}\t{r['strand_bias']}\n")
+        f.writelines(f"{r['chrom']}\t{r['start']}\t{r['end']}\t"
+                    f"{r['fwd_reads']}\t{r['rev_reads']}\t{r['strand_bias']}\n" for r in results)
     
     print(f"Strand bias: {len(results)} windows → {output_tsv}", file=sys.stderr)
     return results

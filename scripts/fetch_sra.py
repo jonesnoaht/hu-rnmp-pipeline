@@ -18,7 +18,7 @@ import urllib.request
 
 # Local imports
 sys.path.insert(0, os.path.dirname(__file__))
-from credentials import ncbi_api_key, has_key
+from credentials import has_key, ncbi_api_key
 
 EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils"
 
@@ -85,7 +85,7 @@ def search_rnase_h2(db: str = "sra", retmax: int = 50) -> list[str]:
 
 
 def main():
-    import json  # noqa: E402
+    import json
 
     ap = argparse.ArgumentParser(description="Fetch SRA data with API key")
     ap.add_argument("--accession", required=True, help="SRA accession (SRP/SRR)")
@@ -100,5 +100,5 @@ def main():
 
 
 if __name__ == "__main__":
-    import json  # noqa: F401,E402
+    import json
     main()
