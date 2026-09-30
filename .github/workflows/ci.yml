@@ -16,10 +16,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      # Ruff 0.16 turns on a much larger default rule set. This job was written
-      # for the 0.15 defaults (plus the ignores below). Leave the broader
-      # cleanup to the pipeline work rather than failing every unrelated PR.
-      - run: pip install ruff==0.15.22
+      # Pin the Ruff release this repository's scripts were cleaned for.
+      # An unpinned install floats, and 0.16 changed the default rule set.
+      - run: pip install ruff==0.16.9
       - run: ruff check scripts/ --ignore E402,F401
 
   build-pipeline-image:

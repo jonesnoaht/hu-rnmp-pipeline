@@ -20,7 +20,7 @@ Produces:
 import argparse
 import json
 import sys
-from collections import defaultdict, Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 
@@ -75,8 +75,7 @@ def scan_hyden_seq(signal_tsv, asymmetry_tsv, output_tsv, signature_json):
         f.write(f"forward_fraction\t{fwd_frac:.4f}\n")
         f.write(f"avg_strand_bias\t{avg_bias:.4f}\n")
         f.write(f"unique_rnmp_positions\t{len(pos_counts)}\n")
-        for cls, cnt in class_counts.items():
-            f.write(f"window_{cls}\t{cnt}\n")
+        f.writelines(f"window_{cls}\t{cnt}\n" for cls, cnt in class_counts.items())
         f.write("\nchrom\tfwd_ends\trev_ends\ttotal\tratio\n")
         for chrom in sorted(chrom_counts.keys()):
             fwd = chrom_counts[chrom]["+"]
@@ -122,7 +121,7 @@ def scan_wgs(signal_tsv, strand_tsv, output_tsv, signature_json):
     transitions = []
     deletions = []
     with open(signal_tsv) as f:
-        f.readline()
+        f.readline()  # skip header
         for line in f:
             parts = line.strip().split("\t")
             if len(parts) < 5:

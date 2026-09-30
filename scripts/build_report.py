@@ -3,8 +3,8 @@
 import argparse
 import json
 import shutil
+from datetime import datetime, timezone
 from pathlib import Path
-from datetime import datetime
 
 
 def build_report(accession, qc_dir, signal, mutations, mutation_sig,
@@ -67,7 +67,7 @@ th {{ background: #f5f5f5; }}
 </head>
 <body>
 <h1>rNMP Pipeline Report</h1>
-<p>Accession: <code>{accession}</code> | Generated: {datetime.now().isoformat()}</p>
+<p>Accession: <code>{accession}</code> | Generated: {datetime.now(timezone.utc).isoformat()}</p>
 <p><em>Research prototype — no clinical claims. Open public data only.</em></p>
 
 <h2>Summary</h2>

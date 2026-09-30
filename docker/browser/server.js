@@ -3,14 +3,19 @@ const fs = require('fs');
 const path = require('path');
 const morgan = require('morgan');
 const childProcess = require('child_process');
+const RateLimit = require('express-rate-limit');
 
 const app = express();
 const PORT = process.env.PORT || 8050;
 const RESULTS_DIR = process.env.RESULTS_DIR || '/results';
 
-// Public SRA / ENA / GEO accessions. Fully anchored so metacharacters never
-// reach the process arguments.
-const ACCESSION_RE = /^(?:SRR|ERR|DRR|SRP|ERP|DRP|PRJ[EDN][A-Z]\d+|GSE)\d+$/;
+// One proxy hop (ingress / Authentik). Needed so the rate limiter keys on the
+// client address instead of rejecting X-Forwarded-For.
+app.set('trust proxy', 1);
+
+// Public SRA / ENA / GEO accessions. Each alternative is a fixed prefix plus
+// one bounded run of digits, so the match stays linear in the input length.
+const ACCESSION_RE = /^(?:SRR|ERR|DRR|SRP|ERP|DRP|GSE)\d{1,12}$|^PRJ[EDN][A-Z]\d{1,12}$/;
 // Values nextflow/main.nf actually branches on (params.genome).
 const ALLOWED_GENOMES = new Set(['GRCh38', 'sacCer3']);
 const NEXTFLOW_BIN = 'nextflow';
@@ -20,6 +25,14 @@ const OUTPUT_LIMIT = 1000;
 app.use(morgan('combined'));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());
+
+// File reads and pipeline launches are expensive. Cap API traffic per client.
+const apiLimiter = RateLimit({
+  windowMs: 60 * 1000,
+  max: 120,
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 function resultsRoot() {
   return path.resolve(RESULTS_DIR);
@@ -52,6 +65,8 @@ function appendCapped(current, chunk, max) {
 app.get('/healthz', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
+
+app.use(apiLimiter);
 
 app.get('/api/runs', (req, res) => {
   try {
@@ -111,7 +126,10 @@ function resolveResultFile(run, filepath) {
 
   const root = resultsRoot();
   const runLexical = path.resolve(root, run);
-  if (!isInside(root, runLexical)) return { error: 403 };
+  const relRun = path.relative(root, runLexical);
+  if (path.isAbsolute(relRun) || relRun === '..' || relRun.startsWith('..' + path.sep)) {
+    return { error: 403 };
+  }
 
   let realRun;
   try {
@@ -120,16 +138,34 @@ function resolveResultFile(run, filepath) {
     if (err.code === 'ENOENT') return { error: 404 };
     return { error: 403 };
   }
-  if (!isInside(root, realRun)) return { error: 403 };
+  const relRealRun = path.relative(root, realRun);
+  if (path.isAbsolute(relRealRun) || relRealRun === '..' || relRealRun.startsWith('..' + path.sep)) {
+    return { error: 403 };
+  }
 
   const lexical = path.resolve(realRun, filepath);
-  if (!isInside(root, lexical) || !isInside(realRun, lexical) || lexical === realRun) {
+  // path.relative + a ".." rejection is the containment check the file sink
+  // has to see directly. A helper call is not enough for that data flow.
+  const relLexical = path.relative(realRun, lexical);
+  if (
+    lexical === realRun ||
+    path.isAbsolute(relLexical) ||
+    relLexical === '..' ||
+    relLexical.startsWith('..' + path.sep)
+  ) {
     return { error: 403 };
   }
 
   try {
     const real = fs.realpathSync(lexical);
-    if (!isInside(root, real) || !isInside(realRun, real)) return { error: 403 };
+    const relReal = path.relative(realRun, real);
+    if (
+      path.isAbsolute(relReal) ||
+      relReal === '..' ||
+      relReal.startsWith('..' + path.sep)
+    ) {
+      return { error: 403 };
+    }
     let stat;
     try {
       stat = fs.statSync(real);
@@ -157,7 +193,7 @@ app.get('/api/runs/:run/file/*', (req, res) => {
 
   const root = resultsRoot();
   const rel = path.relative(root, located.path);
-  if (!isInside(root, located.path) || rel.startsWith('..') || path.isAbsolute(rel)) {
+  if (path.isAbsolute(rel) || rel === '..' || rel.startsWith('..' + path.sep)) {
     return res.status(403).json({ error: 'Forbidden' });
   }
 
@@ -181,7 +217,7 @@ app.post('/api/run', (req, res) => {
   }
 
   const { accession, genome } = body;
-  if (typeof accession !== 'string' || !ACCESSION_RE.test(accession)) {
+  if (typeof accession !== 'string' || accession.length > 16 || !ACCESSION_RE.test(accession)) {
     return res.status(400).json({ error: 'invalid accession' });
   }
 
