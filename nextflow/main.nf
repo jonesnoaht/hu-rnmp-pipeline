@@ -20,7 +20,7 @@ workflow {
     }
 
     if (params.accession) {
-        accessions_ch = Channel.of([
+        accessions_ch = Channel.of(
             [
                 accession: params.accession,
                 organism: params.organism ?: 'Saccharomyces cerevisiae',
@@ -30,12 +30,12 @@ workflow {
                 technique: params.technique ?: params.assay,
                 layout: params.layout ?: ''
             ]
-        ])
+        )
     } else {
         accessions_ch = Channel.fromPath(params.input_csv, checkIfExists: true)
             | splitCsv(header: true)
             | map { row ->
-                [[
+                [
                     accession: row.accession,
                     organism: row.organism,
                     treatment: row.treatment,
@@ -43,12 +43,12 @@ workflow {
                     assay: row.assay,
                     technique: row.technique ?: row.assay,
                     layout: row.layout ?: ''
-                ]]
+                ]
             }
     }
 
     PREPARE_REFERENCE(params.genome)
-    ref = PREPARE_REFERENCE.out.dir.first()
+    ref = PREPARE_REFERENCE.out.dir
 
     FETCH_ENA(accessions_ch)
     QC_FASTQ(FETCH_ENA.out.reads)
@@ -65,15 +65,10 @@ workflow {
         file(params.harmonia_rules, checkIfExists: true)
     )
     BUILD_REPORT(QC_FASTQ.out.qc.join(HARMONIA_JOIN.out.bundle))
-}
 
-workflow.onComplete {
-    log.info """
-    ╔══════════════════════════════════════════╗
-    ║  HU-rNMP Pipeline — COMPLETE            ║
-    ╠══════════════════════════════════════════╣
-    ║  Results: ${params.outdir}
-    ║  Genome: ${params.genome}
-    ╚══════════════════════════════════════════╝
-    """.stripIndent()
+    def resultDir = params.outdir
+    def genomeName = params.genome
+    workflow.onComplete {
+        println "HU-rNMP pipeline complete. Results: ${resultDir}. Genome: ${genomeName}"
+    }
 }

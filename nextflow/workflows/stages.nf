@@ -19,7 +19,7 @@ process FETCH_ENA {
     tag "${meta.accession}"
 
     input:
-    tuple val(meta)
+    val meta
 
     output:
     tuple val(meta), path("fastq"), emit: reads
