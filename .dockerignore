@@ -1,0 +1,14 @@
+.git
+.github
+.nextflow
+.nextflow.log*
+work
+results
+.cache
+tests
+docs
+grants
+manifests
+data-access
+**/*.md
+*.tar
