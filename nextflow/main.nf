@@ -1,101 +1,74 @@
 #!/usr/bin/env nextflow
 
-// HU-rNMP Pipeline: Hydroxyurea + Ribonucleotide Incorporation & DNA Repair
-// Open-data prototype — public SRA/GEO/ENA only
-// Research use only; no clinical claims.
+// Public-data rNMP pipeline. Research use only; no clinical claims.
 
 nextflow.enable.dsl = 2
 
-// ─── Parameters ────────────────────────────────────────────────
-params.accession      = null   // SRA accession: SRP/GSE/SRR
-params.input_csv      = null   // CSV: accession,organism,treatment,control,assay
-params.workdir_result = "${params.outdir ?: './results'}"
-params.genome         = 'GRCh38'   // also: 'sacCer3' for yeast
-params.assay          = 'hyden_seq'  // hyden_seq | ribose_seq | wgs
-params.markers_rnmp   = "${params.projectDir}/pathways/rnmp_markers.yaml"
-params.pathways       = "${params.projectDir}/pathways/pathways.yaml"
-params.harmonia_rules = "${params.projectDir}/harmonia/rnmp.rules.txt"
-
-// ─── Config ───────────────────────────────────────────────────
-include { FETCH_SRA;
+include { PREPARE_REFERENCE;
+          FETCH_ENA;
           QC_FASTQ;
-          ALIGN_BWA;
+          ALIGN_BOWTIE2;
           CALL_RNMP_SIGNAL;
           RNMP_MUTATION_SCAN;
           PATHWAY_ENRICHMENT;
           HARMONIA_JOIN;
           BUILD_REPORT } from './workflows/stages.nf'
 
-// ─── Channel ──────────────────────────────────────────────────
-// Input: either --accession (single) or --input_csv (batch)
-if (params.accession) {
-    accessions_ch = Channel.value([
-        [accession: params.accession, organism: params.organism ?: 'human', treatment: 'hydroxyurea', control: params.control ?: 'untreated']
-    ])
-} else if (params.input_csv) {
-    accessions_ch = Channel.fromPath(params.input_csv)
-        | splitCsv(header: true)
-        | map { row -> [
-            accession: row.accession,
-            organism: row.organism,
-            treatment: row.treatment,
-            control: row.control ?: 'untreated'
-        ]}
-} else {
-    log.error "Provide --accession SRP123456 or --input_csv samples.csv"
-    System.exit(1)
-}
-
-// ─── Pipeline ─────────────────────────────────────────────────
-
 workflow {
-    // 1. Fetch raw FASTQ from SRA/ENA
-    FETCH_SRA(accessions_ch)
+    if (!params.accession && !params.input_csv) {
+        error "Provide --accession SRR... or --input_csv samples.csv"
+    }
 
-    // 2. QC: FastQC + trimming
-    QC_FASTQ(FETCH_SRA.out)
+    if (params.accession) {
+        accessions_ch = Channel.of(
+            [
+                accession: params.accession,
+                organism: params.organism ?: 'Saccharomyces cerevisiae',
+                treatment: params.treatment ?: 'unspecified',
+                control: params.control ?: 'unspecified',
+                assay: params.assay ?: 'ribose_seq',
+                technique: params.technique ?: params.assay,
+                layout: params.layout ?: ''
+            ]
+        )
+    } else {
+        accessions_ch = Channel.fromPath(params.input_csv, checkIfExists: true)
+            | splitCsv(header: true)
+            | map { row ->
+                [
+                    accession: row.accession,
+                    organism: row.organism,
+                    treatment: row.treatment,
+                    control: row.control ?: 'unspecified',
+                    assay: row.assay,
+                    technique: row.technique ?: row.assay,
+                    layout: row.layout ?: ''
+                ]
+            }
+    }
 
-    // 3. Align: BWA-MEM (human) or BWA-MEM (yeast)
-    ALIGN_BWA(QC_FASTQ.out, params.genome)
+    PREPARE_REFERENCE(params.genome)
+    ref = PREPARE_REFERENCE.out.dir
 
-    // 4. rNMP signal: 5' end counting (HydEn-seq) or variant signatures (WGS)
-    CALL_RNMP_SIGNAL(ALIGN_BWA.out, params.assay)
-
-    // 5. Mutation scan: analyze rNMP patterns + polymerase strand bias
-    RNMP_MUTATION_SCAN(ALIGN_BWA.out, CALL_RNMP_SIGNAL.out, params.assay)
-
-    // 6. Pathway enrichment: map gene hits to Reactome pathway models
+    FETCH_ENA(accessions_ch)
+    QC_FASTQ(FETCH_ENA.out.reads)
+    ALIGN_BOWTIE2(QC_FASTQ.out.clean_fastq, ref)
+    CALL_RNMP_SIGNAL(ALIGN_BOWTIE2.out.bam, ref)
+    RNMP_MUTATION_SCAN(CALL_RNMP_SIGNAL.out.signal, ref)
     PATHWAY_ENRICHMENT(
-        CALL_RNMP_SIGNAL.out,
-        RNMP_MUTATION_SCAN.out,
-        file(params.pathways)
+        RNMP_MUTATION_SCAN.out.bundle,
+        file(params.pathways, checkIfExists: true),
+        ref
     )
-
-    // 7. Harmonia: harmonize multi-sample matrices (bijective)
     HARMONIA_JOIN(
-        PATHWAY_ENRICHMENT.out,
-        file(params.harmonia_rules)
+        PATHWAY_ENRICHMENT.out.bundle,
+        file(params.harmonia_rules, checkIfExists: true)
     )
+    BUILD_REPORT(QC_FASTQ.out.qc.join(HARMONIA_JOIN.out.bundle))
 
-    // 8. Build final report bundle
-    BUILD_REPORT(
-        QC_FASTQ.out,
-        CALL_RNMP_SIGNAL.out,
-        RNMP_MUTATION_SCAN.out,
-        PATHWAY_ENRICHMENT.out,
-        HARMONIA_JOIN.out
-    )
-}
-
-// ─── Printed summary ──────────────────────────────────────────
-workflow.onComplete {
-    log.info """
-    ╔══════════════════════════════════════════╗
-    ║  HU-rNMP Pipeline — COMPLETE            ║
-    ╠══════════════════════════════════════════╣
-    ║  Results: ${params.workdir_result}
-    ║  Accession: ${params.accession ?: 'batch CSV'}
-    ║  Genome: ${params.genome}
-    ╚══════════════════════════════════════════╝
-    """.stripIndent()
+    def resultDir = params.outdir
+    def genomeName = params.genome
+    workflow.onComplete {
+        println "HU-rNMP pipeline complete. Results: ${resultDir}. Genome: ${genomeName}"
+    }
 }

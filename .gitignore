@@ -11,6 +11,7 @@ __pycache__/
 work/
 .nextflow*
 results/
+.cache/
 
 # Data (never commit raw sequencing data)
 data/raw/

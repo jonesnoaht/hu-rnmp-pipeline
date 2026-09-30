@@ -1,0 +1,2 @@
+accession,organism,treatment,control,assay,technique,layout,notes
+SRR1575904,Saccharomyces cerevisiae,pol2-4_rnh201,not_applicable,ribose_seq,ribose-seq,SINGLE,Koh 2015 PMID 25622106; PRJNA261234; sample pol2-4 rnh201 (KK-107); single-end MiSeq; 1068754 reads; 39337368 bytes; md5 0d3bdfeda49f790f49edc83bb1a47050; not hydroxyurea

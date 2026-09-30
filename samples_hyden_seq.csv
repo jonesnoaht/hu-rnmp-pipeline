@@ -1,5 +1,5 @@
-accession,organism,treatment,control,assay
-SRP182841,Saccharomyces cerevisiae,hydroxyurea_rnh201_delta,untreated_RNH201_pos,hyden_seq
-GSE61464,Saccharomyces cerevisiae,rnh1_rnh201_delta,RNH201_pos,ribose_seq
-GSE234409,Saccharomyces cerevisiae,hydroxyurea_WGS,untreated_WT,wgs
-GSE125855,Schizosaccharomyces pombe,rnh201_delta_pol_variants,rnh201_delta_WT,hyden_seq
+accession,organism,treatment,control,assay,technique,layout,notes
+SRP182841,Saccharomyces cerevisiae;Schizosaccharomyces pombe,rnh201_and_polymerase_variants_NT_or_RNaseHII,not_hydroxyurea,hyden_seq,RHII-HydEn-seq,PAIRED,Zhou 2019 PMID 31488849; same study as GSE125855 and PRJNA517710; no hydroxyurea samples; 58 paired runs; study accession not a single run
+GSE61464,Saccharomyces cerevisiae,rnh1_rnh201_and_polymerase_variants,not_hydroxyurea,ribose_seq,ribose-seq,SINGLE,Koh 2015 PMID 25622106; PRJNA261234; single-end MiSeq; no hydroxyurea; GEO series not a run
+GSE234409,Saccharomyces cerevisiae,short_replication_inhibitor_panel_including_HU_as_WGS_copy_number_control,vehicle,wgs,wgs,PAIRED,Break-seq copy-number control; HU is one of six short treatments; not an rNMP mutation-accumulation design
+GSE125855,Saccharomyces cerevisiae;Schizosaccharomyces pombe,rnh201_and_polymerase_variants_NT_or_RNaseHII,not_hydroxyurea,hyden_seq,RHII-HydEn-seq,PAIRED,Same study as SRP182841; both S. cerevisiae and S. pombe; not S. pombe only; no hydroxyurea samples
