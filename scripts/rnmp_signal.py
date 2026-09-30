@@ -31,7 +31,7 @@ Research only — no clinical claims.
 import argparse
 import json
 import sys
-from collections import defaultdict, Counter
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import pysam
@@ -126,7 +126,7 @@ def extract_wgs_rnmp_signal(vcf_path, bam_path, output_tsv):
 
     try:
         vcf = pysam.VariantFile(vcf_path)
-    except Exception:
+    except (OSError, ValueError):
         vcf = None
 
     if vcf:
@@ -162,10 +162,9 @@ def extract_wgs_rnmp_signal(vcf_path, bam_path, output_tsv):
 
     with open(output_tsv, "w") as f:
         f.write("chrom\tpos\tref\talt\ttype\tdepth_fwd\tdepth_rev\tstrand_bias\tdel_len\n")
-        for s in signals:
-            f.write("\t".join(str(s.get(k, "")) for k in [
+        f.writelines("\t".join(str(s.get(k, "")) for k in [
                 "chrom", "pos", "ref", "alt", "type",
-                "depth_fwd", "depth_rev", "strand_bias", "del_len"]) + "\n")
+                "depth_fwd", "depth_rev", "strand_bias", "del_len"]) + "\n" for s in signals)
 
     print(f"WGS rNMP signal: {len(signals)} candidate sites → {output_tsv}",
           file=sys.stderr)
@@ -222,10 +221,9 @@ def compute_strand_asymmetry(bam_path, output_tsv, window=10_000):
 
     with open(output_tsv, "w") as f:
         f.write("chrom\tstart\tend\tfwd_reads\trev_reads\tstrand_bias\tasymmetry\n")
-        for r in results:
-            f.write(f"{r['chrom']}\t{r['start']}\t{r['end']}\t"
+        f.writelines(f"{r['chrom']}\t{r['start']}\t{r['end']}\t"
                     f"{r['fwd_reads']}\t{r['rev_reads']}\t{r['strand_bias']}\t"
-                    f"{r['asymmetry']}\n")
+                    f"{r['asymmetry']}\n" for r in results)
 
     print(f"Strand asymmetry: {len(results)} windows → {output_tsv}", file=sys.stderr)
     return results
@@ -288,10 +286,9 @@ def identify_rnmp_hotspots(signal_tsv, output_tsv, min_count=5, window=500):
 
     with open(output_tsv, "w") as f:
         f.write("chrom\tstart\tend\tfwd_count\trev_count\ttotal\tfold_over_median\n")
-        for h in sorted(hotspots, key=lambda x: x["total"], reverse=True):
-            f.write(f"{h['chrom']}\t{h['start']}\t{h['end']}\t"
+        f.writelines(f"{h['chrom']}\t{h['start']}\t{h['end']}\t"
                     f"{h['fwd_count']}\t{h['rev_count']}\t{h['total']}\t"
-                    f"{h['fold_over_median']}\n")
+                    f"{h['fold_over_median']}\n" for h in sorted(hotspots, key=lambda x: x["total"], reverse=True))
 
     print(f"Hotspots: {len(hotspots)} regions ≥2x median (median={median}) → {output_tsv}",
           file=sys.stderr)

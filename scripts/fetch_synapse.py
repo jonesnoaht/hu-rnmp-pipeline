@@ -15,7 +15,7 @@ import os
 import sys
 
 sys.path.insert(0, os.path.dirname(__file__))
-from credentials import synapse_token, has_key
+from credentials import has_key, synapse_token
 
 
 def get_client():
