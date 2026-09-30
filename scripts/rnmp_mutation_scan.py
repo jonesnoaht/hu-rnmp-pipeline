@@ -122,7 +122,7 @@ def scan_wgs(signal_tsv, strand_tsv, output_tsv, signature_json):
     transitions = []
     deletions = []
     with open(signal_tsv) as f:
-        header = f.readline()
+        f.readline()
         for line in f:
             parts = line.strip().split("\t")
             if len(parts) < 5:

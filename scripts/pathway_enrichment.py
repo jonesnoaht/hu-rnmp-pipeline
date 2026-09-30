@@ -66,8 +66,7 @@ def enrich(sites, mutations, pathways, model_packs_dir=None):
     }
     
     enrichment_results = []
-    total_mutations = sum(m["count"] for m in mutations)
-    
+
     for pid, pathway_def in pathways.items():
         genes = pathway_gene_panels.get(pid, [])
         reactome_ids = pathway_def.get("reactome", [])
