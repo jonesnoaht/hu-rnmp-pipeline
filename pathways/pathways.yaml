@@ -1,4 +1,6 @@
-# Curated pathway list for HU / rNMP incorporation / failed DNA repair
+# Curated pathway list for rNMP incorporation and ribonucleotide excision repair.
+# v1 does not test hydroxyurea. Sentences below that mention hydroxyurea are
+# background for Future work / v2 (Meroni et al. 2019, PMID 30847483), not a v1 result.
 # Each pathway links to Reactome + model sources.
 # Status: brainstorm draft — agents fill in model_packs + dataset_accessions.
 

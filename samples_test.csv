@@ -1,2 +1,3 @@
-accession,organism,treatment,control,assay,technique,layout,notes
-SRR1575904,Saccharomyces cerevisiae,pol2-4_rnh201,not_applicable,ribose_seq,ribose-seq,SINGLE,Koh 2015 PMID 25622106; PRJNA261234; sample pol2-4 rnh201 (KK-107); single-end MiSeq; 1068754 reads; 39337368 bytes; md5 0d3bdfeda49f790f49edc83bb1a47050; not hydroxyurea
+accession,organism,treatment,control,assay,technique,layout,genotype,trim_5prime,adapter_3prime,notes
+SRR11364941,Saccharomyces cerevisiae,wild_type,rnh201,ribose_seq,ribose-seq,SINGLE,wild_type,12,AGTTGCGACACGGATCTATCA,Balachander 2020 PMID 32415081; PRJNA613920; SRP253620; nuclear ribose-seq; E134 WT RE3 FS162; RNH201+; 12 nt UMI/barcode/tagged-base prefix; not Koh 2015; not hydroxyurea
+SRR11364929,Saccharomyces cerevisiae,rnh201,wild_type,ribose_seq,ribose-seq,SINGLE,rnh201,12,AGTTGCGACACGGATCTATCA,Balachander 2020 PMID 32415081; PRJNA613920; SRP253620; nuclear ribose-seq; E134 rnh201 RE3 FS116; matched strain and RE set to SRR11364941; not hydroxyurea

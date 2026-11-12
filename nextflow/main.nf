@@ -1,6 +1,7 @@
 #!/usr/bin/env nextflow
 
-// Public-data rNMP pipeline. Research use only; no clinical claims.
+// Public-data rNMP pipeline. v1 is wild-type versus RNase H2 (rnh201).
+// Research use only; no clinical claims.
 
 nextflow.enable.dsl = 2
 
@@ -11,6 +12,7 @@ include { PREPARE_REFERENCE;
           CALL_RNMP_SIGNAL;
           RNMP_MUTATION_SCAN;
           PATHWAY_ENRICHMENT;
+          COMPARE_WT_RNH201;
           HARMONIA_JOIN;
           BUILD_REPORT } from './workflows/stages.nf'
 
@@ -28,7 +30,10 @@ workflow {
                 control: params.control ?: 'unspecified',
                 assay: params.assay ?: 'ribose_seq',
                 technique: params.technique ?: params.assay,
-                layout: params.layout ?: ''
+                layout: params.layout ?: '',
+                genotype: params.genotype ?: '',
+                trim_5prime: params.trim_5prime ?: '0',
+                adapter_3prime: params.adapter_3prime ?: ''
             ]
         )
     } else {
@@ -42,7 +47,10 @@ workflow {
                     control: row.control ?: 'unspecified',
                     assay: row.assay,
                     technique: row.technique ?: row.assay,
-                    layout: row.layout ?: ''
+                    layout: row.layout ?: '',
+                    genotype: row.genotype ?: '',
+                    trim_5prime: row.trim_5prime ?: '0',
+                    adapter_3prime: row.adapter_3prime ?: ''
                 ]
             }
     }
@@ -60,6 +68,14 @@ workflow {
         file(params.pathways, checkIfExists: true),
         ref
     )
+    COMPARE_WT_RNH201(
+        PATHWAY_ENRICHMENT.out.bundle
+            .map { meta, signal, windows, asym, stats, mut, sig, enrich, hits -> sig }
+            .collect(),
+        PATHWAY_ENRICHMENT.out.bundle
+            .map { meta, signal, windows, asym, stats, mut, sig, enrich, hits -> hits }
+            .collect()
+    )
     HARMONIA_JOIN(
         PATHWAY_ENRICHMENT.out.bundle,
         file(params.harmonia_rules, checkIfExists: true)
@@ -69,6 +85,6 @@ workflow {
     def resultDir = params.outdir
     def genomeName = params.genome
     workflow.onComplete {
-        println "HU-rNMP pipeline complete. Results: ${resultDir}. Genome: ${genomeName}"
+        println "rNMP pipeline complete (v1: wild type vs RNase H2). Results: ${resultDir}. Genome: ${genomeName}"
     }
 }

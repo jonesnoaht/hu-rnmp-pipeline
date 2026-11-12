@@ -326,7 +326,7 @@ app.use((err, req, res, next) => {
 
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`HU-rNMP browser on :${PORT}`);
+    console.log(`rNMP browser on :${PORT}`);
   });
 }
 

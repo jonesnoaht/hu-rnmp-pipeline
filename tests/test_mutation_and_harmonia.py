@@ -33,17 +33,24 @@ def test_direct_scan_does_not_assign_polymerase(tmp_path):
     assert "\nchrom\t" not in text
 
 
-def test_wgs_signature_is_marked_experimental(tmp_path):
+def test_wgs_signature_keeps_transitions_under_qc(tmp_path):
     signal = tmp_path / "signal.tsv"
     strand = tmp_path / "strand.tsv"
     out = tmp_path / "mut.tsv"
     signature = tmp_path / "sig.json"
-    signal.write_text("chrom\tpos\tref\talt\ttype\nchrI\t10\tT\tC\trNMP_transition\n")
+    signal.write_text(
+        "chrom\tpos\tref\talt\ttype\tdel_len\trepeat_unit\tdeleted\n"
+        "chrI\t10\tT\tC\trNMP_transition\t\t\t\n"
+        "chrI\t20\tGAT\tG\trepeat_deletion\t2\t2\tAT\n"
+    )
     strand.write_text("chrom\tstart\tend\tfwd_rnmp\trev_rnmp\tstrand_bias\tasymmetry\n")
     payload = scan_wgs(str(signal), str(strand), str(out), str(signature))
-    assert payload["experimental"] is True
-    assert payload["total_rnmp_transitions"] == 1
+    assert payload["headline_metric"] == "repeat_deletion_2_5bp"
+    assert payload["total_repeat_deletions"] == 1
+    assert payload["qc"]["raw_tc_ag_counts"] == {"T>C": 1, "A>G": 0, "total": 1}
     assert payload["polymerase_assignment"] == "experimental_not_assigned"
+    assert "T>C" not in out.read_text()
+    assert "total_rnmp_transitions" not in payload
 
 
 def test_harmonia_skips_when_disabled(tmp_path, capsys):

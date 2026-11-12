@@ -175,7 +175,7 @@ def strand_balance_test(rows: list[dict]) -> dict:
         "expected": 0.5,
         "note": (
             "Two-sided binomial test of plus versus minus rNMP calls. "
-            "A low p-value is strand imbalance, not a polymerase assignment."
+            "A low p-value is strand imbalance. v1 does not assign replicative polymerases."
         ),
     }
 
@@ -336,6 +336,8 @@ def run(
     fasta_path: str | None,
     genes_bed: str | None,
     enable_pathway_ora: bool,
+    accession: str | None = None,
+    genotype: str | None = None,
 ) -> dict:
     pathways = load_pathways(pathways_yaml)
     signal_rows = load_direct_signal(signal_tsv)
@@ -360,13 +362,16 @@ def run(
     else:
         pathway_rows = pathway_rows_disabled(pathways)
         ora_status = "disabled"
-    return {
+    payload = {
         "pathway_ora": ora_status,
         "signal_tests": tests,
         "pathways": pathway_rows,
         "total_signal_calls": sum(row["count"] for row in signal_rows),
         "input_metrics": metrics,
+        "accession": accession or "",
+        "genotype": genotype or "",
     }
+    return payload
 
 
 def main() -> None:
@@ -380,6 +385,8 @@ def main() -> None:
     parser.add_argument("--model-packs", default=None, help="Accepted and unused")
     parser.add_argument("--output", required=True)
     parser.add_argument("--json", required=True)
+    parser.add_argument("--accession", default=None)
+    parser.add_argument("--genotype", default=None)
     args = parser.parse_args()
 
     payload = run(
@@ -389,6 +396,8 @@ def main() -> None:
         args.fasta,
         args.genes_bed,
         args.enable_pathway_ora,
+        accession=args.accession,
+        genotype=args.genotype,
     )
     write_outputs(payload, args.output, args.json)
     computed = [row["id"] for row in payload["signal_tests"] if row["status"] == "computed"]

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Summarize rNMP calls.
 
-Window classes are descriptive count ratios. They are not polymerase
-assignments. The WGS T>C / A>G tally is kept and marked experimental.
+Window classes are descriptive count ratios. v1 does not assign replicative
+polymerases. The WGS headline metric is the 2–5 bp short-tandem-repeat
+deletion count. Raw T>C / A>G counts stay under ``qc`` and are not a signal.
 """
 
 from __future__ import annotations
@@ -28,6 +29,29 @@ def _table(path: str) -> tuple[list[str], list[dict[str, str]]]:
         return header, rows
 
 
+POLYMERASE_NOTE = (
+    "v1 does not assign replicative polymerases. Window classes are descriptive "
+    "ratios of rNMP counts on the two strands. Replication origins are not modeled."
+)
+V2_POLYMERASE_NOTE = (
+    "Future work / v2: polymerase assignment only for polymerase-variant strains, "
+    "relative to replication origins and OK-seq (Daigaku et al. 2015, PMID 25664722)."
+)
+REPEAT_DELETION_NOTE = (
+    "Headline metric: deletions of 2–5 bp that sit in a short tandem repeat "
+    "(unit length 2–5 bp, at least two copies; homopolymer units excluded). "
+    "This is the Top1-dependent mutation signature of rNMPs left in yeast DNA "
+    "(Nick McElhinny et al. 2010, PMID 20729855; Kim et al. 2011, PMID 21700875)."
+)
+
+
+def _qc_counts(raw: dict | None) -> dict:
+    raw = raw or {}
+    tc = int(raw.get("T>C", 0) or 0)
+    ag = int(raw.get("A>G", 0) or 0)
+    return {"T>C": tc, "A>G": ag, "total": tc + ag}
+
+
 def genome_bp_from_fai(path: str) -> int:
     total = 0
     with open(path) as handle:
@@ -38,7 +62,18 @@ def genome_bp_from_fai(path: str) -> int:
     return total
 
 
-def scan_direct(signal_tsv, asymmetry_tsv, output_tsv, signature_json, assay, technique, genome_bp, stats_json):
+def scan_direct(
+    signal_tsv,
+    asymmetry_tsv,
+    output_tsv,
+    signature_json,
+    assay,
+    technique,
+    genome_bp,
+    stats_json,
+    accession=None,
+    genotype=None,
+):
     _header, signal_rows = _table(signal_tsv)
     strand_counts = {"+": 0, "-": 0}
     base_counts: Counter[str] = Counter()
@@ -113,11 +148,10 @@ def scan_direct(signal_tsv, asymmetry_tsv, output_tsv, signature_json, assay, te
             "The previous hard-coded unique_positions/12.1 value was removed."
         ),
         "polymerase_assignment": "experimental_not_assigned",
-        "polymerase_note": (
-            "Window classes are descriptive ratios of rNMP counts "
-            "(forward / (forward + reverse)). They are not Pol epsilon versus "
-            "Pol alpha/delta assignments; replication origin and fork direction are not modeled."
-        ),
+        "polymerase_note": POLYMERASE_NOTE,
+        "v2_note": V2_POLYMERASE_NOTE,
+        "accession": accession or "",
+        "genotype": genotype or "",
         "call_stats": stats,
     }
     Path(signature_json).write_text(json.dumps(signature, indent=2) + "\n")
@@ -129,64 +163,76 @@ def scan_direct(signal_tsv, asymmetry_tsv, output_tsv, signature_json, assay, te
     return signature
 
 
-def scan_wgs(signal_tsv, strand_tsv, output_tsv, signature_json):
-    transitions = []
+def scan_wgs(signal_tsv, strand_tsv, output_tsv, signature_json, stats_json=None, accession=None, genotype=None):
+    _header, signal_rows = _table(signal_tsv)
     deletions = []
-    with open(signal_tsv) as handle:
-        handle.readline()
-        for line in handle:
-            parts = line.strip().split("\t")
-            if len(parts) < 5:
+    transition_rows: Counter[str] = Counter()
+    for row in signal_rows:
+        kind = row.get("type", "")
+        if kind == "repeat_deletion":
+            try:
+                length = int(row.get("del_len") or 0)
+                unit = int(row.get("repeat_unit") or 0)
+            except ValueError:
                 continue
-            chrom, pos, ref, alt, mtype = parts[:5]
-            if mtype == "rNMP_transition":
-                transitions.append({"chrom": chrom, "pos": int(pos), "ref": ref, "alt": alt})
-            elif mtype == "rNMP_deletion_slippage":
-                del_len = int(parts[8]) if len(parts) > 8 and parts[8] else 0
-                deletions.append({"chrom": chrom, "pos": int(pos), "del_len": del_len})
+            deletions.append({"del_len": length, "repeat_unit": unit})
+        elif kind == "rNMP_transition":
+            key = f"{row.get('ref', '')}>{row.get('alt', '')}"
+            if key in {"T>C", "A>G"}:
+                transition_rows[key] += 1
 
-    transition_types = Counter(f"{row['ref']}→{row['alt']}" for row in transitions)
     deletion_sizes = Counter(row["del_len"] for row in deletions)
-    total = len(transitions) + len(deletions)
+    unit_sizes = Counter(row["repeat_unit"] for row in deletions)
+
+    qc_raw = None
+    if stats_json and Path(stats_json).exists():
+        stats = json.loads(Path(stats_json).read_text())
+        qc_raw = (stats.get("qc") or {}).get("raw_tc_ag_counts")
+    if qc_raw is None:
+        qc_raw = {"T>C": transition_rows["T>C"], "A>G": transition_rows["A>G"]}
+    qc = {
+        "raw_tc_ag_counts": _qc_counts(qc_raw),
+        "note": (
+            "Raw single-base T>C and A>G counts kept for QC. Not an rNMP signal "
+            "and not shown as one."
+        ),
+    }
 
     _header, strand_rows = _table(strand_tsv)
     biases = []
     for row in strand_rows:
-        if "strand_bias" in row:
+        if "strand_bias" in row and row["strand_bias"] != "":
             biases.append(float(row["strand_bias"]))
-    avg_bias = sum(biases) / len(biases) if biases else 0.0
+    avg_bias = round(sum(biases) / len(biases), 4) if biases else None
 
     with open(output_tsv, "w") as handle:
-        handle.write("type\tcount\tfrac_of_total\n")
+        handle.write("metric\tvalue\n")
         lines = [
-            f"transition_{name}\t{count}\t{count / max(total, 1):.4f}\n"
-            for name, count in transition_types.items()
+            "headline_metric\trepeat_deletion_2_5bp\n",
+            f"total_repeat_deletions\t{len(deletions)}\n",
         ]
-        lines.extend(
-            f"deletion_{length}bp\t{count}\t{count / max(total, 1):.4f}\n"
-            for length, count in sorted(deletion_sizes.items())
-        )
-        lines.append(f"TOTAL\t{total}\t1.0\n")
+        lines.extend(f"deletion_{length}bp\t{deletion_sizes.get(length, 0)}\n" for length in range(2, 6))
+        lines.extend(f"repeat_unit_{unit}bp\t{unit_sizes.get(unit, 0)}\n" for unit in range(2, 6))
         handle.writelines(lines)
 
     signature = {
         "assay_type": "wgs",
-        "experimental": True,
-        "interpretation": (
-            "T>C and A>G counts are an experimental heuristic retained for review. "
-            "They are not a validated rNMP mutation signature."
-        ),
-        "total_rnmp_transitions": len(transitions),
-        "total_rnmp_deletions": len(deletions),
-        "transition_breakdown": dict(transition_types),
-        "deletion_size_distribution": {str(key): value for key, value in deletion_sizes.items()},
-        "avg_strand_bias": round(avg_bias, 4),
-        "rnmp_enrichment_score": round(len(transitions) / max(total, 1), 4),
+        "headline_metric": "repeat_deletion_2_5bp",
+        "headline_note": REPEAT_DELETION_NOTE,
+        "total_repeat_deletions": len(deletions),
+        "deletion_size_distribution": {str(length): deletion_sizes.get(length, 0) for length in range(2, 6)},
+        "repeat_unit_distribution": {str(unit): unit_sizes.get(unit, 0) for unit in range(2, 6)},
+        "avg_strand_bias": avg_bias,
         "polymerase_assignment": "experimental_not_assigned",
+        "polymerase_note": POLYMERASE_NOTE,
+        "v2_note": V2_POLYMERASE_NOTE,
+        "accession": accession or "",
+        "genotype": genotype or "",
+        "qc": qc,
     }
     Path(signature_json).write_text(json.dumps(signature, indent=2) + "\n")
     print(
-        f"WGS scan (experimental): {len(transitions)} transitions, {len(deletions)} deletions",
+        f"WGS scan: {len(deletions)} repeat deletions (2–5 bp) → {output_tsv}",
         file=sys.stderr,
     )
     return signature
@@ -203,12 +249,22 @@ def main() -> None:
     parser.add_argument("--fai", default=None)
     parser.add_argument("--stats", default=None)
     parser.add_argument("--bam", default=None, help="Accepted for compatibility; not read")
+    parser.add_argument("--accession", default=None)
+    parser.add_argument("--genotype", default=None)
     args = parser.parse_args()
     if args.bam:
         print("--bam is ignored", file=sys.stderr)
 
     if args.assay == "wgs":
-        scan_wgs(args.signal, args.strand, args.output, args.signature)
+        scan_wgs(
+            args.signal,
+            args.strand,
+            args.output,
+            args.signature,
+            stats_json=args.stats,
+            accession=args.accession,
+            genotype=args.genotype,
+        )
         return
     genome_bp = genome_bp_from_fai(args.fai) if args.fai else None
     scan_direct(
@@ -220,6 +276,8 @@ def main() -> None:
         args.technique,
         genome_bp,
         args.stats,
+        accession=args.accession,
+        genotype=args.genotype,
     )
 
 

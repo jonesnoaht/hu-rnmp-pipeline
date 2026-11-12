@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HU-rNMP Pipeline — Results Browser</title>
+<title>rNMP pipeline — wild type vs RNase H2</title>
 <style>
 :root {
   --bg: #0f1419; --fg: #e6e6e6; --accent: #4fc3f7; --card: #1a1f2e;
@@ -31,8 +31,8 @@ code { background: var(--bg); padding: 0.2rem 0.4rem; border-radius: 3px; }
 </style>
 </head>
 <body>
-<h1>🧬 HU-rNMP Pipeline</h1>
-<p class="muted">Ribonucleotide Incorporation & DNA Repair Analysis — Research Prototype</p>
+<h1>rNMP pipeline</h1>
+<p class="muted">v1: wild-type versus RNase H2 (rnh201) ribonucleotide maps. Research prototype. Public yeast data only.</p>
 
 <div class="card">
   <h3>Submit a new run</h3>
@@ -115,5 +115,10 @@ async function viewRun(name) {
 
 loadRuns();
 </script>
+<section id="future-work">
+  <h2>Future work / v2</h2>
+  <p class="muted">Hydroxyurea, with or without RNase H2 and along the Pol η axis, is not a v1 result (Meroni et al. 2019, Nucleic Acids Research, PMID 30847483).</p>
+  <p class="muted">Polymerase assignment is not done in v1. Assignment is a v2 question only for polymerase-variant strains, relative to replication origins and OK-seq (Daigaku et al. 2015, PMID 25664722).</p>
+</section>
 </body>
 </html>
