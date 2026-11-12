@@ -27,6 +27,26 @@ def _metric(label: str, value) -> str:
     return f'<div class="metric">{_esc(label)}: <strong>{_esc(value)}</strong></div>\n'
 
 
+V1_SCOPE = (
+    "v1 maps genomic ribonucleotides in wild-type yeast versus an RNase H2 mutant (rnh201). "
+    "Public data only. No clinical claims."
+)
+
+
+def future_work_section() -> str:
+    """Labeled v2 notes. Hydroxyurea and polymerase assignment stay here."""
+    return (
+        '<section id="future-work">\n'
+        "<h2>Future work / v2</h2>\n"
+        "<p>Hydroxyurea, with or without RNase H2 and along the Pol η axis, "
+        "is not a v1 result (Meroni et al. 2019, Nucleic Acids Research, PMID 30847483).</p>\n"
+        "<p>Polymerase assignment is not done in v1. Assignment is a v2 question only for "
+        "polymerase-variant strains, relative to replication origins and OK-seq "
+        "(Daigaku et al. 2015, PMID 25664722).</p>\n"
+        "</section>"
+    )
+
+
 def build_report(
     accession,
     qc_dir,
@@ -90,17 +110,41 @@ def build_report(
             f"<p>Accession: <code>{_esc(accession)}</code> | "
             f"Generated: {_esc(datetime.now(timezone.utc).isoformat())}</p>"
         ),
-        "<p><em>Research prototype. Public data only. No clinical claims.</em></p>",
-        "<h2>rNMP calls</h2>",
-        _metric("Assay", sig.get("assay_type", "")),
-        _metric("Technique", sig.get("technique", "")),
-        _metric("rNMP counts", sig.get("total_rnmp_5prime_ends", sig.get("total_rnmp_transitions", 0))),
-        _metric("Forward", sig.get("forward_ends", "")),
-        _metric("Reverse", sig.get("reverse_ends", "")),
-        _metric("Unique positions", sig.get("unique_rnmp_positions", "")),
-        "<h3>Base counts</h3>",
-        "<table><tr><th>Base</th><th>Count</th></tr>",
+        f"<p><em>{_esc(V1_SCOPE)}</em></p>",
+        "<h2>Mutation signature</h2>",
     ]
+    if sig.get("headline_metric") == "repeat_deletion_2_5bp" or sig.get("assay_type") == "wgs":
+        parts.append(_metric("Headline", "2–5 bp repeat deletions"))
+        parts.append(_metric("Repeat deletions", sig.get("total_repeat_deletions", 0)))
+        parts.append("<table><tr><th>Deletion length (bp)</th><th>Count</th></tr>")
+        for length, count in sig.get("deletion_size_distribution", {}).items():
+            parts.append(f"<tr><td>{_esc(length)}</td><td>{_esc(count)}</td></tr>")
+        parts.append("</table>")
+        parts.append("<table><tr><th>Repeat unit (bp)</th><th>Count</th></tr>")
+        for unit, count in sig.get("repeat_unit_distribution", {}).items():
+            parts.append(f"<tr><td>{_esc(unit)}</td><td>{_esc(count)}</td></tr>")
+        parts.append("</table>")
+        if sig.get("headline_note"):
+            parts.append(f'<p class="note">{_esc(sig.get("headline_note"))}</p>')
+    else:
+        parts.append(
+            "<p>The headline mutation signature is a 2–5 bp deletion inside a short tandem "
+            "repeat. This run is a direct rNMP assay, so that counter is not applied.</p>"
+        )
+    parts.extend(
+        [
+            "<h2>rNMP calls</h2>",
+            _metric("Assay", sig.get("assay_type", "")),
+            _metric("Technique", sig.get("technique", "")),
+            _metric("Genotype", sig.get("genotype", "")),
+            _metric("rNMP counts", sig.get("total_rnmp_5prime_ends", "")),
+            _metric("Forward", sig.get("forward_ends", "")),
+            _metric("Reverse", sig.get("reverse_ends", "")),
+            _metric("Unique positions", sig.get("unique_rnmp_positions", "")),
+            "<h3>Base counts</h3>",
+            "<table><tr><th>Base</th><th>Count</th></tr>",
+        ]
+    )
     for base, count in sig.get("base_counts", {}).items():
         parts.append(f"<tr><td>{_esc(base)}</td><td>{_esc(count)}</td></tr>")
     parts.append("</table>")
@@ -113,9 +157,11 @@ def build_report(
         )
     parts.append("</table>")
 
-    parts.append('<p class="note">' + _esc(sig.get("polymerase_note", sig.get("interpretation", ""))) + "</p>")
-    if sig.get("experimental"):
-        parts.append('<p class="note">WGS signature is experimental. ' + _esc(sig.get("interpretation", "")) + "</p>")
+    parts.append(
+        "<p>Polymerase assignment: "
+        f"<strong>{_esc(sig.get('polymerase_assignment', 'experimental_not_assigned'))}</strong>. "
+        f"{_esc(sig.get('polymerase_note', ''))}</p>"
+    )
 
     parts.append("<h2>Signal tests</h2>")
     parts.append(
@@ -151,8 +197,9 @@ def build_report(
             "<li><code>pathway_enrichment.tsv</code></li>",
             "<li><code>pathway_hits.json</code></li>",
             "<li><code>harmonia_matrix.tsv</code></li>",
-            "<li><code>qc/</code></li>",
+            "<li><code>qc/</code> — sequencing read QC</li>",
             "</ul>",
+            future_work_section(),
             "</body></html>",
         ]
     )

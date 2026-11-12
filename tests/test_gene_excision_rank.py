@@ -1,12 +1,12 @@
 """SGD intersection: overlap shares, chrM alias, and the HII/NT ratio rule."""
 
 from gene_excision_rank import (
+    _by_chrom,
     classify_excision,
     genes_overlapping,
     hotspot_shares,
     norm_chrom,
     parse_gff_genes,
-    _by_chrom,
 )
 
 
@@ -60,10 +60,10 @@ def test_below_floor_is_sparse_even_if_the_site_ratio_is_large():
 def test_hotspot_mass_follows_overlap_not_an_equal_split():
     gene_a = _gene(start=0, end=200, systematic="A")
     gene_b = _gene(start=200, end=250, systematic="B")
-    shares = dict(
-        (gene["systematic"], share)
+    shares = {
+        gene["systematic"]: share
         for gene, share in hotspot_shares(0, 500, 100, [gene_a, gene_b])
-    )
+    }
     assert shares["A"] == 40
     assert shares["B"] == 10
     assert shares["A"] != 50
@@ -81,15 +81,13 @@ def test_point_hits_transcript_extended_span_and_chrM():
 def test_gff_parser_uses_gene_symbol_and_zero_based_span(tmp_path):
     gff = tmp_path / "mini.gff"
     gff.write_text(
-        "\n".join([
-            "##gff-version 3",
-            "chrVI\tSGD\tchromosome\t1\t270161\t.\t.\t.\tID=chrVI;Name=chrVI",
-            "chrmt\tSGD\tchromosome\t1\t85779\t.\t.\t.\tID=chrmt;Name=chrmt",
-            "chrVI\tSGD\tgene\t52971\t54910\t.\t-\t.\tID=YFL039C;Name=YFL039C;gene=ACT1;Note=Actin",
-            "chrVI\tSGD\tCDS\t52971\t54465\t.\t-\t.\tID=CDS:YFL039C;Parent=YFL039C",
-            "chrmt\tSGD\tgene\t100\t200\t.\t+\t.\tID=Q0045;Name=Q0045;gene=COX1;Note=cytochrome",
-            "chrI\tSGD\tgene\t335\t649\t.\t-\t.\tID=YAL069W;Name=YAL069W;Note=Dubious%20open%20reading%20frame",
-        ]) + "\n"
+        "##gff-version 3\n"
+        "chrVI\tSGD\tchromosome\t1\t270161\t.\t.\t.\tID=chrVI;Name=chrVI\n"
+        "chrmt\tSGD\tchromosome\t1\t85779\t.\t.\t.\tID=chrmt;Name=chrmt\n"
+        "chrVI\tSGD\tgene\t52971\t54910\t.\t-\t.\tID=YFL039C;Name=YFL039C;gene=ACT1;Note=Actin\n"
+        "chrVI\tSGD\tCDS\t52971\t54465\t.\t-\t.\tID=CDS:YFL039C;Parent=YFL039C\n"
+        "chrmt\tSGD\tgene\t100\t200\t.\t+\t.\tID=Q0045;Name=Q0045;gene=COX1;Note=cytochrome\n"
+        "chrI\tSGD\tgene\t335\t649\t.\t-\t.\tID=YAL069W;Name=YAL069W;Note=Dubious%20open%20reading%20frame\n"
     )
     genes, lengths = parse_gff_genes(gff)
     by_id = {g["systematic"]: g for g in genes}

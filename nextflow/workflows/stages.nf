@@ -49,8 +49,10 @@ process QC_FASTQ {
     tuple val(meta), path("trimmed"), emit: clean_fastq
 
     script:
+    def trim5 = meta.trim_5prime ?: '0'
+    def adapter = meta.adapter_3prime ?: ''
     """
-    bash ${params.tool_scripts}/run_qc.sh ${task.cpus} qc ${fastq_dir}
+    bash ${params.tool_scripts}/run_qc.sh ${task.cpus} qc ${fastq_dir} ${trim5} '${adapter}'
     """
 }
 
@@ -134,7 +136,9 @@ process RNMP_MUTATION_SCAN {
         --output rnmp_mutations.tsv \
         --signature mutation_signature.json \
         --assay ${meta.assay} \
-        --technique '${meta.technique}'
+        --technique '${meta.technique}' \
+        --accession ${meta.accession} \
+        --genotype '${meta.genotype ?: ''}'
     """
 }
 
@@ -161,7 +165,32 @@ process PATHWAY_ENRICHMENT {
         --fasta \$fasta \
         ${ora} \
         --output pathway_enrichment.tsv \
-        --json pathway_hits.json
+        --json pathway_hits.json \
+        --accession ${meta.accession} \
+        --genotype '${meta.genotype ?: ''}'
+    """
+}
+
+process COMPARE_WT_RNH201 {
+    tag "wt-vs-rnh201"
+    publishDir "${params.outdir}", mode: 'copy'
+
+    input:
+    path signatures, stageAs: 'signatures/*'
+    path hits, stageAs: 'hits/*'
+
+    output:
+    path "wt_vs_rnh201", emit: comparison
+
+    script:
+    """
+    mkdir -p wt_vs_rnh201
+    python3 ${params.tool_scripts}/rnmp_compare.py \
+        --signatures signatures \
+        --hits hits \
+        --output wt_vs_rnh201/comparison.json \
+        --table wt_vs_rnh201/comparison.tsv \
+        --html wt_vs_rnh201/comparison_report.html
     """
 }
 

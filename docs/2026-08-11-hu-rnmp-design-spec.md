@@ -5,13 +5,15 @@
 **Repo:** `jonesnoaht/hu-rnmp-pipeline` (personal, public)  
 **Deploy:** `hu-rnmp.flmanbiosci.net` (hwcopeland RKE2, Authentik-gated)
 
+**v1 scope (Noah, 2026-11-11).** v1 is wild-type versus RNase H2 (`rnh201`) rNMP mapping on public yeast ribose-seq. It does not assign replicative polymerases. Hydroxyurea is Future work / v2, below.
+
 ## 1. Goal
 
 Open-data research prototype that:
-1. Mines public sequencing data from hydroxyurea (HU) / RNR-stress conditions
-2. Identifies **differential ribonucleotide (rNMP) incorporation** into genomic DNA
-3. Detects **failed DNA repair** signatures associated with rNMP incorporation
-4. Maps findings to **RNA/DNA repair pathways** (Reactome, BioModels, PathwayCommons)
+1. Compares public wild-type (`RNH201+`) and RNase H2-mutant (`rnh201`) ribose-seq
+2. Identifies **ribonucleotide (rNMP) incorporation** positions, strand bias, and base composition
+3. Counts **2–5 bp deletions in short tandem repeats** as the mutation signature of rNMPs left in yeast DNA
+4. Maps positions to **RNA/DNA repair pathways** (Reactome, BioModels, PathwayCommons) when that test is enabled
 5. Uses **Harmonia** for bijective multi-omic matrix harmonization
 6. Runs as **Nextflow in Docker** behind **Authentik-gated** results browser on `flmanbiosci.net`
 
@@ -77,14 +79,29 @@ Open-data research prototype that:
 
 ## 5. rNMP biology
 
-HU inhibits ribonucleotide reductase (RNR) → depletes dNTP pools → DNA polymerases
-incorporate rNMPs (ribonucleotides) into genomic DNA. Embedded rNMPs are normally
-removed by **RNase H2** via **ribonucleotide excision repair (RER)**. When RER fails:
+RNase H2 removes embedded rNMPs by ribonucleotide excision repair (RER). In an
+`rnh201` mutant those rNMPs remain in genomic DNA. v1 maps them directly
+(ribose-seq) in wild type versus `rnh201`.
 
-- **T→C transitions** on nascent strand (rNMP misincorporation signature)
-- **2-5 bp deletions** at poly-N tracts (slippage at rNMP sites)
-- **Strand asymmetry** in mutation burden
-- **Genome instability** (Aicardi-Goutières syndrome model — RNASEH2 mutations)
+The mutation signature of rNMPs left in yeast DNA is a **Top1-dependent deletion
+of 2–5 bp inside a short tandem repeat**, not a T>C change (Nick McElhinny et al.
+2010, Nat Chem Biol, PMID 20729855; Kim et al. 2011, Science, PMID 21700875).
+The pipeline counts those repeat deletions as the headline variant metric.
+Raw T>C / A>G counts are a hidden QC field. Homopolymer runs are not counted
+as that short-tandem-repeat signature.
+
+v1 does not assign replicative polymerases. Window labels are descriptive
+strand-count ratios.
+
+## Future work / v2
+
+Hydroxyurea, with or without RNase H2 and along the Pol η axis, is not a v1
+result (Meroni et al. 2019, Nucleic Acids Research, PMID 30847483). The
+earlier draft of this spec treated hydroxyurea / RNR-stress sequencing as the
+v1 dataset. That contrast is deferred.
+
+Polymerase assignment is a v2 question only for polymerase-variant strains,
+relative to replication origins and OK-seq (Daigaku et al. 2015, PMID 25664722).
 
 ## 6. Pathway coverage
 
@@ -150,7 +167,7 @@ Pattern mirrors `site-tracker` deployment (`deployment-tracker.yaml`).
 1. Agent team returns with model packs + dataset inventory → review
 2. Register NCBI API key (3 req/s is too slow)
 3. Build Docker images (local first, then CI)
-4. Dry-run Nextflow on a small yeast HU dataset
+4. Dry-run Nextflow on the v1 wild-type vs rnh201 ribose-seq profile (`-profile test,docker`)
 5. PR to hwcopeland/iac for HTTPRoute + DNS + Authentik
 6. Deploy to theswamp
 7. First real pipeline run on hu-rnmp.flmanbiosci.net

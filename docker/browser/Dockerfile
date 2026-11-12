@@ -1,7 +1,7 @@
 FROM node:22-slim
 
 LABEL maintainer="Noah T. Jones"
-LABEL description="HU-rNMP results browser (Authentik-gated)"
+LABEL description="rNMP results browser (Authentik-gated). v1 is wild type vs RNase H2."
 
 WORKDIR /app
 

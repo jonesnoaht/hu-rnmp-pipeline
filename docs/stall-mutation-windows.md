@@ -1,5 +1,11 @@
 # Stall / mutation windows vs transcription
 
+**v1 scope.** The pipeline v1 is wild-type versus RNase H2 (`rnh201`) rNMP mapping.
+This note is not a v1 result. Hydroxyurea comparisons below are Future work / v2
+(Meroni et al. 2019, PMID 30847483) and are not a claim that hydroxyurea changed
+mutation load or polymerase use. v1 does not assign replicative polymerases
+(Daigaku et al. 2015, PMID 25664722, is the v2 reference for that question).
+
 Spatial overlay on sacCer3. HydEn hotspots are Zhou 2019 *rnh201*
 (SRR8503261 NT, SRR8503270 RNase HII). WGS T→C/A→G candidates are
 GSE234409 SRR24871232 (HU) and SRR24871236 (C0). These are different experiments.
@@ -52,11 +58,13 @@ means the transitions sit in hotspots about as often as bin length predicts.
 - Gene body, all WGS: 0.876
 - Promoter 500 bp, all WGS: 1.038
 
-## HU vs C0
+## Future work / v2
 
-Counts are not depth-adjusted. Prior mapped-read ratio was ~1.15–1.21×. n=1 vs 1, no p.
+Hydroxyurea versus the matched untreated library is not a v1 result
+(Meroni et al. 2019, Nucleic Acids Research, PMID 30847483). Counts below are
+not depth-adjusted. Prior mapped-read ratio was ~1.15–1.21×. n=1 vs 1, no p.
 A window `hu_over_c0` above 1 is a count ratio with a pseudocount, not an effect.
-Shared coordinates are consistent with the same strain background, not de novo HU mutations.
+Shared coordinates are consistent with the same strain background.
 
 ## Continued-stall windows (top 20 by min HydEn fold)
 
@@ -89,7 +97,7 @@ not remove the window from the continued-stall call.
 
 ## Not licensed
 
-- Hydroxyurea raised rNMP-proximal mutations or stalled transcription.
+- A hydroxyurea effect on rNMP-proximal mutations or stalled transcription. That question is Future work / v2 (PMID 30847483), not a result of this table.
 - A gene in this table is an FTD, tau, or patient-drug locus.
 - HII-only bins are failed excision. Those stay in the window table as `hii_only` and are not continued-stall calls.
 - Rank order inside mtDNA, rDNA, or subtelomeres is copy-number / transcription occupancy, not a disease rank.

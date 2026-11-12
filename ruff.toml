@@ -1,0 +1,14 @@
+# Ruff 0.16's default rules are the CI gate for the pipeline modules.
+# The exploratory scripts merged in 79ceb77 are not part of that gate.
+
+extend-exclude = [
+  "scripts/annotate_genes.py",
+  "scripts/cross_study_stats.py",
+  "scripts/gene_excision_rank.py",
+  "scripts/land_wave2.py",
+  "scripts/report_figures.py",
+  "scripts/rntp_kinetics_and_drugs.py",
+  "scripts/stall_mutation_windows.py",
+  "scripts/test_leftover_claims.py",
+  "scripts/test_neuron_aging_claims.py",
+]

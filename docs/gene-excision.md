@@ -1,5 +1,10 @@
 # Preferential rNMP incorporation and failed excision by gene
 
+**v1 scope.** The pipeline v1 is wild-type versus RNase H2 (`rnh201`) rNMP mapping.
+This note is an rnh201 HydEn-seq gene table, not that comparison. Hydroxyurea is
+Future work / v2 (Meroni et al. 2019, PMID 30847483). v1 does not assign
+replicative polymerases.
+
 SGD GFF gene spans intersected with Zhou 2019 HydEn-seq on sacCer3.
 Libraries: SRR8503261 (rnh201 NT, no RNase HII pre-cleavage) and
 SRR8503270 (rnh201 RNase HII). Same rnh201 background. Koh ribose-seq
@@ -180,7 +185,7 @@ No nuclear interior ORF clears the floor with site HII/NT ≤ 0.5.
 ## What this does not say
 
 - No FTD, MAPT, or tau conclusion. Yeast has no MAPT.
-- No hydroxyurea effect. HU vs C0 is a different experiment and is not ranked here.
+- Hydroxyurea is Future work / v2 (Meroni et al. 2019, PMID 30847483), not a result ranked here.
 - No Koh genotype contrast. Those libraries are not inputs.
 - HII_only genes, and any NT=0 pseudocount ratio, are not failed-excision calls.
 - An end-count ratio above 2 on mtDNA intron ORFs is depth, not the position rank.
